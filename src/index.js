@@ -7,7 +7,8 @@ const init = () => {
   const settings = {
     movieName: `The Grand Budapest Hotel`,
     movieGenre: `Drama`,
-    releaseDate: `2014`,
+    releaseDate: 2014,
+    moviesNames: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`],
   };
 
   ReactDom.render(
@@ -15,6 +16,7 @@ const init = () => {
         movieName={settings.movieName}
         movieGenre={settings.movieGenre}
         releaseDate={settings.releaseDate}
+        moviesNames={settings.moviesNames}
       />,
       rootElement
   );
