@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card.jsx';
 
 const Main = (props) => {
-  const {name, genre, date, moviesNames} = props;
+  const {name, genre, date, moviesNames, onTitleClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -100,7 +100,7 @@ const Main = (props) => {
         </ul>
 
         <div className="catalog__movies-list">
-          {moviesNames.map((movieName) => <MovieCard key={movieName} name={movieName}/>)}
+          {moviesNames.map((movieName) => <MovieCard key={movieName} name={movieName} onClick={onTitleClick}/>)}
         </div>
 
         <div className="catalog__more">
@@ -130,6 +130,7 @@ Main.propTypes = {
   genre: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
   moviesNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;
