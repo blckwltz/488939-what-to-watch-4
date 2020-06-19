@@ -1,34 +1,49 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {shallow, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Main from './main';
 
-const Settings = {
-  NAME: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  DATE: 2014,
-  MOVIES_NAMES: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`],
-  ON_TITLE_CLICK: jest.fn(),
+const mocks = {
+  featuredMovieTitle: `The Grand Budapest Hotel`,
+  featuredMovieGenre: `Drama`,
+  featuredMovieReleaseDate: 2014,
+  movieTitles: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`],
 };
+const onTitleClick = jest.fn();
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should call onClick handler once`, () => {
-  const main = shallow(
+it(`Should render correct amount of cards`, () => {
+  const main = mount(
       <Main
-        name={Settings.NAME}
-        genre={Settings.GENRE}
-        date={Settings.DATE}
-        moviesNames={Settings.MOVIES_NAMES}
-        onTitleClick={Settings.ON_TITLE_CLICK}
+        featuredMovieTitle={mocks.featuredMovieTitle}
+        featuredMovieGenre={mocks.featuredMovieGenre}
+        featuredMovieReleaseDate={mocks.featuredMovieReleaseDate}
+        movieTitles={mocks.movieTitles}
+        onTitleClick={onTitleClick}
       />
   );
-  const moviesTitles = main.find(`h3.small-movie-card__title`);
+  const movieCards = main.find(`article.small-movie-card`).length;
 
-  moviesTitles.forEach((title) => {
+  expect(movieCards).toBe(mocks.movieTitles.length);
+});
+
+it(`Should call onClick handler once for each element`, () => {
+  const main = shallow(
+      <Main
+        featuredMovieTitle={mocks.featuredMovieTitle}
+        featuredMovieGenre={mocks.featuredMovieGenre}
+        featuredMovieReleaseDate={mocks.featuredMovieReleaseDate}
+        movieTitles={mocks.movieTitles}
+        onTitleClick={onTitleClick}
+      />
+  );
+  const movieTitles = main.find(`h3.small-movie-card__title`);
+
+  movieTitles.forEach((title) => {
     title.simulate(`click`);
-    expect(Settings.ON_TITLE_CLICK).toHaveBeenCalledTimes(1);
+    expect(onTitleClick).toHaveBeenCalledTimes(1);
   });
 });
