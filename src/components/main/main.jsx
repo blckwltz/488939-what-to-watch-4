@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MovieCard from '../movie-card/movie-card.jsx';
+import MoviesList from '../movies-list/movies-list.jsx';
 
 const Main = (props) => {
-  const {featuredMovieTitle, featuredMovieGenre, featuredMovieReleaseDate, movieTitles, onTitleClick} = props;
+  const {featuredMovie, moviesList} = props;
+  const {title, genre, releaseDate} = featuredMovie;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -37,10 +38,10 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{featuredMovieTitle}</h2>
+            <h2 className="movie-card__title">{title}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{featuredMovieGenre}</span>
-              <span className="movie-card__year">{featuredMovieReleaseDate}</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -99,9 +100,7 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {movieTitles.map((title) => <MovieCard key={title} title={title} onClick={onTitleClick}/>)}
-        </div>
+        <MoviesList movies={moviesList}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -126,11 +125,15 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  featuredMovieTitle: PropTypes.string.isRequired,
-  featuredMovieGenre: PropTypes.string.isRequired,
-  featuredMovieReleaseDate: PropTypes.number.isRequired,
-  movieTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  featuredMovie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+  }),
+  moviesList: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default Main;

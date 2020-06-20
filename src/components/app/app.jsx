@@ -3,23 +3,24 @@ import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
 const App = (props) => {
-  const {featuredMovieTitle, featuredMovieGenre, featuredMovieReleaseDate, movieTitles, onTitleClick} = props;
+  const {featuredMovie, moviesList} = props;
 
   return <Main
-    featuredMovieTitle={featuredMovieTitle}
-    featuredMovieGenre={featuredMovieGenre}
-    featuredMovieReleaseDate={featuredMovieReleaseDate}
-    movieTitles={movieTitles}
-    onTitleClick={onTitleClick}
+    featuredMovie={featuredMovie}
+    moviesList={moviesList}
   />;
 };
 
 App.propTypes = {
-  featuredMovieTitle: PropTypes.string.isRequired,
-  featuredMovieGenre: PropTypes.string.isRequired,
-  featuredMovieReleaseDate: PropTypes.number.isRequired,
-  movieTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  featuredMovie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+  }),
+  moviesList: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default App;
