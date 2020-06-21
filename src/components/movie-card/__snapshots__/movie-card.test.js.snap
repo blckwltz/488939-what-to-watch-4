@@ -6,21 +6,23 @@ exports[`Should render correctly 1`] = `
 >
   <div
     className="small-movie-card__image"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <img
       alt="The Big Lebowski"
       height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      src="img/what-we-do-in-the-shadows.jpg"
       width="280"
     />
   </div>
   <h3
     className="small-movie-card__title"
+    onClick={[Function]}
   >
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-      onClick={[Function]}
     >
       The Big Lebowski
     </a>

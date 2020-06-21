@@ -2,15 +2,24 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MovieCard from './movie-card';
 
-const title = `The Big Lebowski`;
+const mocks = {
+  title: `The Big Lebowski`,
+  poster: `img/what-we-do-in-the-shadows.jpg`,
+  source: `video/preview.webm`,
+};
 const onClick = () => {};
+const onHover = () => {};
+const onSettle = () => {};
 
 it(`Should render correctly`, () => {
   const tree = renderer
     .create(
         <MovieCard
-          title={title}
+          title={mocks.title}
+          poster={mocks.poster}
           onClick={onClick}
+          onHover={onHover}
+          onSettle={onSettle}
         />
     )
     .toJSON();
