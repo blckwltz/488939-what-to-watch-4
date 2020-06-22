@@ -7,7 +7,6 @@ const mocks = {
   title: `The Big Lebowski`,
   poster: `img/what-we-do-in-the-shadows.jpg`,
 };
-const {title, poster} = mocks;
 const onClick = jest.fn();
 const onHover = jest.fn();
 const onSettle = jest.fn();
@@ -16,11 +15,10 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should call onClick handler once`, () => {
+it(`Should call onClick handler when clicking on title and poster`, () => {
   const movieCard = shallow(
       <MovieCard
-        title={mocks.title}
-        poster={mocks.poster}
+        movieInfo={mocks}
         onClick={onClick}
         onHover={onHover}
         onSettle={onSettle}
@@ -28,16 +26,19 @@ it(`Should call onClick handler once`, () => {
   );
 
   const movieTitle = movieCard.find(`h3.small-movie-card__title`);
+  const moviePoster = movieCard.find(`img`);
 
   movieTitle.simulate(`click`);
   expect(onClick).toHaveBeenCalledTimes(1);
+
+  moviePoster.simulate(`click`);
+  expect(onClick).toHaveBeenCalledTimes(2);
 });
 
-it(`Should pass source on card mouse enter`, () => {
+it(`Should pass movie info on card mouse enter`, () => {
   const movieCard = shallow(
       <MovieCard
-        title={title}
-        poster={poster}
+        movieInfo={mocks}
         onClick={onClick}
         onHover={onHover}
         onSettle={onSettle}

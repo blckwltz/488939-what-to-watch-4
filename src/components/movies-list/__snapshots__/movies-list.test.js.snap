@@ -15,6 +15,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Fantastic Beasts: The Crimes of Grindelwald"
         height="175"
+        onClick={[Function]}
         src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
@@ -42,6 +43,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Pulp Fiction"
         height="175"
+        onClick={[Function]}
         src="img/pulp-fiction.jpg"
         width="280"
       />
@@ -69,6 +71,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Shutter Island"
         height="175"
+        onClick={[Function]}
         src="img/shutter-island.jpg"
         width="280"
       />
@@ -96,6 +99,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Macbeth"
         height="175"
+        onClick={[Function]}
         src="img/macbeth.jpg"
         width="280"
       />
@@ -123,6 +127,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Snatch"
         height="175"
+        onClick={[Function]}
         src="img/snatch.jpg"
         width="280"
       />
@@ -150,6 +155,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="We need to talk about Kevin"
         height="175"
+        onClick={[Function]}
         src="img/we-need-to-talk-about-kevin.jpg"
         width="280"
       />
@@ -177,6 +183,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Bohemian Rhapsody"
         height="175"
+        onClick={[Function]}
         src="img/bohemian-rhapsody.jpg"
         width="280"
       />
@@ -204,6 +211,7 @@ exports[`Should render correctly 1`] = `
       <img
         alt="Revenant"
         height="175"
+        onClick={[Function]}
         src="img/revenant.jpg"
         width="280"
       />
