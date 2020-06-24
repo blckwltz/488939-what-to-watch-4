@@ -12,6 +12,7 @@ exports[`Should render correctly 1`] = `
     <img
       alt="The Big Lebowski"
       height="175"
+      onClick={[Function]}
       src="img/what-we-do-in-the-shadows.jpg"
       width="280"
     />

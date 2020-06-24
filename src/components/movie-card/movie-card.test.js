@@ -5,7 +5,6 @@ import MovieCard from './movie-card';
 const mocks = {
   title: `The Big Lebowski`,
   poster: `img/what-we-do-in-the-shadows.jpg`,
-  source: `video/preview.webm`,
 };
 const onClick = () => {};
 const onHover = () => {};
@@ -15,8 +14,7 @@ it(`Should render correctly`, () => {
   const tree = renderer
     .create(
         <MovieCard
-          title={mocks.title}
-          poster={mocks.poster}
+          movieInfo={mocks}
           onClick={onClick}
           onHover={onHover}
           onSettle={onSettle}

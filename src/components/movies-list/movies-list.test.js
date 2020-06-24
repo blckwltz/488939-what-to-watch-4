@@ -44,11 +44,15 @@ const mocks = [
     source: `video/preview.webm`,
   },
 ];
+const onClick = () => {};
 
 it(`Should render correctly`, () => {
   const tree = renderer
     .create(
-        <MoviesList movies={mocks}/>
+        <MoviesList
+          movies={mocks}
+          onClick={onClick}
+        />
     )
     .toJSON();
 
