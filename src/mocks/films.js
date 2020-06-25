@@ -11,6 +11,7 @@ export default {
       releaseDate: 2015,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/macbeth.jpg`,
+      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       rating: {
         score: 6.6,
         level: `Average`,
@@ -28,6 +29,7 @@ export default {
       releaseDate: 2011,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/we-need-to-talk-about-kevin.jpg`,
+      previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       rating: {
         score: 7.5,
         level: `Good`,
@@ -45,6 +47,7 @@ export default {
       releaseDate: 2018,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       rating: {
         score: 6.6,
         level: `Average`,
@@ -61,6 +64,7 @@ export default {
       releaseDate: 2010,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/shutter-island.jpg`,
+      previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       rating: {
         score: 8.1,
         level: `Good`,
@@ -77,6 +81,7 @@ export default {
       releaseDate: 2000,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/snatch.jpg`,
+      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       rating: {
         score: 8.3,
         level: `Good`,
@@ -93,6 +98,7 @@ export default {
       releaseDate: 1994,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/pulp-fiction.jpg`,
+      previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       rating: {
         score: 8.9,
         level: `Very Good`,
@@ -109,6 +115,7 @@ export default {
       releaseDate: 2015,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/revenant.jpg`,
+      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       rating: {
         score: 8.0,
         level: `Good`,
@@ -125,6 +132,7 @@ export default {
       releaseDate: 2018,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/bohemian-rhapsody.jpg`,
+      previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
       rating: {
         score: 8.0,
         level: `Good`,

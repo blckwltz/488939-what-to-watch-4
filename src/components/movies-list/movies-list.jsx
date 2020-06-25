@@ -1,35 +1,18 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card.jsx';
 
-export default class MoviesList extends PureComponent {
-  constructor(props) {
-    super(props);
+const MoviesList = (props) => {
+  const {movies, onClick} = props;
 
-    this.state = {
-      activeCard: null,
-    };
-  }
+  return <div className="catalog__movies-list">
+    {movies.map((movie) => <MovieCard key={movie.title} movieInfo={movie} onClick={(evt) => {
+      evt.preventDefault();
+      onClick(movie);
+    }}/>)}
+  </div>;
+};
 
-  render() {
-    const {movies, onClick} = this.props;
-
-    return <div className="catalog__movies-list">
-      {movies.map((movie) => <MovieCard key={movie.title} movieInfo={movie} onClick={(evt) => {
-        evt.preventDefault();
-        onClick(movie);
-      }} onHover={() => {
-        this.setState({
-          activeCard: movie,
-        });
-      }} onSettle={() => {
-        this.setState({
-          activeCard: null,
-        });
-      }}/>)}
-    </div>;
-  }
-}
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
@@ -38,3 +21,5 @@ MoviesList.propTypes = {
   })).isRequired,
   onClick: PropTypes.func.isRequired,
 };
+
+export default MoviesList;

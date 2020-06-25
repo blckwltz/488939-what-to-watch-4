@@ -6,47 +6,47 @@ const mocks = [
   {
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Pulp Fiction`,
     poster: `img/pulp-fiction.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Shutter Island`,
     poster: `img/shutter-island.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Macbeth`,
     poster: `img/macbeth.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Snatch`,
     poster: `img/snatch.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `We need to talk about Kevin`,
     poster: `img/we-need-to-talk-about-kevin.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Bohemian Rhapsody`,
     poster: `img/bohemian-rhapsody.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     title: `Revenant`,
     poster: `img/revenant.jpg`,
-    source: `video/preview.webm`,
+    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
 ];
 const onClick = () => {};
 
-it(`Should render correctly`, () => {
+it(`Should render MoviesList component correctly`, () => {
   const tree = renderer
     .create(
         <MoviesList
