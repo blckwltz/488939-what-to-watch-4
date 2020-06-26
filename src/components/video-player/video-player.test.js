@@ -5,7 +5,6 @@ import VideoPlayer from './video-player';
 const mocks = {
   isPlaying: true,
   isMuted: true,
-  isAutoplayEnabled: true,
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   poster: `img/macbeth.jpg`,
 };
@@ -28,7 +27,6 @@ it(`Should render VideoPlayer component correctly`, () => {
         <VideoPlayer
           isPlaying={mocks.isPlaying}
           isMuted={mocks.isMuted}
-          isAutoplayEnabled={mocks.isAutoplayEnabled}
           src={mocks.src}
           poster={mocks.poster}
         />,

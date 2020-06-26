@@ -5,7 +5,6 @@ export default class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._isMounted = false;
     this._videoRef = createRef();
     this.state = {
       progress: 0,
@@ -15,14 +14,12 @@ export default class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {src, poster, isMuted, isAutoplayEnabled} = this.props;
+    const {src, poster, isMuted} = this.props;
     const video = this._videoRef.current;
 
-    this._isMounted = true;
     video.src = src;
     video.poster = poster;
     video.muted = isMuted;
-    video.autoplay = isAutoplayEnabled;
 
     video.oncanplaythrough = () => {
       this.setState({
@@ -47,29 +44,32 @@ export default class VideoPlayer extends PureComponent {
         progress: video.currentTime
       });
     };
-
-    // video.play()
-    //   .then(() => {
-    //     if (this._isMounted) {
-    //       this.setState({
-    //         isPlaying: true,
-    //       });
-    //     }
-    //   });
   }
 
   componentWillUnmount() {
     const video = this._videoRef.current;
 
-    this._isMounted = false;
     video.oncanplaythrough = null;
     video.onplay = null;
     video.onpause = null;
+    video.ontimeupdate = null;
     video.src = ``;
   }
 
   render() {
-    return <video width="280" height="175" ref={this._videoRef}/>;
+    const video = this._videoRef.current;
+
+    return <video width="280" height="175" onMouseEnter={() => {
+      this.setState({
+        isPlaying: true,
+      });
+    }
+    } onMouseLeave={() => {
+      this.setState({
+        isPlaying: false,
+      });
+    }
+    } ref={this._videoRef}/>;
   }
 
   componentDidUpdate() {
@@ -88,7 +88,6 @@ export default class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   isMuted: PropTypes.bool.isRequired,
-  isAutoplayEnabled: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
 };

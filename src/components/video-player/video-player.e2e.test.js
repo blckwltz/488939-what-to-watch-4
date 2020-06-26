@@ -6,7 +6,6 @@ import VideoPlayer from './video-player';
 const mocks = {
   isPlaying: false,
   isMuted: true,
-  isAutoplayEnabled: true,
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   poster: `img/revenant.jpg`,
 };
@@ -16,21 +15,20 @@ Enzyme.configure({
 });
 
 it(`Should change state on video play and pause`, () => {
-  const {isPlaying, isMuted, isAutoplayEnabled, src, poster} = mocks;
+  const {isPlaying, isMuted, src, poster} = mocks;
   const videoPlayer = mount(
       <VideoPlayer
         isPlaying={isPlaying}
         isMuted={isMuted}
-        isAutoplayEnabled={isAutoplayEnabled}
         src={src}
         poster={poster}
       />
   );
   const video = videoPlayer.find(`video`);
 
-  video.simulate(`play`);
+  video.simulate(`mouseenter`);
   expect(videoPlayer.state().isPlaying).toEqual(true);
 
-  video.simulate(`pause`);
+  video.simulate(`mouseleave`);
   expect(videoPlayer.state().isPlaying).toEqual(false);
 });

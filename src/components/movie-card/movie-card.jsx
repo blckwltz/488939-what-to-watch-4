@@ -31,7 +31,7 @@ export default class MovieCard extends PureComponent {
           isVideoPlaying: false,
         });
       }}>
-        {isVideoPlaying ? <VideoPlayer isPlaying={isVideoPlaying} isMuted={true} isAutoplayEnabled={isVideoPlaying} src={previewSrc} poster={poster}/> : <img src={poster} alt={title} width="280" height="175" onClick={onClick}/>}
+        {isVideoPlaying ? <VideoPlayer isPlaying={isVideoPlaying} isMuted={true} src={previewSrc} poster={poster}/> : <img src={poster} alt={title} width="280" height="175" onClick={onClick}/>}
       </div>
       <h3 className="small-movie-card__title" onClick={onClick}>
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>

@@ -3,6 +3,8 @@
 exports[`Should render VideoPlayer component correctly 1`] = `
 <video
   height="175"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   width="280"
 />
 `;
