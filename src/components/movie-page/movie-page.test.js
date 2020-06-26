@@ -20,7 +20,7 @@ const mocks = {
   cast: `Michael Fassbender, Marion Cotillard, Jack Madigan`,
 };
 
-it(`Should render correctly`, () => {
+it(`Should render MoviePage component correctly`, () => {
   const tree = renderer.create(
       <MoviePage movieInfo={mocks}/>
   );
