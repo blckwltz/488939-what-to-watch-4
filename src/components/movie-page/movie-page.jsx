@@ -1,8 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {TAB_TYPES} from '../../const.js';
-import MoviesListWithFilter from '../movies-list/movies-list-with-filter.jsx';
+import {TabNames} from '../../const.js';
+import MoviesListFiltered from '../movies-list/movies-list-filtered.jsx';
 import Tabs from '../tabs/tabs.jsx';
+import Tab from '../tab/tab.jsx';
 
 const MoviePage = (props) => {
   const {movieInfo, moviesList, onMovieClick} = props;
@@ -68,8 +69,8 @@ const MoviePage = (props) => {
               height="327"/>
           </div>
 
-          <Tabs tabLabels={TAB_TYPES}>
-            <Fragment>
+          <Tabs>
+            <Tab title={TabNames.OVERVIEW}>
               <div className="movie-rating">
                 <div className="movie-rating__score">{score}</div>
                 <p className="movie-rating__meta">
@@ -85,50 +86,54 @@ const MoviePage = (props) => {
 
                 <p className="movie-card__starring"><strong>Starring: {cast} and other</strong></p>
               </div>
-            </Fragment>
-            <div className="movie-card__text movie-card__row">
-              <div className="movie-card__text-col">
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Director</strong>
-                  <span className="movie-card__details-value">{director}</span>
-                </p>
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Starring</strong>
-                  <span className="movie-card__details-value">{cast}</span>
-                </p>
-              </div>
+            </Tab>
+            <Tab title={TabNames.DETAILS}>
+              <div className="movie-card__text movie-card__row">
+                <div className="movie-card__text-col">
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Director</strong>
+                    <span className="movie-card__details-value">{director}</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Starring</strong>
+                    <span className="movie-card__details-value">{cast}</span>
+                  </p>
+                </div>
 
-              <div className="movie-card__text-col">
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Run Time</strong>
-                  <span className="movie-card__details-value">{runTime}</span>
-                </p>
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Genre</strong>
-                  <span className="movie-card__details-value">{genre}</span>
-                </p>
-                <p className="movie-card__details-item">
-                  <strong className="movie-card__details-name">Released</strong>
-                  <span className="movie-card__details-value">{releaseDate}</span>
-                </p>
+                <div className="movie-card__text-col">
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Run Time</strong>
+                    <span className="movie-card__details-value">{runTime}</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Genre</strong>
+                    <span className="movie-card__details-value">{genre}</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Released</strong>
+                    <span className="movie-card__details-value">{releaseDate}</span>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="movie-card__reviews movie-card__row">
-              <div className="movie-card__reviews-col">
-                {reviews.map((review) => <div key={review.author} className="review">
-                  <blockquote className="review__quote">
-                    <p className="review__text">{review.text}</p>
+            </Tab>
+            <Tab title={TabNames.REVIEWS}>
+              <div className="movie-card__reviews movie-card__row">
+                <div className="movie-card__reviews-col">
+                  {reviews.map((review) => <div key={review.author} className="review">
+                    <blockquote className="review__quote">
+                      <p className="review__text">{review.text}</p>
 
-                    <footer className="review__details">
-                      <cite className="review__author">{review.author}</cite>
-                      <time className="review__date" dateTime={review.date}>{review.date}</time>
-                    </footer>
-                  </blockquote>
+                      <footer className="review__details">
+                        <cite className="review__author">{review.author}</cite>
+                        <time className="review__date" dateTime={review.date}>{review.date}</time>
+                      </footer>
+                    </blockquote>
 
-                  <div className="review__rating">{review.rating}</div>
-                </div>)}
+                    <div className="review__rating">{review.rating}</div>
+                  </div>)}
+                </div>
               </div>
-            </div>
+            </Tab>
           </Tabs>
         </div>
       </div>
@@ -138,7 +143,7 @@ const MoviePage = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MoviesListWithFilter movies={moviesList} filterCriteria={movieInfo} onClick={onMovieClick}/>
+        <MoviesListFiltered movies={moviesList} filterCriteria={movieInfo} onClick={onMovieClick}/>
       </section>
 
       <footer className="page-footer">

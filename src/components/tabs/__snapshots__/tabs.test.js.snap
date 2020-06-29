@@ -18,13 +18,13 @@ exports[`Should render Tabs component correctly 1`] = `
           className="movie-nav__link"
           href="#"
         >
-          Overview
+          child
         </a>
       </li>
     </ul>
   </nav>
   <div
-    className="child-component"
+    className="nested-component"
   />
 </div>
 `;

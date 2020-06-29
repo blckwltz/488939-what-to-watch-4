@@ -1,20 +1,17 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 const Tab = (props) => {
-  const {activeTab, tabLabel, onClick} = props;
+  const {children} = props;
 
-  return <li className={`movie-nav__item ${(activeTab === tabLabel) && `movie-nav__item--active`}`} onClick={() => {
-    onClick(tabLabel);
-  }}>
-    <a href="#" className="movie-nav__link">{tabLabel}</a>
-  </li>;
+  return <Fragment>{children}</Fragment>;
 };
 
 Tab.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  tabLabel: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired
 };
 
 export default Tab;

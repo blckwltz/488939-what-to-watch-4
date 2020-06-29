@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesList from './movies-list.jsx';
 import PropTypes from "prop-types";
 
-const MoviesListWithFilter = (props) => {
+const MoviesListFiltered = (props) => {
   const {movies, filterCriteria, onClick} = props;
   const {title, genre} = filterCriteria;
   const filteredMovies = movies.filter((movie) => {
@@ -12,7 +12,7 @@ const MoviesListWithFilter = (props) => {
   return <MoviesList movies={filteredMovies} onClick={onClick}/>;
 };
 
-MoviesListWithFilter.propTypes = {
+MoviesListFiltered.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
@@ -24,4 +24,4 @@ MoviesListWithFilter.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default MoviesListWithFilter;
+export default MoviesListFiltered;

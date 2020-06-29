@@ -3,15 +3,16 @@ import renderer from 'react-test-renderer';
 import Tabs from './tabs';
 
 const mocks = {
-  tabLabels: [`Overview`],
-  children: [<div key="child" className="child-component"/>]
+  children: [<div key="child" title="child" className="child-component">
+    <div className="nested-component"/>
+  </div>],
 };
 
 it(`Should render Tabs component correctly`, () => {
-  const {tabLabels, children} = mocks;
+  const {children} = mocks;
   const tree = renderer
     .create(
-        <Tabs tabLabels={tabLabels}>{children}</Tabs>
+        <Tabs>{children}</Tabs>
     )
     .toJSON();
 

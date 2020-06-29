@@ -1,1 +1,5 @@
-export const TAB_TYPES = [`Overview`, `Details`, `Reviews`];
+export const TabNames = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};

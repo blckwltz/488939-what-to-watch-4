@@ -1,15 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render Tab component correctly 1`] = `
-<li
-  className="movie-nav__item false"
-  onClick={[Function]}
->
-  <a
-    className="movie-nav__link"
-    href="#"
-  >
-    Details
-  </a>
-</li>
+<div
+  className="child-component"
+  title="child"
+/>
 `;

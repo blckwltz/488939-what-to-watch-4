@@ -4,11 +4,16 @@ import Adapter from 'enzyme-adapter-react-16';
 import Tabs from './tabs';
 
 const mocks = {
-  tabLabels: [`First Tab`, `Second Tab`, `Third Tab`],
   children: [
-    <div key="firstChild" className="child-component"/>,
-    <div key="secondChild" className="child-component"/>,
-    <div key="thirdChild" className="child-component"/>,
+    <div key="first-child" title="first-child" className="child-component">
+      <div className="first-nested-component"/>
+    </div>,
+    <div key="second-child" title="second-child" className="child-component">
+      <div className="second-nested-component"/>
+    </div>,
+    <div key="third-child" title="third-child" className="child-component">
+      <div className="third-nested-component"/>
+    </div>,
   ]
 };
 
@@ -16,14 +21,14 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should change state correctly on tab click`, () => {
-  const {tabLabels, children} = mocks;
+it(`Should change content on tab click`, () => {
+  const {children} = mocks;
   const tabs = mount(
-      <Tabs tabLabels={tabLabels}>{children}</Tabs>
+      <Tabs>{children}</Tabs>
   );
 
   const secondTab = tabs.find(`li.movie-nav__item`).at(1);
 
   secondTab.simulate(`click`);
-  expect(tabs.state().activeTab).toEqual(tabLabels[1]);
+  expect(tabs.find(`div.second-nested-component`).length).toBe(1);
 });
