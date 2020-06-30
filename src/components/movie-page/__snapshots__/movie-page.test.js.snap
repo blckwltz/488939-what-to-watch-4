@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Macbeth"
-          src="img/macbeth.jpg"
+          alt="Bohemian Rhapsody"
+          src="img/bohemian-rhapsody.jpg"
         />
       </div>
       <h1
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Macbeth
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -80,12 +80,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Biography, Music
             </span>
             <span
               className="movie-card__year"
             >
-              2015
+              2018
             </span>
           </p>
           <div
@@ -145,7 +145,7 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Macbeth"
+            alt="Bohemian Rhapsody"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -162,6 +162,7 @@ Array [
             >
               <li
                 className="movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -171,7 +172,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -181,7 +183,8 @@ Array [
                 </a>
               </li>
               <li
-                className="movie-nav__item"
+                className="movie-nav__item "
+                onClick={[Function]}
               >
                 <a
                   className="movie-nav__link"
@@ -198,7 +201,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              6.6
+              8
             </div>
             <p
               className="movie-rating__meta"
@@ -206,12 +209,12 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Average
+                Good
               </span>
               <span
                 className="movie-rating__count"
               >
-                120
+                240
                  ratings
               </span>
             </p>
@@ -220,16 +223,15 @@ Array [
             className="movie-card__text"
           >
             <p>
-              Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will
-      become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king
-      and takes the throne for himself.
+              The story of the legendary British rock band Queen and lead singer Freddie Mercury,
+      leading up to their famous performance at Live Aid (1985).
             </p>
             <p
               className="movie-card__director"
             >
               <strong>
                 Director: 
-                Justin Kurzel
+                Bryan Singer
               </strong>
             </p>
             <p
@@ -237,7 +239,7 @@ Array [
             >
               <strong>
                 Starring: 
-                Michael Fassbender, Marion Cotillard, Jack Madigan
+                Rami Malek, Lucy Boynton, Gwilym Lee
                  and other
               </strong>
             </p>
@@ -259,104 +261,7 @@ Array [
       </h2>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Bohemian Rhapsody
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Macbeth
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Aviator"
-              height="175"
-              src="img/aviator.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Aviator
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"

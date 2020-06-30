@@ -33,7 +33,13 @@ export default class App extends PureComponent {
   }
 
   _renderMoviePage(movie) {
-    return <MoviePage movieInfo={movie}/>;
+    const {moviesList} = this.props;
+
+    return <MoviePage
+      movieInfo={movie}
+      moviesList={moviesList}
+      onMovieClick={() => {}}
+    />;
   }
 
   render() {

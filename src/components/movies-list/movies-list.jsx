@@ -6,7 +6,7 @@ const MoviesList = (props) => {
   const {movies, onClick} = props;
 
   return <div className="catalog__movies-list">
-    {movies.map((movie) => <MovieCard key={movie.title} movieInfo={movie} onClick={(evt) => {
+    {movies.map((movie, index) => <MovieCard key={`${movie.title}-${index}`} movieInfo={movie} onClick={(evt) => {
       evt.preventDefault();
       onClick(movie);
     }}/>)}

@@ -13,6 +13,7 @@ const mocks = {
       title: `Macbeth`,
       genre: `Drama`,
       releaseDate: 2015,
+      runTime: `2h 0m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/macbeth.jpg`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -26,11 +27,28 @@ const mocks = {
       and takes the throne for himself.`,
       director: `Justin Kurzel`,
       cast: `Michael Fassbender, Marion Cotillard, Jack Madigan`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `We need to talk about Kevin`,
-      genre: `Drama, Mystery`,
+      genre: `Drama`,
       releaseDate: 2011,
+      runTime: `1h 40m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/we-need-to-talk-about-kevin.jpg`,
       previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -44,11 +62,28 @@ const mocks = {
       anything anyone imagined.`,
       director: `Lynne Ramsay`,
       cast: `Tilda Swinton, John C. Reilly, Ezra Miller`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `Fantastic Beasts: The Crimes of Grindelwald`,
-      genre: `Adventure, Fantasy`,
+      genre: `Adventure`,
       releaseDate: 2018,
+      runTime: `3h 5m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -61,11 +96,28 @@ const mocks = {
       of Magizoologist Newt Scamander.`,
       director: `David Yates`,
       cast: `Eddie Redmayne, Katherine Waterston, Dan Fogler`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `Shutter Island`,
-      genre: `Mystery, Thriller`,
+      genre: `Mystery`,
       releaseDate: 2010,
+      runTime: `2h 34m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/shutter-island.jpg`,
       previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -78,11 +130,28 @@ const mocks = {
       for the criminally insane.`,
       director: `Martin Scorsese`,
       cast: `Leonardo DiCaprio, Emily Mortimer, Mark Ruffalo`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `Snatch`,
-      genre: `Comedy, Crime`,
+      genre: `Comedy`,
       releaseDate: 2000,
+      runTime: `1h 47m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/snatch.jpg`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -95,11 +164,28 @@ const mocks = {
       and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
       director: `Guy Ritchie`,
       cast: `Jason Statham, Brad Pitt, Benicio Del Toro`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `Pulp Fiction`,
-      genre: `Crime, Drama`,
+      genre: `Drama`,
       releaseDate: 1994,
+      runTime: `2h 10m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/pulp-fiction.jpg`,
       previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -112,11 +198,28 @@ const mocks = {
       intertwine in four tales of violence and redemption.`,
       director: `Quentin Tarantino`,
       cast: `John Travolta, Uma Thurman, Samuel L. Jackson`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `Revenant`,
-      genre: `Action, Adventure`,
+      genre: `Adventure`,
       releaseDate: 2015,
+      runTime: `2h 0m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/revenant.jpg`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
@@ -129,11 +232,28 @@ const mocks = {
       mauled by a bear and left for dead by members of his own hunting team.`,
       director: `Alejandro G. Iñárritu`,
       cast: `Leonardo DiCaprio, Tom Hardy, Will Poulter`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
     {
       title: `Bohemian Rhapsody`,
-      genre: `Biography, Music`,
+      genre: `Biography`,
       releaseDate: 2018,
+      runTime: `2h 50m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
       poster: `img/bohemian-rhapsody.jpg`,
       previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
@@ -146,6 +266,22 @@ const mocks = {
       leading up to their famous performance at Live Aid (1985).`,
       director: `Bryan Singer`,
       cast: `Rami Malek, Lucy Boynton, Gwilym Lee`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
     },
   ],
 };

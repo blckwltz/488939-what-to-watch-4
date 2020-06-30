@@ -9,6 +9,8 @@ const mocks = {
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   poster: `img/revenant.jpg`,
 };
+const playEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
+const pauseEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -28,7 +30,9 @@ it(`Should change state on video play and pause`, () => {
 
   video.simulate(`mouseenter`);
   expect(videoPlayer.state().isPlaying).toEqual(true);
+  playEventMock.mockRestore();
 
   video.simulate(`mouseleave`);
   expect(videoPlayer.state().isPlaying).toEqual(false);
+  pauseEventMock.mockRestore();
 });
