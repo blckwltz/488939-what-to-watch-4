@@ -287,6 +287,7 @@ const mocks = {
 };
 const {featuredMovie, moviesList} = mocks;
 const onMovieClick = () => {};
+const onGenreClick = () => {};
 
 it(`Should render Main component correctly`, () => {
   const tree = renderer
@@ -294,7 +295,9 @@ it(`Should render Main component correctly`, () => {
         <Main
           featuredMovie={featuredMovie}
           moviesList={moviesList}
+          filteredList={moviesList}
           onMovieClick={onMovieClick}
+          onGenreClick={onGenreClick}
         />
     )
     .toJSON();
