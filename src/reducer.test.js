@@ -1,4 +1,4 @@
-import {reducer, ActionCreator, ActionType} from './reducer.js';
+import {reducer, ActionType} from './reducer.js';
 
 const featuredMovie = {
   title: `The Grand Budapest Hotel`,
