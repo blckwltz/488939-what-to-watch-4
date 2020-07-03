@@ -152,6 +152,7 @@ const mocks = {
 };
 const {featuredMovie, moviesList} = mocks;
 const onMovieClick = () => {};
+const onGenreClick = () => {};
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -162,7 +163,9 @@ it(`Should render correct amount of cards`, () => {
       <Main
         featuredMovie={featuredMovie}
         moviesList={moviesList}
+        filteredList={moviesList}
         onMovieClick={onMovieClick}
+        onGenreClick={onGenreClick}
       />
   );
   const movieCards = main.find(`article.small-movie-card`).length;

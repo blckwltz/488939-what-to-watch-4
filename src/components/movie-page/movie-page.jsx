@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {TabNames} from '../../const.js';
-import MoviesListFiltered from '../movies-list/movies-list-filtered.jsx';
+import MoviesList from '../movies-list/movies-list.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import Tab from '../tab/tab.jsx';
 
 const MoviePage = (props) => {
-  const {movieInfo, moviesList, onMovieClick} = props;
+  const {movieInfo, filteredList, onMovieClick} = props;
   const {title, genre, releaseDate, cover, poster, rating, description, runTime, director, cast, reviews} = movieInfo;
   const {score, level, count} = rating;
 
@@ -143,7 +143,7 @@ const MoviePage = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MoviesListFiltered movies={moviesList} filterCriteria={movieInfo} onClick={onMovieClick}/>
+        <MoviesList movies={filteredList} onClick={onMovieClick}/>
       </section>
 
       <footer className="page-footer">
@@ -188,7 +188,7 @@ MoviePage.propTypes = {
         })
     ).isRequired,
   }).isRequired,
-  moviesList: PropTypes.array.isRequired,
+  filteredList: PropTypes.array.isRequired,
   onMovieClick: PropTypes.func.isRequired,
 };
 

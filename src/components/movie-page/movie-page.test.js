@@ -109,15 +109,15 @@ const mocks = {
       ],
     }
   ],
-  onMovieClick: () => {},
 };
+const onMovieClick = () => {};
 
 it(`Should render MoviePage component correctly`, () => {
-  const {movieInfo, moviesList, onMovieClick} = mocks;
+  const {movieInfo, moviesList} = mocks;
   const tree = renderer.create(
       <MoviePage
         movieInfo={movieInfo}
-        moviesList={moviesList}
+        filteredList={moviesList}
         onMovieClick={onMovieClick}
       />
   );
