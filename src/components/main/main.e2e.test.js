@@ -153,6 +153,7 @@ const mocks = {
 const {featuredMovie, moviesList} = mocks;
 const onMovieClick = () => {};
 const onGenreClick = () => {};
+const onShowMoreButtonClick = () => {};
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -164,11 +165,32 @@ it(`Should render correct amount of cards`, () => {
         featuredMovie={featuredMovie}
         moviesList={moviesList}
         filteredList={moviesList}
+        shownMoviesAmount={4}
         onMovieClick={onMovieClick}
         onGenreClick={onGenreClick}
+        onShowMoreButtonClick={onShowMoreButtonClick}
       />
   );
-  const movieCards = main.find(`article.small-movie-card`).length;
+  const movieCards = main.find(`article.small-movie-card`);
+  const showMoreButton = main.find(`button.catalog__button`);
 
-  expect(movieCards).toBe(moviesList.length);
+  expect(movieCards.length).toBe(4);
+  expect(showMoreButton.length).toBe(1);
+});
+
+it(`Should not render show more button if all cards are shown`, () => {
+  const main = mount(
+      <Main
+        featuredMovie={featuredMovie}
+        moviesList={moviesList}
+        filteredList={moviesList}
+        shownMoviesAmount={moviesList.length}
+        onMovieClick={onMovieClick}
+        onGenreClick={onGenreClick}
+        onShowMoreButtonClick={onShowMoreButtonClick}
+      />
+  );
+  const showMoreButton = main.find(`button.catalog__button`);
+
+  expect(showMoreButton.length).toBe(0);
 });

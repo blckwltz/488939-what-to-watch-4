@@ -9,4 +9,6 @@ const FilterSettings = {
   MAX_AMOUNT: 10,
 };
 
-export {TabNames, FilterSettings};
+const MAX_MOVIES_AMOUNT = 8;
+
+export {TabNames, FilterSettings, MAX_MOVIES_AMOUNT};

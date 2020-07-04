@@ -118,6 +118,7 @@ it(`Should render MoviePage component correctly`, () => {
       <MoviePage
         movieInfo={movieInfo}
         filteredList={moviesList}
+        shownMoviesAmount={moviesList.length}
         onMovieClick={onMovieClick}
       />
   );

@@ -12,23 +12,26 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {featuredMovie, moviesList, filteredList, onGenreClick} = this.props;
+    const {featuredMovie, moviesList, filteredList, shownMoviesAmount, onGenreClick, onShowMoreButtonClick} = this.props;
 
     return <Main
       featuredMovie={featuredMovie}
       moviesList={moviesList}
       filteredList={filteredList}
+      shownMoviesAmount={shownMoviesAmount}
       onMovieClick={() => {}}
       onGenreClick={onGenreClick}
+      onShowMoreButtonClick={onShowMoreButtonClick}
     />;
   }
 
   _renderMoviePage(movie) {
-    const {filteredList} = this.props;
+    const {filteredList, shownMoviesAmount} = this.props;
 
     return <MoviePage
       movieInfo={movie}
       filteredList={filteredList}
+      shownMoviesAmount={shownMoviesAmount}
       onMovieClick={() => {}}
     />;
   }
@@ -86,7 +89,9 @@ App.propTypes = {
     director: PropTypes.string.isRequired,
     cast: PropTypes.string.isRequired,
   })).isRequired,
+  shownMoviesAmount: PropTypes.number.isRequired,
   onGenreClick: PropTypes.func.isRequired,
+  onShowMoreButtonClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -94,11 +99,15 @@ const mapStateToProps = (state) => ({
   moviesList: state.moviesList,
   filteredList: state.filteredList,
   activeGenre: state.activeGenre,
+  shownMoviesAmount: state.shownMoviesAmount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(list, genre) {
     dispatch(ActionCreator.getFilteredList(list, genre));
+  },
+  onShowMoreButtonClick() {
+    dispatch(ActionCreator.setShownAmount());
   },
 });
 
