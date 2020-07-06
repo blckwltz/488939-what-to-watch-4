@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ShowMoreButton from './show-more-button';
+import {ShowMoreButton} from './show-more-button';
 
 const list = new Array(3).fill({});
 const amount = 2;

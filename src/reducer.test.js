@@ -673,67 +673,66 @@ it(`Reducer without additional parameters should return initial state`, () => {
 
 it(`Reducer should filter movies list and update active genre to a given value`, () => {
   expect(reducer({
+    moviesList,
     filteredList: moviesList,
     activeGenre: `All genres`,
     shownMoviesAmount: 16,
   }, {
-    type: ActionType.GET_FILTERED_LIST,
-    payload: {
-      filteredList: [{
-        title: `Bohemian Rhapsody`,
-        genre: `Biography`,
-        releaseDate: 2018,
-        runTime: `2h 50m`,
-        cover: `img/the-grand-budapest-hotel-poster.jpg`,
-        poster: `img/bohemian-rhapsody.jpg`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-        rating: {
-          score: 8.0,
-          level: `Good`,
-          count: 240,
-        },
-        description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury,
-      leading up to their famous performance at Live Aid (1985).`,
-        director: `Bryan Singer`,
-        cast: `Rami Malek, Lucy Boynton, Gwilym Lee`,
-        reviews: [
-          {
-            author: `Kate Muir`,
-            text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
-          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
-            date: `2016-12-24`,
-            rating: 8.7,
-          },
-          {
-            author: `Bill Goodykoontz`,
-            text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
-          I wish I could take back.`,
-            date: `2015-11-18`,
-            rating: 5.3,
-          },
-        ],
-      }],
-      genre: `Biography`,
-      shownMoviesAmount,
-    },
+    type: ActionType.SET_ACTIVE_GENRE,
+    payload: `Comedy`,
   })).toEqual({
+    moviesList,
     filteredList: [{
-      title: `Bohemian Rhapsody`,
-      genre: `Biography`,
-      releaseDate: 2018,
-      runTime: `2h 50m`,
+      title: `Snatch`,
+      genre: `Comedy`,
+      releaseDate: 2000,
+      runTime: `1h 47m`,
       cover: `img/the-grand-budapest-hotel-poster.jpg`,
-      poster: `img/bohemian-rhapsody.jpg`,
-      previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+      poster: `img/snatch.jpg`,
+      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       rating: {
-        score: 8.0,
+        score: 8.3,
         level: `Good`,
-        count: 240,
+        count: 300,
       },
-      description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury,
-      leading up to their famous performance at Live Aid (1985).`,
-      director: `Bryan Singer`,
-      cast: `Rami Malek, Lucy Boynton, Gwilym Lee`,
+      description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers
+      and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
+      director: `Guy Ritchie`,
+      cast: `Jason Statham, Brad Pitt, Benicio Del Toro`,
+      reviews: [
+        {
+          author: `Kate Muir`,
+          text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
+          Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+          date: `2016-12-24`,
+          rating: 8.7,
+        },
+        {
+          author: `Bill Goodykoontz`,
+          text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes
+          I wish I could take back.`,
+          date: `2015-11-18`,
+          rating: 5.3,
+        },
+      ],
+    },
+    {
+      title: `Snatch`,
+      genre: `Comedy`,
+      releaseDate: 2000,
+      runTime: `1h 47m`,
+      cover: `img/the-grand-budapest-hotel-poster.jpg`,
+      poster: `img/snatch.jpg`,
+      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+      rating: {
+        score: 8.3,
+        level: `Good`,
+        count: 300,
+      },
+      description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers
+      and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
+      director: `Guy Ritchie`,
+      cast: `Jason Statham, Brad Pitt, Benicio Del Toro`,
       reviews: [
         {
           author: `Kate Muir`,
@@ -751,7 +750,7 @@ it(`Reducer should filter movies list and update active genre to a given value`,
         },
       ],
     }],
-    activeGenre: `Biography`,
+    activeGenre: `Comedy`,
     shownMoviesAmount,
   });
 });

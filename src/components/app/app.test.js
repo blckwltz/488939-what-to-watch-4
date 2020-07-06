@@ -290,8 +290,6 @@ const mocks = {
   ],
 };
 const {featuredMovie, moviesList} = mocks;
-const onGenreClick = () => {};
-const onShowMoreButtonClick = () => {};
 
 it(`Should render App component correctly`, () => {
   const store = mockStore({
@@ -309,8 +307,6 @@ it(`Should render App component correctly`, () => {
             moviesList={moviesList}
             filteredList={moviesList}
             shownMoviesAmount={moviesList.length}
-            onGenreClick={onGenreClick}
-            onShowMoreButtonClick={onShowMoreButtonClick}
           />
         </Provider>
     )

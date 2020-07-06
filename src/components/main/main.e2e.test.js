@@ -1,7 +1,11 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Main from './main';
+
+const mockStore = configureStore([]);
 
 const mocks = {
   featuredMovie: {
@@ -152,8 +156,7 @@ const mocks = {
 };
 const {featuredMovie, moviesList} = mocks;
 const onMovieClick = () => {};
-const onGenreClick = () => {};
-const onShowMoreButtonClick = () => {};
+const store = mockStore();
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -161,15 +164,15 @@ Enzyme.configure({
 
 it(`Should render correct amount of cards`, () => {
   const main = mount(
-      <Main
-        featuredMovie={featuredMovie}
-        moviesList={moviesList}
-        filteredList={moviesList}
-        shownMoviesAmount={4}
-        onMovieClick={onMovieClick}
-        onGenreClick={onGenreClick}
-        onShowMoreButtonClick={onShowMoreButtonClick}
-      />
+      <Provider store={store}>
+        <Main
+          featuredMovie={featuredMovie}
+          moviesList={moviesList}
+          filteredList={moviesList}
+          shownMoviesAmount={4}
+          onMovieClick={onMovieClick}
+        />
+      </Provider>
   );
   const movieCards = main.find(`article.small-movie-card`);
   const showMoreButton = main.find(`button.catalog__button`);
@@ -180,15 +183,15 @@ it(`Should render correct amount of cards`, () => {
 
 it(`Should not render show more button if all cards are shown`, () => {
   const main = mount(
-      <Main
-        featuredMovie={featuredMovie}
-        moviesList={moviesList}
-        filteredList={moviesList}
-        shownMoviesAmount={moviesList.length}
-        onMovieClick={onMovieClick}
-        onGenreClick={onGenreClick}
-        onShowMoreButtonClick={onShowMoreButtonClick}
-      />
+      <Provider store={store}>
+        <Main
+          featuredMovie={featuredMovie}
+          moviesList={moviesList}
+          filteredList={moviesList}
+          shownMoviesAmount={moviesList.length}
+          onMovieClick={onMovieClick}
+        />
+      </Provider>
   );
   const showMoreButton = main.find(`button.catalog__button`);
 
