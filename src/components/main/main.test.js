@@ -1,6 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Main from './main';
+
+const mockStore = configureStore([]);
 
 const mocks = {
   featuredMovie: {
@@ -287,18 +291,20 @@ const mocks = {
 };
 const {featuredMovie, moviesList} = mocks;
 const onMovieClick = () => {};
-const onGenreClick = () => {};
 
 it(`Should render Main component correctly`, () => {
+  const store = mockStore();
   const tree = renderer
     .create(
-        <Main
-          featuredMovie={featuredMovie}
-          moviesList={moviesList}
-          filteredList={moviesList}
-          onMovieClick={onMovieClick}
-          onGenreClick={onGenreClick}
-        />
+        <Provider store={store}>
+          <Main
+            featuredMovie={featuredMovie}
+            moviesList={moviesList}
+            filteredList={moviesList}
+            shownMoviesAmount={moviesList.length}
+            onMovieClick={onMovieClick}
+          />
+        </Provider>
     )
     .toJSON();
 

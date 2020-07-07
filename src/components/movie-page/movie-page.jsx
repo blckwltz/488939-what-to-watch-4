@@ -6,7 +6,7 @@ import Tabs from '../tabs/tabs.jsx';
 import Tab from '../tab/tab.jsx';
 
 const MoviePage = (props) => {
-  const {movieInfo, filteredList, onMovieClick} = props;
+  const {movieInfo, filteredList, shownMoviesAmount, onMovieClick} = props;
   const {title, genre, releaseDate, cover, poster, rating, description, runTime, director, cast, reviews} = movieInfo;
   const {score, level, count} = rating;
 
@@ -143,7 +143,7 @@ const MoviePage = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MoviesList movies={filteredList} onClick={onMovieClick}/>
+        <MoviesList movies={filteredList} amount={shownMoviesAmount} onClick={onMovieClick}/>
       </section>
 
       <footer className="page-footer">
@@ -189,6 +189,7 @@ MoviePage.propTypes = {
     ).isRequired,
   }).isRequired,
   filteredList: PropTypes.array.isRequired,
+  shownMoviesAmount: PropTypes.number.isRequired,
   onMovieClick: PropTypes.func.isRequired,
 };
 

@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../reducer.js';
 import {FilterSettings} from '../../const.js';
 
-export default class GenresList extends PureComponent {
+class GenresList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -30,7 +32,7 @@ export default class GenresList extends PureComponent {
     return <ul className="catalog__genres-list">
       {Array.from(uniqueGenresList).map((genre, index) => {
         return <li key={`${genre}-${index}`} className={`catalog__genres-item ${(activeTab === index) ? `catalog__genres-item--active` : ``}`} onClick={() => {
-          onClick(moviesList, genre);
+          onClick(genre);
           this._handleTabClick(index);
         }}>
           <a href="#" className="catalog__genres-link">{genre}</a>
@@ -48,3 +50,12 @@ GenresList.propTypes = {
   ).isRequired,
   onClick: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick(genre) {
+    dispatch(ActionCreator.getFilteredList(genre));
+  },
+});
+
+export {GenresList};
+export default connect(null, mapDispatchToProps)(GenresList);

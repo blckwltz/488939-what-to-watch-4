@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 
@@ -12,23 +11,24 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {featuredMovie, moviesList, filteredList, onGenreClick} = this.props;
+    const {featuredMovie, moviesList, filteredList, shownMoviesAmount} = this.props;
 
     return <Main
       featuredMovie={featuredMovie}
       moviesList={moviesList}
       filteredList={filteredList}
+      shownMoviesAmount={shownMoviesAmount}
       onMovieClick={() => {}}
-      onGenreClick={onGenreClick}
     />;
   }
 
   _renderMoviePage(movie) {
-    const {filteredList} = this.props;
+    const {filteredList, shownMoviesAmount} = this.props;
 
     return <MoviePage
       movieInfo={movie}
       filteredList={filteredList}
+      shownMoviesAmount={shownMoviesAmount}
       onMovieClick={() => {}}
     />;
   }
@@ -86,7 +86,7 @@ App.propTypes = {
     director: PropTypes.string.isRequired,
     cast: PropTypes.string.isRequired,
   })).isRequired,
-  onGenreClick: PropTypes.func.isRequired,
+  shownMoviesAmount: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -94,13 +94,8 @@ const mapStateToProps = (state) => ({
   moviesList: state.moviesList,
   filteredList: state.filteredList,
   activeGenre: state.activeGenre,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onGenreClick(list, genre) {
-    dispatch(ActionCreator.getFilteredList(list, genre));
-  },
+  shownMoviesAmount: state.shownMoviesAmount,
 });
 
 export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

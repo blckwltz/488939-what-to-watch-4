@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import MovieCard from '../movie-card/movie-card.jsx';
 
 const MoviesList = (props) => {
-  const {movies, onClick} = props;
+  const {movies, amount, onClick} = props;
+  const moviesToShow = movies.slice(0, amount);
 
   return <div className="catalog__movies-list">
-    {movies.map((movie, index) => <MovieCard key={`${movie.title}-${index}`} movieInfo={movie} onClick={(evt) => {
+    {moviesToShow.map((movie, index) => <MovieCard key={`${movie.title}-${index}`} movieInfo={movie} onClick={(evt) => {
       evt.preventDefault();
       onClick(movie);
     }}/>)}
@@ -19,6 +20,7 @@ MoviesList.propTypes = {
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   })).isRequired,
+  amount: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

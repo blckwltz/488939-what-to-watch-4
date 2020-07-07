@@ -51,6 +51,7 @@ it(`Should render MoviesList component correctly`, () => {
     .create(
         <MoviesList
           movies={mocks}
+          amount={mocks.length}
           onClick={onClick}
         />
     )
