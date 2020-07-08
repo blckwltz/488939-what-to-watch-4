@@ -11,25 +11,12 @@ class App extends PureComponent {
   }
 
   _renderMainPage() {
-    const {featuredMovie, moviesList, filteredList, shownMoviesAmount} = this.props;
-
-    return <Main
-      featuredMovie={featuredMovie}
-      moviesList={moviesList}
-      filteredList={filteredList}
-      shownMoviesAmount={shownMoviesAmount}
-      onMovieClick={() => {}}
-    />;
+    return <Main/>;
   }
 
   _renderMoviePage(movie) {
-    const {filteredList, shownMoviesAmount} = this.props;
-
     return <MoviePage
       movieInfo={movie}
-      filteredList={filteredList}
-      shownMoviesAmount={shownMoviesAmount}
-      onMovieClick={() => {}}
     />;
   }
 
@@ -51,11 +38,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  featuredMovie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  }),
   moviesList: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -64,37 +46,16 @@ App.propTypes = {
     poster: PropTypes.string.isRequired,
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired,
     }).isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
     cast: PropTypes.string.isRequired,
   })).isRequired,
-  filteredList: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
-      count: PropTypes.number.isRequired,
-    }).isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    cast: PropTypes.string.isRequired,
-  })).isRequired,
-  shownMoviesAmount: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  featuredMovie: state.featuredMovie,
   moviesList: state.moviesList,
-  filteredList: state.filteredList,
-  activeGenre: state.activeGenre,
-  shownMoviesAmount: state.shownMoviesAmount,
 });
 
 export {App};

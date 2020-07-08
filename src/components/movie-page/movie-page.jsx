@@ -1,14 +1,18 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {TabNames} from '../../const.js';
+import {getRatingLevel, formatDate} from '../../utils.js';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import Tab from '../tab/tab.jsx';
 
+const TabsWrapped = withActiveItem(Tabs);
+
 const MoviePage = (props) => {
-  const {movieInfo, filteredList, shownMoviesAmount, onMovieClick} = props;
+  const {movieInfo} = props;
   const {title, genre, releaseDate, cover, poster, rating, description, runTime, director, cast, reviews} = movieInfo;
-  const {score, level, count} = rating;
+  const {score, count} = rating;
 
   return <Fragment>
     <section className="movie-card movie-card--full">
@@ -69,12 +73,12 @@ const MoviePage = (props) => {
               height="327"/>
           </div>
 
-          <Tabs>
+          <TabsWrapped>
             <Tab title={TabNames.OVERVIEW}>
               <div className="movie-rating">
                 <div className="movie-rating__score">{score}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{level}</span>
+                  <span className="movie-rating__level">{getRatingLevel(score)}</span>
                   <span className="movie-rating__count">{count} ratings</span>
                 </p>
               </div>
@@ -125,7 +129,7 @@ const MoviePage = (props) => {
 
                       <footer className="review__details">
                         <cite className="review__author">{review.author}</cite>
-                        <time className="review__date" dateTime={review.date}>{review.date}</time>
+                        <time className="review__date" dateTime={review.date}>{formatDate(review.date)}</time>
                       </footer>
                     </blockquote>
 
@@ -134,7 +138,7 @@ const MoviePage = (props) => {
                 </div>
               </div>
             </Tab>
-          </Tabs>
+          </TabsWrapped>
         </div>
       </div>
     </section>
@@ -143,7 +147,7 @@ const MoviePage = (props) => {
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MoviesList movies={filteredList} amount={shownMoviesAmount} onClick={onMovieClick}/>
+        <MoviesList/>
       </section>
 
       <footer className="page-footer">
@@ -173,7 +177,6 @@ MoviePage.propTypes = {
     poster: PropTypes.string.isRequired,
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
-      level: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired,
     }).isRequired,
     description: PropTypes.string.isRequired,
@@ -188,9 +191,6 @@ MoviePage.propTypes = {
         })
     ).isRequired,
   }).isRequired,
-  filteredList: PropTypes.array.isRequired,
-  shownMoviesAmount: PropTypes.number.isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
 
 export default MoviePage;

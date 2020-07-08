@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Руслан Бреев](https://up.htmlacademy.ru/react/4/user/488939).
-* Наставник: [Николай Папаха](https://up.htmlacademy.ru/react/4/user/1224641).
+* Наставник: [Евгений Черкасов](https://up.htmlacademy.ru/react/4/user/385743).
 
 ---
 

@@ -1,7 +1,10 @@
 import React from 'react';
-import Enzyme, {mount} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import Tabs from './tabs';
+
+const TabsWrapped = withActiveItem(Tabs);
 
 const mocks = {
   children: [
@@ -17,14 +20,14 @@ const mocks = {
   ]
 };
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 
 it(`Should change content on tab click`, () => {
   const {children} = mocks;
   const tabs = mount(
-      <Tabs>{children}</Tabs>
+      <TabsWrapped>{children}</TabsWrapped>
   );
 
   const secondTab = tabs.find(`li.movie-nav__item`).at(1);

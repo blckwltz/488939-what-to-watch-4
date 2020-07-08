@@ -12,101 +12,13 @@ exports[`Should render MoviesList component correctly 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
         height="175"
-        onClick={[Function]}
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Fantastic Beasts: The Crimes of Grindelwald
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-  >
-    <div
-      className="small-movie-card__image"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <img
-        alt="Pulp Fiction"
-        height="175"
-        onClick={[Function]}
-        src="img/pulp-fiction.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Pulp Fiction
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-  >
-    <div
-      className="small-movie-card__image"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <img
-        alt="Shutter Island"
-        height="175"
-        onClick={[Function]}
-        src="img/shutter-island.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Shutter Island
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-  >
-    <div
-      className="small-movie-card__image"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <img
-        alt="Macbeth"
-        height="175"
-        onClick={[Function]}
-        src="img/macbeth.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -124,45 +36,13 @@ exports[`Should render MoviesList component correctly 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <img
-        alt="Snatch"
+      <video
         height="175"
-        onClick={[Function]}
-        src="img/snatch.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Snatch
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-  >
-    <div
-      className="small-movie-card__image"
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
-    >
-      <img
-        alt="We need to talk about Kevin"
-        height="175"
-        onClick={[Function]}
-        src="img/we-need-to-talk-about-kevin.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -180,17 +60,133 @@ exports[`Should render MoviesList component correctly 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <img
-        alt="Bohemian Rhapsody"
+      <video
         height="175"
-        onClick={[Function]}
-        src="img/bohemian-rhapsody.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Fantastic Beasts: The Crimes of Grindelwald
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Shutter Island
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Snatch
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Pulp Fiction
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Revenant
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
@@ -208,23 +204,259 @@ exports[`Should render MoviesList component correctly 1`] = `
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
-      <img
-        alt="Revenant"
+      <video
         height="175"
-        onClick={[Function]}
-        src="img/revenant.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Macbeth
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        We need to talk about Kevin
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Fantastic Beasts: The Crimes of Grindelwald
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Shutter Island
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Snatch
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Pulp Fiction
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
         href="movie-page.html"
       >
         Revenant
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Bohemian Rhapsody
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Pulp Fiction
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Revenant
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <video
+        height="175"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Bohemian Rhapsody
       </a>
     </h3>
   </article>
