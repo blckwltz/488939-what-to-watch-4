@@ -15,7 +15,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 6.6,
-      level: `Average`,
       count: 120,
     },
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will
@@ -50,7 +49,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 7.5,
-      level: `Good`,
       count: 134,
     },
     description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things
@@ -85,7 +83,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 6.6,
-      level: `Average`,
       count: 300,
     },
     description: `The second installment of the "Fantastic Beasts" series featuring the adventures
@@ -119,7 +116,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.1,
-      level: `Good`,
       count: 257,
     },
     description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital
@@ -153,7 +149,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 8.3,
-      level: `Good`,
       count: 300,
     },
     description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers
@@ -187,7 +182,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.9,
-      level: `Very Good`,
       count: 578,
     },
     description: `The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits
@@ -221,7 +215,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 8.0,
-      level: `Good`,
       count: 1001,
     },
     description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being
@@ -255,7 +248,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.0,
-      level: `Good`,
       count: 240,
     },
     description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury,
@@ -289,7 +281,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 6.6,
-      level: `Average`,
       count: 120,
     },
     description: `Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will
@@ -324,7 +315,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 7.5,
-      level: `Good`,
       count: 134,
     },
     description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things
@@ -359,7 +349,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 6.6,
-      level: `Average`,
       count: 300,
     },
     description: `The second installment of the "Fantastic Beasts" series featuring the adventures
@@ -393,7 +382,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.1,
-      level: `Good`,
       count: 257,
     },
     description: `In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital
@@ -427,7 +415,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 8.3,
-      level: `Good`,
       count: 300,
     },
     description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers
@@ -461,7 +448,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.9,
-      level: `Very Good`,
       count: 578,
     },
     description: `The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits
@@ -495,7 +481,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 8.0,
-      level: `Good`,
       count: 1001,
     },
     description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being
@@ -529,7 +514,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.0,
-      level: `Good`,
       count: 240,
     },
     description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury,
@@ -563,7 +547,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.9,
-      level: `Very Good`,
       count: 578,
     },
     description: `The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits
@@ -597,7 +580,6 @@ const moviesList = [
     previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     rating: {
       score: 8.0,
-      level: `Good`,
       count: 1001,
     },
     description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being
@@ -631,7 +613,6 @@ const moviesList = [
     previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     rating: {
       score: 8.0,
-      level: `Good`,
       count: 240,
     },
     description: `The story of the legendary British rock band Queen and lead singer Freddie Mercury,

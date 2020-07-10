@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MovieCardSmall component correctly 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+>
+  <div
+    className="small-movie-card__image"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div />
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="movie-page.html"
+    >
+      Macbeth
+    </a>
+  </h3>
+</article>
+`;

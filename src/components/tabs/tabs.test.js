@@ -7,12 +7,16 @@ const mocks = {
     <div className="nested-component"/>
   </div>],
 };
+const onActiveItemChange = () => {};
 
 it(`Should render Tabs component correctly`, () => {
   const {children} = mocks;
   const tree = renderer
     .create(
-        <Tabs>{children}</Tabs>
+        <Tabs
+          activeItem={0}
+          onActiveItemChange={onActiveItemChange}
+        >{children}</Tabs>
     )
     .toJSON();
 

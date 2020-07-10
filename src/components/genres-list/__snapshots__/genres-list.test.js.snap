@@ -59,5 +59,16 @@ exports[`Should render GenresList component correctly 1`] = `
       Comedy
     </a>
   </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Biography
+    </a>
+  </li>
 </ul>
 `;

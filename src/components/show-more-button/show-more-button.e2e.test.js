@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {ShowMoreButton} from './show-more-button';
 
@@ -7,7 +7,7 @@ const list = new Array(3).fill({});
 const amount = 2;
 const onClick = jest.fn();
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 

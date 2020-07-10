@@ -15,6 +15,11 @@ ShowMoreButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  list: state.filteredList,
+  amount: state.shownMoviesAmount,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onClick() {
     dispatch(ActionCreator.setShownAmount());
@@ -22,4 +27,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {ShowMoreButton};
-export default connect(null, mapDispatchToProps)(ShowMoreButton);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);

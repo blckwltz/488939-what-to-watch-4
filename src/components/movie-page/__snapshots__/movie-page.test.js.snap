@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Bohemian Rhapsody"
-          src="img/bohemian-rhapsody.jpg"
+          alt="Macbeth"
+          src="img/macbeth.jpg"
         />
       </div>
       <h1
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Bohemian Rhapsody
+            Macbeth
           </h2>
           <p
             className="movie-card__meta"
@@ -80,12 +80,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Biography, Music
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2018
+              2015
             </span>
           </p>
           <div
@@ -145,7 +145,7 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Bohemian Rhapsody"
+            alt="Macbeth"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -201,7 +201,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              8
+              6.6
             </div>
             <p
               className="movie-rating__meta"
@@ -214,7 +214,7 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                240
+                120
                  ratings
               </span>
             </p>
@@ -223,15 +223,16 @@ Array [
             className="movie-card__text"
           >
             <p>
-              The story of the legendary British rock band Queen and lead singer Freddie Mercury,
-      leading up to their famous performance at Live Aid (1985).
+              Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will
+      become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king
+      and takes the throne for himself.
             </p>
             <p
               className="movie-card__director"
             >
               <strong>
                 Director: 
-                Bryan Singer
+                Justin Kurzel
               </strong>
             </p>
             <p
@@ -239,7 +240,7 @@ Array [
             >
               <strong>
                 Starring: 
-                Rami Malek, Lucy Boynton, Gwilym Lee
+                Michael Fassbender, Marion Cotillard, Jack Madigan
                  and other
               </strong>
             </p>
@@ -270,17 +271,13 @@ Array [
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <img
-              alt="Macbeth"
+            <video
               height="175"
-              onClick={[Function]}
-              src="img/macbeth.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -298,23 +295,163 @@ Array [
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
           >
-            <img
-              alt="We need to talk about Kevin"
+            <video
               height="175"
-              onClick={[Function]}
-              src="img/we-need-to-talk-about-kevin.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
             >
               We need to talk about Kevin
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <video
+              height="175"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <video
+              height="175"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Shutter Island
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <video
+              height="175"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Snatch
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <video
+              height="175"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Pulp Fiction
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <video
+              height="175"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Revenant
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <video
+              height="175"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
