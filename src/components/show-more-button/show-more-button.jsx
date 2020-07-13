@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {getShownMoviesAmount, getFilteredList} from '../../reducer/movies/selectors.js';
+import {ActionCreator} from '../../reducer/movies/movies.js';
 
 const ShowMoreButton = (props) => {
   const {list, amount, onClick} = props;
@@ -16,8 +17,8 @@ ShowMoreButton.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  list: state.filteredList,
-  amount: state.shownMoviesAmount,
+  list: getFilteredList(state),
+  amount: getShownMoviesAmount(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

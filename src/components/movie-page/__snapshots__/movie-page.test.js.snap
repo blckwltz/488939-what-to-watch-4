@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Macbeth"
-          src="img/macbeth.jpg"
+          alt="Pulp Fiction"
+          src="img/pulp-fiction.jpg"
         />
       </div>
       <h1
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Macbeth
+            Pulp Fiction
           </h2>
           <p
             className="movie-card__meta"
@@ -85,7 +85,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              2015
+              1994
             </span>
           </p>
           <div
@@ -145,7 +145,7 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Macbeth"
+            alt="Pulp Fiction"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -201,7 +201,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              6.6
+              8.9
             </div>
             <p
               className="movie-rating__meta"
@@ -209,12 +209,12 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Good
+                Very Good
               </span>
               <span
                 className="movie-rating__count"
               >
-                120
+                578
                  ratings
               </span>
             </p>
@@ -223,16 +223,15 @@ Array [
             className="movie-card__text"
           >
             <p>
-              Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will
-      become King of Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king
-      and takes the throne for himself.
+              The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits
+      intertwine in four tales of violence and redemption.
             </p>
             <p
               className="movie-card__director"
             >
               <strong>
                 Director: 
-                Justin Kurzel
+                Quentin Tarantino
               </strong>
             </p>
             <p
@@ -240,7 +239,7 @@ Array [
             >
               <strong>
                 Starring: 
-                Michael Fassbender, Marion Cotillard, Jack Madigan
+                John Travolta, Uma Thurman, Samuel L. Jackson
                  and other
               </strong>
             </p>

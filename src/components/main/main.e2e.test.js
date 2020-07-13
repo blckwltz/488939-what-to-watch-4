@@ -3,7 +3,8 @@ import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {featuredMovie, moviesList} from '../../mocks/films';
+import {featuredMovie, moviesList} from '../../test-mocks/movies';
+import NameSpace from '../../reducer/name-space.js';
 import Main from './main';
 
 const mockStore = configureStore([]);
@@ -14,11 +15,15 @@ configure({
 
 it(`Should render correct amount of cards`, () => {
   const store = mockStore({
-    featuredMovie,
-    moviesList,
-    filteredList: moviesList,
-    activeGenre: `All genres`,
-    shownMoviesAmount: 4,
+    [NameSpace.MOVIES]: {
+      featuredMovie,
+      moviesList,
+      activeGenre: `All genres`,
+      shownMoviesAmount: 4,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+    }
   });
 
   const main = mount(
@@ -35,11 +40,15 @@ it(`Should render correct amount of cards`, () => {
 
 it(`Should not render show more button if all cards are shown`, () => {
   const store = mockStore({
-    featuredMovie,
-    moviesList,
-    filteredList: moviesList,
-    activeGenre: `All genres`,
-    shownMoviesAmount: 20,
+    [NameSpace.MOVIES]: {
+      featuredMovie,
+      moviesList,
+      activeGenre: `All genres`,
+      shownMoviesAmount: 20,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+    }
   });
 
   const main = mount(
