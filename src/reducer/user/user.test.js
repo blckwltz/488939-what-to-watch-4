@@ -10,7 +10,7 @@ it(`Reducer should change authorizationStatus to a given value`, () => {
   expect(reducer({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
   }, {
-    type: ActionType.REQUIRED_AUTHORIZATION,
+    type: ActionType.REQUIRE_AUTHORIZATION,
     payload: AuthorizationStatus.AUTH,
   })).toEqual({
     authorizationStatus: AuthorizationStatus.AUTH,
@@ -19,7 +19,7 @@ it(`Reducer should change authorizationStatus to a given value`, () => {
   expect(reducer({
     authorizationStatus: AuthorizationStatus.AUTH,
   }, {
-    type: ActionType.REQUIRED_AUTHORIZATION,
+    type: ActionType.REQUIRE_AUTHORIZATION,
     payload: AuthorizationStatus.NO_AUTH,
   })).toEqual({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -28,7 +28,7 @@ it(`Reducer should change authorizationStatus to a given value`, () => {
   expect(reducer({
     authorizationStatus: AuthorizationStatus.AUTH,
   }, {
-    type: ActionType.REQUIRED_AUTHORIZATION,
+    type: ActionType.REQUIRE_AUTHORIZATION,
     payload: AuthorizationStatus.AUTH,
   })).toEqual({
     authorizationStatus: AuthorizationStatus.AUTH,
@@ -37,7 +37,7 @@ it(`Reducer should change authorizationStatus to a given value`, () => {
   expect(reducer({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
   }, {
-    type: ActionType.REQUIRED_AUTHORIZATION,
+    type: ActionType.REQUIRE_AUTHORIZATION,
     payload: AuthorizationStatus.NO_AUTH,
   })).toEqual({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
