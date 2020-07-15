@@ -23,17 +23,6 @@ exports[`Should render GenresList component correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Drama
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
       Adventure
     </a>
   </li>
@@ -45,7 +34,7 @@ exports[`Should render GenresList component correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Mystery
+      Biography
     </a>
   </li>
   <li
@@ -67,7 +56,18 @@ exports[`Should render GenresList component correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Biography
+      Drama
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Mystery
     </a>
   </li>
 </ul>

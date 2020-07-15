@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
-import {getGenresList} from '../../utils.js';
+import {ActionCreator} from '../../reducer/movies/movies.js';
+import {getMoviesList} from '../../reducer/movies/selectors.js';
+import {getGenresList} from '../../utils/utils.js';
 
 const GenresList = (props) => {
   const {moviesList, activeItem, onActiveItemChange, onGenreClick} = props;
@@ -32,7 +33,7 @@ GenresList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  moviesList: state.moviesList,
+  moviesList: getMoviesList(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

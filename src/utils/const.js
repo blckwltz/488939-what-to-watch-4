@@ -1,5 +1,11 @@
+const BASE_URL = `https://4.react.pages.academy/wtw`;
 const MAX_MOVIES_AMOUNT = 8;
 const PLAYBACK_DELAY = 1000;
+const TIMEOUT = 5;
+
+const Error = {
+  UNAUTHORIZED: 401,
+};
 
 const TabNames = {
   OVERVIEW: `Overview`,
@@ -9,7 +15,7 @@ const TabNames = {
 
 const FilterSettings = {
   INITIAL_VALUE: `All genres`,
-  MAX_AMOUNT: 10,
+  MAX_AMOUNT: 9,
 };
 
 const Rating = {
@@ -37,4 +43,4 @@ const RatingChart = new Map([
   [[Rating.SCORE_MILESTONES.FIFTH, Infinity], Rating.LEVELS.AWESOME],
 ]);
 
-export {MAX_MOVIES_AMOUNT, PLAYBACK_DELAY, TabNames, FilterSettings, RatingChart};
+export {BASE_URL, MAX_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, Error, TabNames, FilterSettings, RatingChart};

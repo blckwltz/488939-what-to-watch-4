@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {reducer} from './reducer.js';
+import {Operation as MoviesOperation} from './reducer/movies/movies.js';
+import {Operation as UserOperation} from './reducer/user/user.js';
+import store from './reducer/store.js';
 import App from './components/app/app.jsx';
 
-const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
-);
 const rootElement = document.querySelector(`#root`);
 
+store.dispatch(MoviesOperation.loadFeaturedMovie());
+store.dispatch(MoviesOperation.loadMovies());
+store.dispatch(UserOperation.checkAuth());
 ReactDom.render(
     <Provider store={store}>
       <App/>

@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {getFeaturedMovie} from '../../reducer/movies/selectors.js';
+import UserBlock from '../user-block/user-block.jsx';
 
 const MovieCard = (props) => {
   const {movie} = props;
-  const {title, genre, releaseDate} = movie;
+  const {title, genre, releaseDate, cover, backgroundImage, backgroundColor} = movie;
 
-  return <section className="movie-card">
+  return <section className="movie-card" style={{background: backgroundColor}}>
     <div className="movie-card__bg">
-      <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+      <img src={backgroundImage} alt={title}/>
     </div>
 
     <h1 className="visually-hidden">WTW</h1>
@@ -22,17 +24,13 @@ const MovieCard = (props) => {
         </a>
       </div>
 
-      <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-        </div>
-      </div>
+      <UserBlock/>
     </header>
 
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+          <img src={cover} alt={title} width="218"
             height="327"/>
         </div>
 
@@ -65,14 +63,17 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    genre: PropTypes.string,
+    releaseDate: PropTypes.number,
+    cover: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    backgroundColor: PropTypes.string,
   }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.featuredMovie,
+  movie: getFeaturedMovie(state),
 });
 
 export {MovieCard};

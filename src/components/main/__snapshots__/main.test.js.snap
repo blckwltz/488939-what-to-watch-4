@@ -4,13 +4,18 @@ exports[`Should render Main component correctly 1`] = `
 Array [
   <section
     className="movie-card"
+    style={
+      Object {
+        "background": "#ffffff",
+      }
+    }
   >
     <div
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Pulp Fiction"
+        src="img/the-grand-budapest-hotel-poster.jpg"
       />
     </div>
     <h1
@@ -69,7 +74,7 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Pulp Fiction"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -81,7 +86,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Pulp Fiction
           </h2>
           <p
             className="movie-card__meta"
@@ -94,7 +99,7 @@ Array [
             <span
               className="movie-card__year"
             >
-              2014
+              1994
             </span>
           </p>
           <div
@@ -172,17 +177,6 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Drama
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-          onClick={[Function]}
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
             Adventure
           </a>
         </li>
@@ -194,7 +188,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Mystery
+            Biography
           </a>
         </li>
         <li
@@ -216,7 +210,18 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Biography
+            Drama
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+          onClick={[Function]}
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Mystery
           </a>
         </li>
       </ul>
@@ -418,15 +423,7 @@ Array [
       </div>
       <div
         className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          onClick={[Function]}
-          type="button"
-        >
-          Show more
-        </button>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"

@@ -2,18 +2,23 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {featuredMovie, moviesList} from '../../mocks/films';
+import {featuredMovie, moviesList} from '../../test-mocks/movies.js';
+import NameSpace from '../../reducer/name-space.js';
 import Main from './main';
 
 const mockStore = configureStore([]);
 
 it(`Should render Main component correctly`, () => {
   const store = mockStore({
-    featuredMovie,
-    moviesList,
-    filteredList: moviesList,
-    activeGenre: `All genres`,
-    shownMoviesAmount: 8,
+    [NameSpace.MOVIES]: {
+      featuredMovie,
+      moviesList,
+      activeGenre: `All genres`,
+      shownMoviesAmount: 8,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+    }
   });
   const tree = renderer
     .create((

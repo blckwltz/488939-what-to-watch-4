@@ -3,13 +3,18 @@
 exports[`Should render MovieCard component correctly 1`] = `
 <section
   className="movie-card"
+  style={
+    Object {
+      "background": "#ffffff",
+    }
+  }
 >
   <div
     className="movie-card__bg"
   >
     <img
-      alt="The Grand Budapest Hotel"
-      src="img/bg-the-grand-budapest-hotel.jpg"
+      alt="Pulp Fiction"
+      src="img/the-grand-budapest-hotel-poster.jpg"
     />
   </div>
   <h1
@@ -68,7 +73,7 @@ exports[`Should render MovieCard component correctly 1`] = `
         className="movie-card__poster"
       >
         <img
-          alt="The Grand Budapest Hotel poster"
+          alt="Pulp Fiction"
           height="327"
           src="img/the-grand-budapest-hotel-poster.jpg"
           width="218"
@@ -80,7 +85,7 @@ exports[`Should render MovieCard component correctly 1`] = `
         <h2
           className="movie-card__title"
         >
-          The Grand Budapest Hotel
+          Pulp Fiction
         </h2>
         <p
           className="movie-card__meta"
@@ -93,7 +98,7 @@ exports[`Should render MovieCard component correctly 1`] = `
           <span
             className="movie-card__year"
           >
-            2014
+            1994
           </span>
         </p>
         <div

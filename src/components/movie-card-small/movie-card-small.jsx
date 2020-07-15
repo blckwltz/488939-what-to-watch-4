@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {PLAYBACK_DELAY} from '../../const.js';
+import {PLAYBACK_DELAY} from '../../utils/const.js';
 
 const MovieCardSmall = (props) => {
   const {movieInfo, children, onPlaybackStatusChange} = props;
