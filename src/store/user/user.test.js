@@ -3,6 +3,7 @@ import {reducer, AuthorizationStatus, ActionType} from './user';
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {})).toEqual({
     authorizationStatus: AuthorizationStatus.NO_AUTH,
+    favoriteList: [],
   });
 });
 

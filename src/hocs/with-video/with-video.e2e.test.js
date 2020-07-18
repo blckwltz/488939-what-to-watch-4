@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {moviesList} from '../../test-mocks/movies';
+import {moviesList} from '../../__test-mocks__/movies';
 import withVideo from './with-video';
 
 configure({

@@ -2,9 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {featuredMovie, moviesList} from '../../test-mocks/movies.js';
-import {reviews} from '../../test-mocks/reviews.js';
-import NameSpace from '../../reducer/name-space.js';
+import {featuredMovie, moviesList} from '../../__test-mocks__/movies.js';
+import {reviews} from '../../__test-mocks__/reviews.js';
+import NameSpace from '../../store/name-space.js';
 import App from './app';
 
 const mockStore = configureStore([]);

@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getFeaturedMovie} from '../../reducer/movies/selectors.js';
+import {getFeaturedMovie} from '../../store/movies/selectors.js';
+import withStatus from '../../hocs/with-status/with-status.jsx';
 import UserBlock from '../user-block/user-block.jsx';
+import FavoriteButton from '../favorite-button/favorite-button.jsx';
+
+const FavoriteButtonWrapped = withStatus(FavoriteButton);
 
 const MovieCard = (props) => {
   const {movie} = props;
-  const {title, genre, releaseDate, cover, backgroundImage, backgroundColor} = movie;
+  const {id, isFavorite, title, genre, releaseDate, cover, backgroundImage, backgroundColor} = movie;
 
   return <section className="movie-card" style={{background: backgroundColor}}>
     <div className="movie-card__bg">
@@ -48,12 +52,7 @@ const MovieCard = (props) => {
               </svg>
               <span>Play</span>
             </button>
-            <button className="btn btn--list movie-card__button" type="button">
-              <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"/>
-              </svg>
-              <span>My list</span>
-            </button>
+            <FavoriteButtonWrapped id={id} isFavorite={isFavorite}/>
           </div>
         </div>
       </div>
@@ -63,6 +62,8 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
     title: PropTypes.string,
     genre: PropTypes.string,
     releaseDate: PropTypes.number,

@@ -2,8 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {featuredMovie} from '../../test-mocks/movies';
-import NameSpace from '../../reducer/name-space.js';
+import {MemoryRouter} from 'react-router-dom';
+import {featuredMovie} from '../../__test-mocks__/movies';
+import NameSpace from '../../store/name-space.js';
 import {MovieCard} from './movie-card';
 
 const mockStore = configureStore([]);
@@ -17,9 +18,11 @@ it(`Should render MovieCard component correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <MovieCard
-            movie={featuredMovie}
-          />
+          <MemoryRouter>
+            <MovieCard
+              movie={featuredMovie}
+            />
+          </MemoryRouter>
         </Provider>
     )
     .toJSON();

@@ -3,8 +3,19 @@ const MAX_MOVIES_AMOUNT = 8;
 const PLAYBACK_DELAY = 1000;
 const TIMEOUT = 5;
 
-const Error = {
+const URL = {
+  MOVIES: `/films`,
+  FEATURED: `/films/promo`,
+  FAVORITE: `/favorite`,
+  REVIEWS: `/comments`,
+  LOGIN: `/login`,
+};
+
+const Status = {
+  OK: 200,
   UNAUTHORIZED: 401,
+  ERROR: 404,
+  SERVER_ERROR: 500,
 };
 
 const TabNames = {
@@ -43,4 +54,4 @@ const RatingChart = new Map([
   [[Rating.SCORE_MILESTONES.FIFTH, Infinity], Rating.LEVELS.AWESOME],
 ]);
 
-export {BASE_URL, MAX_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, Error, TabNames, FilterSettings, RatingChart};
+export {BASE_URL, MAX_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, URL, Status, TabNames, FilterSettings, RatingChart};

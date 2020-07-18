@@ -12,6 +12,16 @@ const getMoviesList = (state) => {
   return state[NAME_SPACE].moviesList;
 };
 
+const getMovieById = (state, id) => {
+  return getMoviesList(state).find((item) => {
+    return item.id === id;
+  });
+};
+
+const getStatus = (state) => {
+  return state[NAME_SPACE].status;
+};
+
 const getShownMoviesAmount = (state) => {
   return state[NAME_SPACE].shownMoviesAmount;
 };
@@ -30,4 +40,4 @@ const getFilteredList = createSelector(
     }
 );
 
-export {getFeaturedMovie, getMoviesList, getActiveGenre, getShownMoviesAmount, getFilteredList};
+export {getFeaturedMovie, getMoviesList, getMovieById, getStatus, getActiveGenre, getShownMoviesAmount, getFilteredList};

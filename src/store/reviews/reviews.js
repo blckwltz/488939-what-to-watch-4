@@ -1,3 +1,4 @@
+import {URL} from '../../utils/const.js';
 import {extend} from '../../utils/utils.js';
 import {createReviewsList} from '../../api/adapters/reviews.js';
 
@@ -19,8 +20,8 @@ const ActionCreator = {
 };
 
 const Operation = {
-  loadReviews: (movie) => (dispatch, getState, api) => {
-    return api.get(`/comments/${movie.id}`)
+  loadReviews: (id) => (dispatch, getState, api) => {
+    return api.get(`${URL.REVIEWS}/${id}`)
       .then((response) => {
         dispatch(ActionCreator.loadReviews(createReviewsList(response.data)));
       });

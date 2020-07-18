@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../api/api.js';
-import {reviews} from '../../test-mocks/reviews.js';
+import {reviews} from '../../__test-mocks__/reviews.js';
 import {createReviewsList} from '../../api/adapters/reviews.js';
 import {reducer, ActionType, Operation} from './reviews';
 
@@ -28,7 +28,7 @@ describe(`Operation works correctly`, () => {
     const apiMock = new MockAdapter(api);
     const responseMock = [{fake: true}];
     const dispatch = jest.fn();
-    const reviewsLoader = Operation.loadReviews({id: 1});
+    const reviewsLoader = Operation.loadReviews(1);
 
     apiMock
       .onGet(`/comments/1`)

@@ -2,12 +2,20 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {featuredMovie, moviesList} from '../../test-mocks/movies.js';
-import {reviews} from '../../test-mocks/reviews.js';
-import NameSpace from '../../reducer/name-space.js';
-import MoviePage from './movie-page';
+import {MemoryRouter} from 'react-router-dom';
+import {featuredMovie, moviesList} from '../../__test-mocks__/movies.js';
+import {reviews} from '../../__test-mocks__/reviews.js';
+import {authorizationStatus} from '../../__test-mocks__/user.js';
+import NameSpace from '../../store/name-space.js';
+import {MoviePage} from './movie-page';
 
 const mockStore = configureStore([]);
+const match = {
+  params: {
+    id: `1`,
+  },
+};
+const onLoad = () => {};
 
 it(`Should render MoviePage component correctly`, () => {
   const store = mockStore({
@@ -20,11 +28,21 @@ it(`Should render MoviePage component correctly`, () => {
     [NameSpace.REVIEWS]: {
       reviews
     },
+    [NameSpace.USER]: {
+      authorizationStatus,
+    }
   });
   const tree = renderer
     .create((
       <Provider store={store}>
-        <MoviePage/>
+        <MemoryRouter>
+          <MoviePage
+            match={match}
+            movie={featuredMovie}
+            reviews={reviews}
+            onLoad={onLoad}
+          />
+        </MemoryRouter>
       </Provider>
     ), {
       createNodeMock() {

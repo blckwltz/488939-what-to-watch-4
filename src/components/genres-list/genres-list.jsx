@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/movies/movies.js';
-import {getMoviesList} from '../../reducer/movies/selectors.js';
+import {ActionCreator} from '../../store/movies/movies.js';
+import {getMoviesList} from '../../store/movies/selectors.js';
 import {getGenresList} from '../../utils/utils.js';
 
 const GenresList = (props) => {

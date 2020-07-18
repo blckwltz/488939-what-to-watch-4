@@ -1,15 +1,18 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {moviesList} from '../../test-mocks/movies';
+import {MemoryRouter} from 'react-router-dom';
+import {moviesList} from '../../__test-mocks__/movies';
 import {MoviesList} from './movies-list';
 
 it(`Should render MoviesList component correctly`, () => {
   const tree = renderer
     .create((
-      <MoviesList
-        movies={moviesList}
-        amount={moviesList.length}
-      />
+      <MemoryRouter>
+        <MoviesList
+          movies={moviesList}
+          amount={moviesList.length}
+        />
+      </MemoryRouter>
     ), {
       createNodeMock() {
         return {};

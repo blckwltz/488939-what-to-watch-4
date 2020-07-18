@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getShownMoviesAmount, getFilteredList} from '../../reducer/movies/selectors.js';
-import {ActionCreator} from '../../reducer/movies/movies.js';
+import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
+import {ActionCreator} from '../../store/movies/movies.js';
 
 const ShowMoreButton = (props) => {
   const {list, amount, onClick} = props;
