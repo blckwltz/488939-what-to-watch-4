@@ -13,6 +13,7 @@ const URL = {
 
 const Status = {
   OK: 200,
+  BAD_REQUEST: 400,
   UNAUTHORIZED: 401,
   ERROR: 404,
   SERVER_ERROR: 500,

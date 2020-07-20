@@ -10,13 +10,16 @@ import {createAPI} from '../api/api.js';
 const onUnauthorized = () => {
   store.dispatch(UserAction.requireAuthorization(AuthorizationStatus.NO_AUTH));
 };
-const onError = () => {
-  store.dispatch(MoviesAction.updateStatus(Status.ERROR));
+const onError = (status) => {
+  store.dispatch(MoviesAction.updateStatus(status));
+};
+const onLoginError = (status) => {
+  store.dispatch(UserAction.updateLoginStatus(status));
 };
 const onServerError = () => {
   store.dispatch(MoviesAction.updateStatus(Status.SERVER_ERROR));
 };
-const api = createAPI(onUnauthorized, onError, onServerError);
+const api = createAPI(onUnauthorized, onError, onLoginError, onServerError);
 const store = createStore(
     reducer,
     composeWithDevTools(

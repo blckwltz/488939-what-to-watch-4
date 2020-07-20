@@ -1,4 +1,4 @@
-import {URL} from '../../utils/const.js';
+import {URL, Status} from '../../utils/const.js';
 import {extend} from '../../utils/utils.js';
 import {createMoviesList} from '../../api/adapters/movies.js';
 
@@ -10,11 +10,13 @@ const AuthorizationStatus = {
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   favoriteList: [],
+  loginStatus: Status.OK,
 };
 
 const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   LOAD_FAVORITE_LIST: `LOAD_FAVORITE_LIST`,
+  UPDATE_LOGIN_STATUS: `UPDATE_LOGIN_STATUS`,
 };
 
 const ActionCreator = {
@@ -28,6 +30,12 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_FAVORITE_LIST,
       payload: list,
+    };
+  },
+  updateLoginStatus: (status) => {
+    return {
+      type: ActionType.UPDATE_LOGIN_STATUS,
+      payload: status,
     };
   },
 };
@@ -68,6 +76,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FAVORITE_LIST:
       return extend(state, {
         favoriteList: action.payload,
+      });
+    case ActionType.UPDATE_LOGIN_STATUS:
+      return extend(state, {
+        loginStatus: action.payload,
       });
   }
 

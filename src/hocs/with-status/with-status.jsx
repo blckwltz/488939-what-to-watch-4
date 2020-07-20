@@ -13,6 +13,17 @@ const withStatus = (Component) => {
       this._handleStatusChange = this._handleStatusChange.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+      const {isFavorite: prevStatus} = prevProps;
+      const {isFavorite: currentStatus} = this.props;
+
+      if (currentStatus !== prevStatus) {
+        this.setState({
+          isFavorite: currentStatus,
+        });
+      }
+    }
+
     _handleStatusChange() {
       const {isFavorite} = this.state;
 

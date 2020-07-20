@@ -59,7 +59,7 @@ const Operation = {
         dispatch(ActionCreator.loadFeaturedMovie(createMovie(response.data)));
       })
       .catch(() => {
-        dispatch(ActionCreator.updateStatus(Status.ERROR));
+        dispatch(ActionCreator.updateStatus(Status.BAD_REQUEST));
       });
   },
   loadMovies: () => (dispatch, getState, api) => {
@@ -68,7 +68,7 @@ const Operation = {
         dispatch(ActionCreator.loadMovies(createMoviesList(response.data)));
       })
       .catch(() => {
-        dispatch(ActionCreator.updateStatus(Status.ERROR));
+        dispatch(ActionCreator.updateStatus(Status.BAD_REQUEST));
       });
   },
   updateMovieStatus: (id, status) => (dispatch, getState, api) => {

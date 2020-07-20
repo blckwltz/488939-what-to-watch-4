@@ -6,8 +6,12 @@ const getAuthorization = (state) => {
   return state[NAME_SPACE].authorizationStatus;
 };
 
+const getLoginStatus = (state) => {
+  return state[NAME_SPACE].loginStatus;
+};
+
 const getFavoriteList = (state) => {
   return state[NAME_SPACE].favoriteList;
 };
 
-export {getAuthorization, getFavoriteList};
+export {getAuthorization, getLoginStatus, getFavoriteList};

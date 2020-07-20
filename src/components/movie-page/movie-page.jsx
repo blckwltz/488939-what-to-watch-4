@@ -51,6 +51,11 @@ class MoviePage extends PureComponent {
   render() {
     const {match, movie, reviews} = this.props;
     const id = Number(match.params.id);
+
+    if (!movie) {
+      return null;
+    }
+
     const {isFavorite, title, genre, releaseDate, cover, backgroundImage, backgroundColor, rating, description, runTime, director, cast} = movie;
     const {score, count} = rating;
 
@@ -228,7 +233,7 @@ MoviePage.propTypes = {
     cast: PropTypes.arrayOf(
         PropTypes.string
     ),
-  }).isRequired,
+  }),
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
         author: PropTypes.shape({

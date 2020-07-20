@@ -20,7 +20,7 @@ class App extends PureComponent {
     const {status} = this.props;
 
     switch (status) {
-      case Status.ERROR:
+      case Status.BAD_REQUEST:
         return <div>{status}</div>;
       case Status.SERVER_ERROR:
         return <div>{status}</div>;
