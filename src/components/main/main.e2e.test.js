@@ -3,8 +3,9 @@ import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {featuredMovie, moviesList} from '../../test-mocks/movies';
-import NameSpace from '../../reducer/name-space.js';
+import {MemoryRouter} from 'react-router-dom';
+import {featuredMovie, moviesList} from '../../__test-mocks__/movies';
+import NameSpace from '../../store/name-space.js';
 import Main from './main';
 
 const mockStore = configureStore([]);
@@ -28,7 +29,9 @@ it(`Should render correct amount of cards`, () => {
 
   const main = mount(
       <Provider store={store}>
-        <Main/>
+        <MemoryRouter>
+          <Main/>
+        </MemoryRouter>
       </Provider>
   );
   const movieCards = main.find(`article.small-movie-card`);
@@ -53,7 +56,9 @@ it(`Should not render show more button if all cards are shown`, () => {
 
   const main = mount(
       <Provider store={store}>
-        <Main/>
+        <MemoryRouter>
+          <Main/>
+        </MemoryRouter>
       </Provider>
   );
   const showMoreButton = main.find(`button.catalog__button`);

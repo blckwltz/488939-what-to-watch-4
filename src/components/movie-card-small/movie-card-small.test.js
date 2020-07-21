@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {moviesList} from '../../test-mocks/movies';
+import {MemoryRouter} from 'react-router-dom';
+import {moviesList} from '../../__test-mocks__/movies';
 import MovieCardSmall from './movie-card-small';
 
 const mocks = {
@@ -12,12 +13,14 @@ it(`Should render MovieCardSmall component correctly`, () => {
   const {children} = mocks;
   const tree = renderer
     .create(
-        <MovieCardSmall
-          movieInfo={moviesList[0]}
-          onPlaybackStatusChange={onPlaybackStatusChange}
-        >
-          {children}
-        </MovieCardSmall>
+        <MemoryRouter>
+          <MovieCardSmall
+            movieInfo={moviesList[0]}
+            onPlaybackStatusChange={onPlaybackStatusChange}
+          >
+            {children}
+          </MovieCardSmall>
+        </MemoryRouter>
     )
     .toJSON();
 

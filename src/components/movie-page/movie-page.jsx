@@ -1,58 +1,83 @@
 import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Operation as CommentsOperation} from '../../reducer/reviews/reviews.js';
-import store from '../../reducer/store.js';
-import {getFeaturedMovie} from '../../reducer/movies/selectors.js';
-import {getReviews} from '../../reducer/reviews/selectors.js';
+import {Link} from 'react-router-dom';
+import {Operation as CommentsOperation} from '../../store/reviews/reviews.js';
+import {getMovieById} from '../../store/movies/selectors.js';
+import {getReviews} from '../../store/reviews/selectors.js';
 import {TabNames} from '../../utils/const.js';
 import {getRatingLevel, formatDate, formatTime} from '../../utils/utils.js';
+import {AppRoute} from '../../routing/route.js';
+import withStatus from '../../hocs/with-status/with-status.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import FavoriteButton from '../favorite-button/favorite-button.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
+import UserBlock from '../user-block/user-block.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import Tab from '../tab/tab.jsx';
 
+const FavoriteButtonWrapped = withStatus(FavoriteButton);
 const TabsWrapped = withActiveItem(Tabs);
 
 class MoviePage extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._handleReviewsLoad = this._handleReviewsLoad.bind(this);
+  }
+
+  _handleReviewsLoad() {
+    const {match, onLoad} = this.props;
+    const id = Number(match.params.id);
+
+    onLoad(id);
   }
 
   componentDidMount() {
-    const {movie} = this.props;
+    this._handleReviewsLoad();
+  }
 
-    store.dispatch(CommentsOperation.loadReviews(movie));
+  componentDidUpdate(prevProps) {
+    const {match: prevMatch} = prevProps;
+    const prevId = Number(prevMatch.params.id);
+    const {match} = this.props;
+    const id = Number(match.params.id);
+
+    if (id !== prevId) {
+      this._handleReviewsLoad();
+    }
   }
 
   render() {
-    const {movie, reviews} = this.props;
-    const {title, genre, releaseDate, cover, poster, rating, description, runTime, director, cast} = movie;
+    const {match, movie, reviews} = this.props;
+    const id = Number(match.params.id);
+
+    if (!movie) {
+      return null;
+    }
+
+    const {isFavorite, title, genre, releaseDate, cover, backgroundImage, backgroundColor, rating, description, runTime, director, cast} = movie;
     const {score, count} = rating;
 
     return <Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{background: backgroundColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={poster} alt={title}/>
+            <img src={backgroundImage} alt={title}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to={AppRoute.ROOT} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </div>
+            <UserBlock/>
           </header>
 
           <div className="movie-card__wrap">
@@ -70,12 +95,7 @@ class MoviePage extends PureComponent {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <FavoriteButtonWrapped id={id} isFavorite={isFavorite}/>
                 <a href="add-review.html" className="btn movie-card__button">Add review</a>
               </div>
             </div>
@@ -140,10 +160,10 @@ class MoviePage extends PureComponent {
                 <div className="movie-card__reviews movie-card__row">
                   <div className="movie-card__reviews-col">
                     {reviews.map((review) => {
-                      const {id, author, text, date, rating: reviewRating} = review;
+                      const {id: reviewId, author, text, date, rating: reviewRating} = review;
                       const {name} = author;
 
-                      return <div key={id} className="review">
+                      return <div key={reviewId} className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">{text}</p>
 
@@ -173,11 +193,11 @@ class MoviePage extends PureComponent {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to={AppRoute.ROOT} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -190,13 +210,20 @@ class MoviePage extends PureComponent {
 }
 
 MoviePage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
   movie: PropTypes.shape({
+    isFavorite: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.number.isRequired,
     runTime: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
     rating: PropTypes.shape({
       score: PropTypes.number.isRequired,
       count: PropTypes.number.isRequired,
@@ -205,7 +232,7 @@ MoviePage.propTypes = {
     director: PropTypes.string.isRequired,
     cast: PropTypes.arrayOf(
         PropTypes.string
-    ).isRequired,
+    ),
   }),
   reviews: PropTypes.arrayOf(
       PropTypes.shape({
@@ -218,12 +245,24 @@ MoviePage.propTypes = {
         rating: PropTypes.number.isRequired,
       })
   ),
+  onLoad: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movie: getFeaturedMovie(state),
-  reviews: getReviews(state),
+const mapStateToProps = (state, ownProps) => {
+  const {match} = ownProps;
+  const id = Number(match.params.id);
+
+  return {
+    movie: getMovieById(state, id),
+    reviews: getReviews(state),
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onLoad(movie) {
+    dispatch(CommentsOperation.loadReviews(movie));
+  }
 });
 
 export {MoviePage};
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

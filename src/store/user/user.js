@@ -1,4 +1,6 @@
+import {URL, Status} from '../../utils/const.js';
 import {extend} from '../../utils/utils.js';
+import {createMoviesList} from '../../api/adapters/movies.js';
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -7,10 +9,14 @@ const AuthorizationStatus = {
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  favoriteList: [],
+  loginStatus: Status.OK,
 };
 
 const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  LOAD_FAVORITE_LIST: `LOAD_FAVORITE_LIST`,
+  UPDATE_LOGIN_STATUS: `UPDATE_LOGIN_STATUS`,
 };
 
 const ActionCreator = {
@@ -20,25 +26,43 @@ const ActionCreator = {
       payload: status,
     };
   },
+  loadFavoriteList: (list) => {
+    return {
+      type: ActionType.LOAD_FAVORITE_LIST,
+      payload: list,
+    };
+  },
+  updateLoginStatus: (status) => {
+    return {
+      type: ActionType.UPDATE_LOGIN_STATUS,
+      payload: status,
+    };
+  },
 };
 
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
-    return api.get(`/login`)
+    return api.get(URL.LOGIN)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       })
-      .catch((err) => {
-        throw err;
+      .catch(() => {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
       });
   },
   login: (authData) => (dispatch, getState, api) => {
-    return api.post(`/login`, {
+    return api.post(URL.LOGIN, {
       email: authData.login,
       password: authData.password,
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      });
+  },
+  loadFavoriteList: () => (dispatch, getState, api) => {
+    return api.get(URL.FAVORITE)
+      .then((response) => {
+        dispatch(ActionCreator.loadFavoriteList(createMoviesList(response.data)));
       });
   },
 };
@@ -48,6 +72,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.REQUIRE_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload,
+      });
+    case ActionType.LOAD_FAVORITE_LIST:
+      return extend(state, {
+        favoriteList: action.payload,
+      });
+    case ActionType.UPDATE_LOGIN_STATUS:
+      return extend(state, {
+        loginStatus: action.payload,
       });
   }
 

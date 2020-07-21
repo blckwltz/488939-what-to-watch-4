@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {AuthorizationStatus} from '../../reducer/user/user.js';
-import {getAuthorization} from '../../reducer/user/selectors.js';
+import {Link} from 'react-router-dom';
+import {AuthorizationStatus} from '../../store/user/user.js';
+import {getAuthorization} from '../../store/user/selectors.js';
+import {AppRoute} from '../../routing/route.js';
 
 const UserBlock = (props) => {
   const {authorizationStatus} = props;
   const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
 
   return <div className="user-block">
-    {isAuthorized ? <div className="user-block__avatar">
-      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-    </div> : <a href="sign-in.html" className="user-block__link">Sign in</a>}
+    {isAuthorized ? <Link to={AppRoute.MYLIST}><div className="user-block__avatar">
+      <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+    </div></Link> : <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>}
   </div>;
 };
 

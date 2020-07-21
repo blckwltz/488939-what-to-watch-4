@@ -9,14 +9,20 @@ exports[`Should render MovieCardSmall component correctly 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
-    <div />
+    <a
+      href="/films/1"
+      onClick={[Function]}
+    >
+      <div />
+    </a>
   </div>
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/films/1"
+      onClick={[Function]}
     >
       Macbeth
     </a>

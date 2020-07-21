@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getShownMoviesAmount, getFilteredList} from '../../reducer/movies/selectors.js';
+import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
 import withVideo from '../../hocs/with-video/with-video.jsx';
 import MovieCardSmall from '../movie-card-small/movie-card-small.jsx';
 

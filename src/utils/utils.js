@@ -32,7 +32,7 @@ const formatDate = (date) => {
 };
 
 const formatTime = (time) => {
-  const hours = time % 60;
+  const hours = Math.floor((time / 60) % 60);
   const minutes = time - hours * 60;
   return `${hours}h ${minutes}m`;
 };

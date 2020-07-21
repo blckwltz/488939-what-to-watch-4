@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {moviesList} from '../../test-mocks/movies';
+import {moviesList} from '../../__test-mocks__/movies';
 import {GenresList} from './genres-list';
 
 const onGenreClick = () => {};

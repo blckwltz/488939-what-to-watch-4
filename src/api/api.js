@@ -1,10 +1,12 @@
 import axios from 'axios';
-import {BASE_URL, TIMEOUT, Error} from '../utils/const.js';
+import {BASE_URL, URL, TIMEOUT, Status} from '../utils/const.js';
+import history from '../routing/history.js';
+import {AppRoute} from '../routing/route.js';
 
-export const createAPI = (onUnauthorized) => {
+export const createAPI = (onUnauthorized, onError, onLoginError, onServerError) => {
   const api = axios.create({
     baseURL: BASE_URL,
-    timeout: 1000 * TIMEOUT,
+    timeout: TIMEOUT * 1000,
     withCredentials: true,
   });
 
@@ -13,10 +15,37 @@ export const createAPI = (onUnauthorized) => {
   };
 
   const onFail = (err) => {
-    const {response} = err;
+    const {config, response} = err;
+    const {url, method} = config;
+    const {status} = response;
 
-    if (response.status === Error.UNAUTHORIZED) {
-      return onUnauthorized();
+    switch (response.status) {
+      case Status.UNAUTHORIZED:
+        if (url !== URL.LOGIN && method !== `get`) {
+          history.push(AppRoute.LOGIN);
+        }
+
+        onUnauthorized();
+        throw err;
+      case Status.BAD_REQUEST:
+        if (url === URL.LOGIN && method === `post`) {
+          onLoginError(status);
+          throw err;
+        }
+
+        onError(status);
+        break;
+      case Status.ERROR:
+        onError(status);
+        break;
+      case Status.SERVER_ERROR:
+        if (url === URL.LOGIN && method === `post`) {
+          onLoginError(status);
+          throw err;
+        }
+
+        onServerError();
+        break;
     }
 
     throw err;

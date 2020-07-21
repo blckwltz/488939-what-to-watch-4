@@ -1,35 +1,54 @@
 import React, {PureComponent} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Main from '../main/main.jsx';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {getStatus} from '../../store/movies/selectors.js';
+import {Router, Route, Switch} from 'react-router-dom';
+import {Status} from '../../utils/const.js';
+import history from '../../routing/history.js';
+import {AppRoute} from '../../routing/route.js';
+import LoginScreen from '../login-screen/login-screen.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
+import Main from '../main/main.jsx';
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
   }
 
-  _renderMainPage() {
-    return <Main/>;
-  }
-
-  _renderMoviePage() {
-    return <MoviePage/>;
-  }
-
   render() {
-    return <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          {this._renderMainPage()}
-        </Route>
-        <Route exact path="/movie-page">
-          {this._renderMoviePage()}
-        </Route>
-      </Switch>
-    </BrowserRouter>;
+    // TODO add error screen
+    const {status} = this.props;
+
+    switch (status) {
+      case Status.BAD_REQUEST:
+        return <div>{status}</div>;
+      case Status.SERVER_ERROR:
+        return <div>{status}</div>;
+      case Status.OK:
+        return <Router history={history}>
+          <Switch>
+            <Route exact path={AppRoute.ROOT}>
+              <Main/>
+            </Route>
+            <Route exact path={AppRoute.LOGIN}>
+              <LoginScreen/>
+            </Route>
+            <Route exact path={`${AppRoute.MOVIE}/:id`} component={MoviePage}/>
+          </Switch>
+        </Router>;
+    }
+
+    return null;
   }
 }
 
-App.propTypes = {};
+App.propTypes = {
+  status: PropTypes.number.isRequired,
+};
 
-export default App;
+const mapStateToProps = (state) => ({
+  status: getStatus(state),
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
