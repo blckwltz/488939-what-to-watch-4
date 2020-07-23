@@ -16,6 +16,7 @@ it(`Should render App component correctly`, () => {
       moviesList,
       activeGenre: `All genres`,
       shownMoviesAmount: 8,
+      status: 200,
     },
     [NameSpace.REVIEWS]: {
       reviews,

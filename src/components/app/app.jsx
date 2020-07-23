@@ -6,9 +6,16 @@ import {Router, Route, Switch} from 'react-router-dom';
 import {Status} from '../../utils/const.js';
 import history from '../../routing/history.js';
 import {AppRoute} from '../../routing/route.js';
-import LoginScreen from '../login-screen/login-screen.jsx';
+import PrivateRoute from '../../routing/private-route.jsx';
+import withErrorMessages from '../../hocs/with-error-messages/with-error-messages.jsx';
+import LoginPage from '../login-page/login-page.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
+import ReviewPage from '../review-page/review-page.jsx';
+import FavoriteList from '../favorite-list/favorite-list.jsx';
+import ErrorPage from '../error-page/error-page.jsx';
 import Main from '../main/main.jsx';
+
+const ReviewPageWrapped = withErrorMessages(ReviewPage);
 
 class App extends PureComponent {
   constructor(props) {
@@ -16,14 +23,13 @@ class App extends PureComponent {
   }
 
   render() {
-    // TODO add error screen
     const {status} = this.props;
 
     switch (status) {
       case Status.BAD_REQUEST:
-        return <div>{status}</div>;
+        return <ErrorPage status={status}/>;
       case Status.SERVER_ERROR:
-        return <div>{status}</div>;
+        return <ErrorPage status={status}/>;
       case Status.OK:
         return <Router history={history}>
           <Switch>
@@ -31,9 +37,12 @@ class App extends PureComponent {
               <Main/>
             </Route>
             <Route exact path={AppRoute.LOGIN}>
-              <LoginScreen/>
+              <LoginPage/>
             </Route>
             <Route exact path={`${AppRoute.MOVIE}/:id`} component={MoviePage}/>
+            {/* <Route exact path={`${AppRoute.MOVIE}/:id/player`} component={}/>*/}
+            <PrivateRoute exact path={AppRoute.FAVORITE} component={FavoriteList}/>
+            <PrivateRoute exact path={`${AppRoute.MOVIE}/:id/review`} component={ReviewPageWrapped}/>
           </Switch>
         </Router>;
     }

@@ -1,4 +1,7 @@
 import React, {Fragment} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import MovieCard from '../movie-card/movie-card.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
@@ -7,7 +10,9 @@ import ShowMoreButton from '../show-more-button/show-more-button.jsx';
 
 const GenresListWrapped = withActiveItem(GenresList);
 
-const Main = () => {
+const Main = (props) => {
+  const {moviesList, shownMoviesAmount} = props;
+
   return <Fragment>
     <MovieCard/>
 
@@ -17,7 +22,7 @@ const Main = () => {
 
         <GenresListWrapped/>
 
-        <MoviesList/>
+        <MoviesList movies={moviesList} amount={shownMoviesAmount}/>
 
         <div className="catalog__more">
           <ShowMoreButton/>
@@ -41,6 +46,20 @@ const Main = () => {
   </Fragment>;
 };
 
-Main.propTypes = {};
+Main.propTypes = {
+  moviesList: PropTypes.arrayOf(
+      PropTypes.shape({
+        poster: PropTypes.string.isRequired,
+        previewSrc: PropTypes.string.isRequired,
+      })
+  ),
+  shownMoviesAmount: PropTypes.number,
+};
 
-export default Main;
+const mapStateToProps = (state) => ({
+  moviesList: getFilteredList(state),
+  shownMoviesAmount: getShownMoviesAmount(state),
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);

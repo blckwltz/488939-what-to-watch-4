@@ -1,13 +1,15 @@
-import {URL} from '../../utils/const.js';
+import {URL, Status} from '../../utils/const.js';
 import {extend} from '../../utils/utils.js';
 import {createReviewsList} from '../../api/adapters/reviews.js';
 
 const initialState = {
   reviews: [],
+  postStatus: 0,
 };
 
 const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  UPDATE_POST_STATUS: `UPDATE_POST_STATUS`,
 };
 
 const ActionCreator = {
@@ -16,7 +18,13 @@ const ActionCreator = {
       type: ActionType.LOAD_REVIEWS,
       payload: reviewsList,
     };
-  }
+  },
+  updatePostStatus: (status) => {
+    return {
+      type: ActionType.UPDATE_POST_STATUS,
+      payload: status,
+    };
+  },
 };
 
 const Operation = {
@@ -26,6 +34,15 @@ const Operation = {
         dispatch(ActionCreator.loadReviews(createReviewsList(response.data)));
       });
   },
+  postReview: (reviewData) => (dispatch, getState, api) => {
+    api.post(`${URL.REVIEWS}/${reviewData.id}`, {
+      rating: reviewData.rating,
+      comment: reviewData.text,
+    })
+      .then(() => {
+        dispatch(ActionCreator.updatePostStatus(Status.OK));
+      });
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,9 +51,13 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         reviews: action.payload,
       });
+    case ActionType.UPDATE_POST_STATUS:
+      return extend(state, {
+        postStatus: action.payload,
+      });
   }
 
   return state;
 };
 
-export {reducer, ActionType, Operation};
+export {reducer, ActionType, ActionCreator, Operation};

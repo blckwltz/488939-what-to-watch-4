@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
 import {featuredMovie, moviesList} from '../../__test-mocks__/movies.js';
 import NameSpace from '../../store/name-space.js';
-import Main from './main';
+import {Main} from './main';
 
 const mockStore = configureStore([]);
 
@@ -25,7 +25,10 @@ it(`Should render Main component correctly`, () => {
     .create((
       <Provider store={store}>
         <MemoryRouter>
-          <Main/>
+          <Main
+            moviesList={moviesList}
+            shownMoviesAmount={8}
+          />
         </MemoryRouter>
       </Provider>
     ), {

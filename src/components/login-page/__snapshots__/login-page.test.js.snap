@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render LoginScreen component correctly 1`] = `
+exports[`Should render LoginPage component correctly 1`] = `
 <div
   className="user-page"
 >

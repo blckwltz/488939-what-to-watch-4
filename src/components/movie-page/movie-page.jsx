@@ -2,10 +2,10 @@ import React, {PureComponent, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Operation as CommentsOperation} from '../../store/reviews/reviews.js';
-import {getMovieById} from '../../store/movies/selectors.js';
+import {Operation as ReviewsOperation} from '../../store/reviews/reviews.js';
+import {getMoviesList, getMovieById} from '../../store/movies/selectors.js';
 import {getReviews} from '../../store/reviews/selectors.js';
-import {TabNames} from '../../utils/const.js';
+import {MAX_SIMILAR_MOVIES_AMOUNT, TabNames} from '../../utils/const.js';
 import {getRatingLevel, formatDate, formatTime} from '../../utils/utils.js';
 import {AppRoute} from '../../routing/route.js';
 import withStatus from '../../hocs/with-status/with-status.jsx';
@@ -49,7 +49,7 @@ class MoviePage extends PureComponent {
   }
 
   render() {
-    const {match, movie, reviews} = this.props;
+    const {match, moviesList, movie, reviews} = this.props;
     const id = Number(match.params.id);
 
     if (!movie) {
@@ -58,6 +58,9 @@ class MoviePage extends PureComponent {
 
     const {isFavorite, title, genre, releaseDate, cover, backgroundImage, backgroundColor, rating, description, runTime, director, cast} = movie;
     const {score, count} = rating;
+    const similarMoviesList = moviesList.filter((item) => {
+      return item.genre === genre && item.title !== title;
+    });
 
     return <Fragment>
       <section className="movie-card movie-card--full" style={{background: backgroundColor}}>
@@ -96,7 +99,7 @@ class MoviePage extends PureComponent {
                   <span>Play</span>
                 </button>
                 <FavoriteButtonWrapped id={id} isFavorite={isFavorite}/>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link to={`${AppRoute.MOVIE}/${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -188,7 +191,7 @@ class MoviePage extends PureComponent {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <MoviesList/>
+          <MoviesList movies={similarMoviesList} amount={MAX_SIMILAR_MOVIES_AMOUNT}/>
         </section>
 
         <footer className="page-footer">
@@ -215,6 +218,12 @@ MoviePage.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
+  moviesList: PropTypes.arrayOf(
+      PropTypes.shape({
+        poster: PropTypes.string.isRequired,
+        previewSrc: PropTypes.string.isRequired,
+      })
+  ),
   movie: PropTypes.shape({
     isFavorite: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
@@ -254,13 +263,14 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     movie: getMovieById(state, id),
+    moviesList: getMoviesList(state),
     reviews: getReviews(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onLoad(movie) {
-    dispatch(CommentsOperation.loadReviews(movie));
+    dispatch(ReviewsOperation.loadReviews(movie));
   }
 });
 

@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
 import withVideo from '../../hocs/with-video/with-video.jsx';
 import MovieCardSmall from '../movie-card-small/movie-card-small.jsx';
 
@@ -9,7 +7,7 @@ const MovieCardSmallWrapped = withVideo(MovieCardSmall);
 
 const MoviesList = (props) => {
   const {movies, amount} = props;
-  const moviesToShow = movies.slice(0, amount);
+  const moviesToShow = amount ? movies.slice(0, amount) : movies;
 
   return <div className="catalog__movies-list">
     {moviesToShow.map((movie) => {
@@ -25,13 +23,7 @@ MoviesList.propTypes = {
     poster: PropTypes.string.isRequired,
     previewSrc: PropTypes.string.isRequired,
   })).isRequired,
-  amount: PropTypes.number.isRequired,
+  amount: PropTypes.number,
 };
 
-const mapStateToProps = (state) => ({
-  movies: getFilteredList(state),
-  amount: getShownMoviesAmount(state),
-});
-
-export {MoviesList};
-export default connect(mapStateToProps)(MoviesList);
+export default MoviesList;

@@ -11,7 +11,7 @@ const UserBlock = (props) => {
   const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
 
   return <div className="user-block">
-    {isAuthorized ? <Link to={AppRoute.MYLIST}><div className="user-block__avatar">
+    {isAuthorized ? <Link to={AppRoute.FAVORITE}><div className="user-block__avatar">
       <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
     </div></Link> : <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>}
   </div>;
