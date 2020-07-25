@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {Status} from '../../utils/const.js';
 import history from '../../routing/history.js';
 import {AppRoute} from '../../routing/route.js';
-import {AuthorizationStatus, ActionCreator as UserAction, Operation as UserOperation} from '../../store/user/user.js';
+import {ActionCreator as UserAction, Operation as UserOperation} from '../../store/user/user.js';
 import {getAuthorization, getLoginStatus} from '../../store/user/selectors.js';
 
 class LoginPage extends PureComponent {
@@ -19,8 +19,7 @@ class LoginPage extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {authorizationStatus} = this.props;
-    const isAuthorized = authorizationStatus === AuthorizationStatus.AUTH;
+    const {isAuthorized} = this.props;
 
     if (isAuthorized) {
       history.push(AppRoute.ROOT);
@@ -104,14 +103,14 @@ class LoginPage extends PureComponent {
 }
 
 LoginPage.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
+  isAuthorized: PropTypes.bool.isRequired,
   loginStatus: PropTypes.number.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorization(state),
+  isAuthorized: getAuthorization(state),
   loginStatus: getLoginStatus(state),
 });
 

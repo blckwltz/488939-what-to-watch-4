@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
+import {Status} from '../../utils/const.js';
 import NameSpace from '../../store/name-space.js';
 import {featuredMovie} from '../../__test-mocks__/movies.js';
 import {ReviewPage} from './review-page';
@@ -14,7 +15,8 @@ const match = {
   },
 };
 const onSubmit = () => {};
-const onCheck = () => {};
+const onRatingChange = () => {};
+const onTextInput = () => {};
 const onValidityCheck = () => {};
 
 it(`Should render ReviewPage component correctly`, () => {
@@ -30,8 +32,13 @@ it(`Should render ReviewPage component correctly`, () => {
             <ReviewPage
               match={match}
               movie={featuredMovie}
+              rating={`5`}
+              text={``}
+              isValid={false}
+              status={Status.OK}
               onSubmit={onSubmit}
-              onCheck={onCheck}
+              onRatingChange={onRatingChange}
+              onTextInput={onTextInput}
               onValidityCheck={onValidityCheck}
             />
           </MemoryRouter>

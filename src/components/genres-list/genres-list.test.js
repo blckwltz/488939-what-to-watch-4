@@ -1,10 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {FilterSettings} from '../../utils/const.js';
 import {moviesList} from '../../__test-mocks__/movies';
 import {GenresList} from './genres-list';
 
 const onGenreClick = () => {};
-const onActiveItemChange = () => {};
+const onActiveGenreChange = () => {};
 
 it(`Should render GenresList component correctly`, () => {
   const tree = renderer
@@ -12,8 +13,8 @@ it(`Should render GenresList component correctly`, () => {
         <GenresList
           moviesList={moviesList}
           onGenreClick={onGenreClick}
-          activeItem={0}
-          onActiveItemChange={onActiveItemChange}
+          activeGenre={FilterSettings.INITIAL_VALUE}
+          onActiveGenreChange={onActiveGenreChange}
         />
     ).toJSON();
 

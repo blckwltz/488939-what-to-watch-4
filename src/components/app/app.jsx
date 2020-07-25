@@ -7,7 +7,9 @@ import {Status} from '../../utils/const.js';
 import history from '../../routing/history.js';
 import {AppRoute} from '../../routing/route.js';
 import PrivateRoute from '../../routing/private-route.jsx';
-import withErrorMessages from '../../hocs/with-error-messages/with-error-messages.jsx';
+import withRating from '../../hocs/with-rating/with-rating.jsx';
+import withTextInput from '../../hocs/with-text-input/with-text-input.jsx';
+import withValidation from '../../hocs/with-validation/with-validation.jsx';
 import LoginPage from '../login-page/login-page.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 import ReviewPage from '../review-page/review-page.jsx';
@@ -15,7 +17,7 @@ import FavoriteList from '../favorite-list/favorite-list.jsx';
 import ErrorPage from '../error-page/error-page.jsx';
 import Main from '../main/main.jsx';
 
-const ReviewPageWrapped = withErrorMessages(ReviewPage);
+const ReviewPageWrapped = withRating(withTextInput(withValidation(ReviewPage)));
 
 class App extends PureComponent {
   constructor(props) {

@@ -19,6 +19,11 @@ const Status = {
   SERVER_ERROR: 500,
 };
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
 const TabNames = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
@@ -28,6 +33,14 @@ const TabNames = {
 const FilterSettings = {
   INITIAL_VALUE: `All genres`,
   MAX_AMOUNT: 9,
+};
+
+const Review = {
+  MIN_RATING: 1,
+  TEXT: {
+    MIN_LENGTH: 50,
+    MAX_LENGTH: 400,
+  },
 };
 
 const Rating = {
@@ -55,4 +68,4 @@ const RatingChart = new Map([
   [[Rating.SCORE_MILESTONES.FIFTH, Infinity], Rating.LEVELS.AWESOME],
 ]);
 
-export {BASE_URL, MAX_MOVIES_AMOUNT, MAX_SIMILAR_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, URL, Status, TabNames, FilterSettings, RatingChart};
+export {BASE_URL, MAX_MOVIES_AMOUNT, MAX_SIMILAR_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, URL, Status, AuthorizationStatus, TabNames, FilterSettings, Review, RatingChart};

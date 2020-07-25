@@ -115,13 +115,6 @@ exports[`Should render ReviewPage component correctly 1`] = `
   <div
     className="add-review"
   >
-    <p
-      style={
-        Object {
-          "color": "#ff0000",
-        }
-      }
-    />
     <form
       action="#"
       className="add-review__form"
@@ -208,11 +201,19 @@ exports[`Should render ReviewPage component correctly 1`] = `
       <div
         className="add-review__text"
       >
+        <textarea
+          className="add-review__textarea"
+          id="review-text"
+          name="review-text"
+          onChange={[Function]}
+          placeholder="Review text"
+        />
         <div
           className="add-review__submit"
         >
           <button
             className="add-review__btn"
+            disabled={true}
             type="submit"
           >
             Post

@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -14,7 +14,6 @@ class ReviewPage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._formRef = createRef();
     this._handleSubmit = this._handleSubmit.bind(this);
   }
 
@@ -23,35 +22,26 @@ class ReviewPage extends PureComponent {
     const {match, status} = this.props;
     const id = Number(match.params.id);
 
-    this._formRef.current.disabled = false;
-
     if (status !== prevStatus && status === Status.OK) {
       history.push(`${AppRoute.MOVIE}/${id}`);
     }
   }
 
   _handleSubmit(evt) {
-    const {match, rating, text, onSubmit, onValidityCheck} = this.props;
+    const {match, rating, text, onSubmit} = this.props;
     const id = Number(match.params.id);
 
     evt.preventDefault();
-    this._formRef.current.disabled = true;
 
-    if (onValidityCheck()) {
-      onSubmit({
-        id,
-        rating,
-        text,
-      });
-
-      return;
-    }
-
-    this._formRef.current.disabled = false;
+    onSubmit({
+      id,
+      rating,
+      text,
+    });
   }
 
   render() {
-    const {match, children, movie, errorMessage, onCheck} = this.props;
+    const {match, movie, status, isValid, onRatingChange, onTextInput, onValidityCheck} = this.props;
     const id = Number(match.params.id);
 
     if (!movie) {
@@ -98,31 +88,50 @@ class ReviewPage extends PureComponent {
       </div>
 
       <div className="add-review">
-        {<p style={{color: `#ff0000`}}>{errorMessage}</p>}
-        <form action="#" className="add-review__form" onSubmit={this._handleSubmit} ref={this._formRef}>
+        {status === Status.SERVER_ERROR && <p className="movie-card__text">Error {status} occurred. Please try again later.</p>}
+        <form action="#" className="add-review__form" onSubmit={this._handleSubmit}>
           <div className="rating">
             <div className="rating__stars">
-              <input className="rating__input" id="star-1" type="radio" name="rating" value="1" onChange={onCheck}/>
+              <input className="rating__input" id="star-1" type="radio" name="rating" value="1" onChange={(evt) => {
+                onRatingChange(evt);
+                onValidityCheck();
+              }}/>
               <label className="rating__label" htmlFor="star-1">Rating 1</label>
 
-              <input className="rating__input" id="star-2" type="radio" name="rating" value="2" onChange={onCheck}/>
+              <input className="rating__input" id="star-2" type="radio" name="rating" value="2" onChange={(evt) => {
+                onRatingChange(evt);
+                onValidityCheck();
+              }}/>
               <label className="rating__label" htmlFor="star-2">Rating 2</label>
 
-              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" onChange={onCheck}/>
+              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" onChange={(evt) => {
+                onRatingChange(evt);
+                onValidityCheck();
+              }}/>
               <label className="rating__label" htmlFor="star-3">Rating 3</label>
 
-              <input className="rating__input" id="star-4" type="radio" name="rating" value="4" onChange={onCheck}/>
+              <input className="rating__input" id="star-4" type="radio" name="rating" value="4" onChange={(evt) => {
+                onRatingChange(evt);
+                onValidityCheck();
+              }}/>
               <label className="rating__label" htmlFor="star-4">Rating 4</label>
 
-              <input className="rating__input" id="star-5" type="radio" name="rating" value="5" onChange={onCheck}/>
+              <input className="rating__input" id="star-5" type="radio" name="rating" value="5" onChange={(evt) => {
+                onRatingChange(evt);
+                onValidityCheck();
+              }}/>
               <label className="rating__label" htmlFor="star-5">Rating 5</label>
             </div>
           </div>
 
           <div className="add-review__text">
-            {children}
+            <textarea className="add-review__textarea" name="review-text" id="review-text"
+              placeholder="Review text" onChange={(evt) => {
+                onTextInput(evt);
+                onValidityCheck();
+              }}/>
             <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">Post</button>
+              <button className="add-review__btn" type="submit" disabled={!isValid}>Post</button>
             </div>
 
           </div>
@@ -139,10 +148,6 @@ ReviewPage.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]),
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
@@ -151,10 +156,11 @@ ReviewPage.propTypes = {
   }),
   rating: PropTypes.string,
   text: PropTypes.string,
-  errorMessage: PropTypes.string,
+  isValid: PropTypes.bool,
   status: PropTypes.number,
   onSubmit: PropTypes.func.isRequired,
-  onCheck: PropTypes.func.isRequired,
+  onRatingChange: PropTypes.func.isRequired,
+  onTextInput: PropTypes.func.isRequired,
   onValidityCheck: PropTypes.func.isRequired,
 };
 
