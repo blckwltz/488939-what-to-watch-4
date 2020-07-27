@@ -6,4 +6,8 @@ const getReviews = (state) => {
   return state[NAME_SPACE].reviews;
 };
 
-export {getReviews};
+const getPostStatus = (state) => {
+  return state[NAME_SPACE].postStatus;
+};
+
+export {getReviews, getPostStatus};

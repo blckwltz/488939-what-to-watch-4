@@ -3,44 +3,28 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
-import {featuredMovie, moviesList} from '../../__test-mocks__/movies.js';
-import {reviews} from '../../__test-mocks__/reviews.js';
-import {authorizationStatus} from '../../__test-mocks__/user.js';
+import {moviesList} from '../../__test-mocks__/movies.js';
 import NameSpace from '../../store/name-space.js';
-import {MoviePage} from './movie-page';
+import {FavoriteList} from './favorite-list';
 
 const mockStore = configureStore([]);
-const match = {
-  params: {
-    id: `1`,
-  },
-};
 const onLoad = () => {};
 
-it(`Should render MoviePage component correctly`, () => {
+it(`Should render FavoriteList component correctly`, () => {
   const store = mockStore({
     [NameSpace.MOVIES]: {
-      featuredMovie,
       moviesList,
-      activeGenre: `All genres`,
-      shownMoviesAmount: 8,
-    },
-    [NameSpace.REVIEWS]: {
-      reviews
     },
     [NameSpace.USER]: {
-      authorizationStatus,
+      authorizationStatus: `AUTH`,
     }
   });
   const tree = renderer
     .create((
       <Provider store={store}>
         <MemoryRouter>
-          <MoviePage
-            match={match}
-            movie={featuredMovie}
-            moviesList={moviesList}
-            reviews={reviews}
+          <FavoriteList
+            favoriteList={moviesList}
             onLoad={onLoad}
           />
         </MemoryRouter>
@@ -49,7 +33,8 @@ it(`Should render MoviePage component correctly`, () => {
       createNodeMock() {
         return {};
       }
-    });
+    })
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });

@@ -3,7 +3,7 @@ import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {MemoryRouter} from 'react-router-dom';
 import {authorizationStatus} from '../../__test-mocks__/user.js';
-import {LoginScreen} from './login-screen';
+import {LoginPage} from './login-page';
 
 configure({
   adapter: new Adapter(),
@@ -13,9 +13,9 @@ const onSubmit = jest.fn();
 const onFocus = () => {};
 
 it(`Should render error message if login fails`, () => {
-  const loginScreen = mount(
+  const loginPage = mount(
       <MemoryRouter>
-        <LoginScreen
+        <LoginPage
           authorizationStatus={authorizationStatus}
           loginStatus={400}
           onSubmit={onSubmit}
@@ -23,15 +23,15 @@ it(`Should render error message if login fails`, () => {
         />
       </MemoryRouter>
   );
-  const errorMessage = loginScreen.find(`div.sign-in__message`);
+  const errorMessage = loginPage.find(`div.sign-in__message`);
 
   expect(errorMessage.length).toBe(1);
 });
 
 it(`Should pass correct data on form submit`, () => {
-  const loginScreen = mount(
+  const loginPage = mount(
       <MemoryRouter>
-        <LoginScreen
+        <LoginPage
           authorizationStatus={authorizationStatus}
           loginStatus={400}
           onSubmit={onSubmit}
@@ -39,9 +39,9 @@ it(`Should pass correct data on form submit`, () => {
         />
       </MemoryRouter>
   );
-  const loginForm = loginScreen.find(`form.sign-in__form`);
-  const emailField = loginScreen.find(`input#user-email`);
-  const passwordField = loginScreen.find(`input#user-password`);
+  const loginForm = loginPage.find(`form.sign-in__form`);
+  const emailField = loginPage.find(`input#user-email`);
+  const passwordField = loginPage.find(`input#user-password`);
 
   emailField.instance().value = `name@email.com`;
   passwordField.instance().value = `12345`;

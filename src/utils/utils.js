@@ -1,4 +1,4 @@
-import {FilterSettings, RatingChart} from './const.js';
+import {FilterSettings, Review, RatingChart} from './const.js';
 
 const isValueInRange = (value, min, max) => {
   return min <= value && value < max;
@@ -14,6 +14,10 @@ const getRatingLevel = (score) => {
   }
 
   return level;
+};
+
+const validateReview = (rating, text) => {
+  return (Number(rating) >= Review.MIN_RATING) && (text.length >= Review.TEXT.MIN_LENGTH && text.length <= Review.TEXT.MAX_LENGTH);
 };
 
 const getGenresList = (list) => {
@@ -41,4 +45,4 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export {getRatingLevel, getGenresList, formatDate, formatTime, extend};
+export {getRatingLevel, validateReview, getGenresList, formatDate, formatTime, extend};

@@ -1,13 +1,9 @@
-import {URL, Status} from '../../utils/const.js';
+import {URL, Status, AuthorizationStatus} from '../../utils/const.js';
 import {extend} from '../../utils/utils.js';
 import {createMoviesList} from '../../api/adapters/movies.js';
 
-const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`,
-};
-
 const initialState = {
+  isAuthorizationChecked: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   favoriteList: [],
   loginStatus: Status.OK,
@@ -71,6 +67,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRE_AUTHORIZATION:
       return extend(state, {
+        isAuthorizationChecked: true,
         authorizationStatus: action.payload,
       });
     case ActionType.LOAD_FAVORITE_LIST:

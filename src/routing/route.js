@@ -1,7 +1,7 @@
 const AppRoute = {
   LOGIN: `/login`,
   MOVIE: `/films`,
-  MYLIST: `/mylist`,
+  FAVORITE: `/mylist`,
   ROOT: `/`,
 };
 

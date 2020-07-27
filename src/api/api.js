@@ -3,7 +3,7 @@ import {BASE_URL, URL, TIMEOUT, Status} from '../utils/const.js';
 import history from '../routing/history.js';
 import {AppRoute} from '../routing/route.js';
 
-export const createAPI = (onUnauthorized, onError, onLoginError, onServerError) => {
+export const createAPI = (onUnauthorized, onError, onLoginError, onReviewError, onServerError) => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIMEOUT * 1000,
@@ -33,9 +33,11 @@ export const createAPI = (onUnauthorized, onError, onLoginError, onServerError) 
           throw err;
         }
 
-        onError(status);
-        break;
-      case Status.ERROR:
+        if (url.includes(URL.REVIEWS) && method === `post`) {
+          onReviewError(status);
+          throw err;
+        }
+
         onError(status);
         break;
       case Status.SERVER_ERROR:

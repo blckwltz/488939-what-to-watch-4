@@ -6,13 +6,13 @@ import {getMoviesList} from '../../store/movies/selectors.js';
 import {getGenresList} from '../../utils/utils.js';
 
 const GenresList = (props) => {
-  const {moviesList, activeItem, onActiveItemChange, onGenreClick} = props;
+  const {moviesList, activeGenre, onActiveGenreChange, onGenreClick} = props;
   const genresList = getGenresList(moviesList);
 
   return <ul className="catalog__genres-list">
     {genresList.map((genre, index) => {
-      return <li key={`${genre}-${index}`} className={`catalog__genres-item ${(activeItem === index) ? `catalog__genres-item--active` : ``}`} onClick={() => {
-        onActiveItemChange(index);
+      return <li key={`${genre}-${index}`} className={`catalog__genres-item ${(activeGenre === genre) ? `catalog__genres-item--active` : ``}`} onClick={() => {
+        onActiveGenreChange(genre);
         onGenreClick(genre);
       }}>
         <a href="#" className="catalog__genres-link">{genre}</a>
@@ -27,8 +27,8 @@ GenresList.propTypes = {
         genre: PropTypes.string.isRequired,
       })
   ).isRequired,
-  activeItem: PropTypes.number.isRequired,
-  onActiveItemChange: PropTypes.func.isRequired,
+  activeGenre: PropTypes.string.isRequired,
+  onActiveGenreChange: PropTypes.func.isRequired,
   onGenreClick: PropTypes.func.isRequired,
 };
 

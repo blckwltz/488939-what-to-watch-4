@@ -9,6 +9,7 @@ const api = createAPI(() => {});
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {})).toEqual({
     reviews: [],
+    postStatus: 0,
   });
 });
 
