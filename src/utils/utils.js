@@ -4,6 +4,12 @@ const isValueInRange = (value, min, max) => {
   return min <= value && value < max;
 };
 
+const findItemById = (id, list) => {
+  return list.find((item) => {
+    return item.id === Number(id);
+  });
+};
+
 const getRatingLevel = (score) => {
   let level;
 
@@ -41,8 +47,20 @@ const formatTime = (time) => {
   return `${hours}h ${minutes}m`;
 };
 
+const addLeadingZero = (value) => {
+  return Number(value) < 10 ? `0${value}` : `${value}`;
+};
+
+const getTimeString = (time) => {
+  const hours = Math.floor(time / 3600);
+  const minutes = Math.floor(time / 60) % 60;
+  const seconds = Math.floor(time % 60);
+
+  return `${addLeadingZero(hours)}:${addLeadingZero(minutes)}:${addLeadingZero(seconds)}`;
+};
+
 const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export {getRatingLevel, validateReview, getGenresList, formatDate, formatTime, extend};
+export {findItemById, getRatingLevel, validateReview, getGenresList, formatDate, formatTime, getTimeString, extend};

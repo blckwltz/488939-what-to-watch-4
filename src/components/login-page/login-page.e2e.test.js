@@ -2,7 +2,6 @@ import React from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {MemoryRouter} from 'react-router-dom';
-import {authorizationStatus} from '../../__test-mocks__/user.js';
 import {LoginPage} from './login-page';
 
 configure({
@@ -16,7 +15,7 @@ it(`Should render error message if login fails`, () => {
   const loginPage = mount(
       <MemoryRouter>
         <LoginPage
-          authorizationStatus={authorizationStatus}
+          isAuthorized={true}
           loginStatus={400}
           onSubmit={onSubmit}
           onFocus={onFocus}
@@ -32,7 +31,7 @@ it(`Should pass correct data on form submit`, () => {
   const loginPage = mount(
       <MemoryRouter>
         <LoginPage
-          authorizationStatus={authorizationStatus}
+          isAuthorized={true}
           loginStatus={400}
           onSubmit={onSubmit}
           onFocus={onFocus}

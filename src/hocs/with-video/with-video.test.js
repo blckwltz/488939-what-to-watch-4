@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import PropTypes from 'prop-types';
+import {featuredMovie} from '../../__test-mocks__/movies.js';
 import withVideo from './with-video';
 
 const MockComponent = (props) => {
@@ -28,8 +29,8 @@ it(`Should render withVideo correctly`, () => {
       <MockComponentWrapped
         isPlaying={false}
         isMuted={true}
-        src={``}
-        poster={``}
+        isPreview={true}
+        movie={featuredMovie}
       />
     ), {
       createNodeMock() {

@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {MemoryRouter} from 'react-router-dom';
-import {authorizationStatus} from '../../__test-mocks__/user.js';
 import {LoginPage} from './login-page';
 
 const onSubmit = () => {};
@@ -12,7 +11,7 @@ it(`Should render LoginPage component correctly`, () => {
     .create(
         <MemoryRouter>
           <LoginPage
-            authorizationStatus={authorizationStatus}
+            isAuthorized={false}
             loginStatus={200}
             onSubmit={onSubmit}
             onFocus={onFocus}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {moviesList} from '../../__test-mocks__/movies';
+import {featuredMovie} from '../../__test-mocks__/movies.js';
 import withVideo from './with-video';
 
 configure({
@@ -30,13 +30,12 @@ const playEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mock
 const pauseEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
 
 it(`HOC's callback should turn video on`, () => {
-  const {poster, previewSrc} = moviesList[0];
   const wrapper = mount(
       <MockComponentWrapped
         isPlaying={false}
         isMuted={true}
-        src={previewSrc}
-        poster={poster}
+        isPreview={true}
+        movie={featuredMovie}
       />
   );
 
@@ -45,13 +44,12 @@ it(`HOC's callback should turn video on`, () => {
 });
 
 it(`HOC's callback should turn video off`, () => {
-  const {poster, previewSrc} = moviesList[0];
   const wrapper = mount(
       <MockComponentWrapped
         isPlaying={true}
         isMuted={true}
-        src={previewSrc}
-        poster={poster}
+        isPreview={true}
+        movie={featuredMovie}
       />
   );
 

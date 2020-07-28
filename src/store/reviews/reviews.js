@@ -5,6 +5,7 @@ import {createReviewsList} from '../../api/adapters/reviews.js';
 const initialState = {
   reviews: [],
   postStatus: 0,
+  isPublished: false,
 };
 
 const ActionType = {
@@ -54,6 +55,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.UPDATE_POST_STATUS:
       return extend(state, {
         postStatus: action.payload,
+        isPublished: true,
       });
   }
 

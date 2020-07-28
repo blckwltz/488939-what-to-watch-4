@@ -94,9 +94,10 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
-              type="button"
+              href="/player/1"
+              onClick={[Function]}
             >
               <svg
                 height="19"
@@ -110,7 +111,7 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               onClick={[Function]}
@@ -279,8 +280,10 @@ Array [
               href="/films/1"
               onClick={[Function]}
             >
-              <video
+              <img
+                alt="Macbeth"
                 height="175"
+                src="img/macbeth.jpg"
                 width="280"
               />
             </a>
@@ -309,8 +312,10 @@ Array [
               href="/films/2"
               onClick={[Function]}
             >
-              <video
+              <img
+                alt="We need to talk about Kevin"
                 height="175"
+                src="img/we-need-to-talk-about-kevin.jpg"
                 width="280"
               />
             </a>
@@ -361,7 +366,7 @@ Array [
         className="copyright"
       >
         <p>
-          © 2019 What to watch Ltd.
+          © 2020 What to watch Ltd.
         </p>
       </div>
     </footer>

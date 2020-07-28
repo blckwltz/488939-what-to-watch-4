@@ -10,4 +10,8 @@ const getPostStatus = (state) => {
   return state[NAME_SPACE].postStatus;
 };
 
-export {getReviews, getPostStatus};
+const getPublishedStatus = (state) => {
+  return state[NAME_SPACE].isPublished;
+};
+
+export {getReviews, getPostStatus, getPublishedStatus};
