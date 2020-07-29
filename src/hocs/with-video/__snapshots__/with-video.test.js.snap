@@ -3,6 +3,7 @@
 exports[`Should render withVideo correctly 1`] = `
 <div>
   <video
+    className="player__video"
     height="175"
     width="280"
   />

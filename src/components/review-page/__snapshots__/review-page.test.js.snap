@@ -132,7 +132,7 @@ exports[`Should render ReviewPage component correctly 1`] = `
             name="rating"
             onChange={[Function]}
             type="radio"
-            value="1"
+            value={1}
           />
           <label
             className="rating__label"
@@ -146,7 +146,7 @@ exports[`Should render ReviewPage component correctly 1`] = `
             name="rating"
             onChange={[Function]}
             type="radio"
-            value="2"
+            value={2}
           />
           <label
             className="rating__label"
@@ -160,7 +160,7 @@ exports[`Should render ReviewPage component correctly 1`] = `
             name="rating"
             onChange={[Function]}
             type="radio"
-            value="3"
+            value={3}
           />
           <label
             className="rating__label"
@@ -174,7 +174,7 @@ exports[`Should render ReviewPage component correctly 1`] = `
             name="rating"
             onChange={[Function]}
             type="radio"
-            value="4"
+            value={4}
           />
           <label
             className="rating__label"
@@ -188,7 +188,7 @@ exports[`Should render ReviewPage component correctly 1`] = `
             name="rating"
             onChange={[Function]}
             type="radio"
-            value="5"
+            value={5}
           />
           <label
             className="rating__label"

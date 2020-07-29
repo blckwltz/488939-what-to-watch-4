@@ -6,14 +6,14 @@ import {getAuthorizationCheck, getAuthorization} from '../store/user/selectors.j
 import {AppRoute} from './route.js';
 
 const PrivateRoute = (props) => {
-  const {isAuthorizationChecked, isAuthorized, path, exact, component} = props;
+  const {isAuthorizationChecked, isAuthorized, path, exact, render, component} = props;
 
   if (!isAuthorizationChecked) {
     return null;
   }
 
   if (isAuthorized) {
-    return <Route path={path} exact={exact} component={component}/>;
+    return <Route path={path} exact={exact} render={render} component={component}/>;
   }
 
   return <Redirect to={AppRoute.LOGIN}/>;
@@ -24,7 +24,8 @@ PrivateRoute.propTypes = {
   isAuthorized: PropTypes.bool,
   path: PropTypes.string.isRequired,
   exact: PropTypes.bool,
-  component: PropTypes.elementType.isRequired,
+  render: PropTypes.func,
+  component: PropTypes.elementType,
 };
 
 const mapStateToProps = (state) => ({

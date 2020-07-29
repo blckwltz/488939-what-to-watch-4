@@ -13,7 +13,12 @@ exports[`Should render MovieCardSmall component correctly 1`] = `
       href="/films/1"
       onClick={[Function]}
     >
-      <div />
+      <img
+        alt="Pulp Fiction"
+        height="175"
+        src="img/pulp-fiction.jpg"
+        width="280"
+      />
     </a>
   </div>
   <h3
@@ -24,7 +29,7 @@ exports[`Should render MovieCardSmall component correctly 1`] = `
       href="/films/1"
       onClick={[Function]}
     >
-      Macbeth
+      Pulp Fiction
     </a>
   </h3>
 </article>

@@ -1589,6 +1589,7 @@ main {
   right: 0;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(25%, rgba(0, 0, 0, 0)), color-stop(97%, rgba(0, 0, 0, 0.63)));
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.63) 97%);
+  pointer-events: none;
 }
 
 .small-movie-card__title {

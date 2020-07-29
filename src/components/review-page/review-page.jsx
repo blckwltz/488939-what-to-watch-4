@@ -1,13 +1,12 @@
-import React, {PureComponent} from 'react';
+import React, {Fragment, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Status} from '../../utils/const.js';
+import {REVIEW_RATINGS, Status} from '../../utils/const.js';
 import history from '../../routing/history.js';
 import {AppRoute} from '../../routing/route.js';
 import {Operation as ReviewsOperation} from '../../store/reviews/reviews.js';
-import {getMovieById} from '../../store/movies/selectors.js';
-import {getPostStatus} from '../../store/reviews/selectors.js';
+import {getPostStatus, getPublishedStatus} from '../../store/reviews/selectors.js';
 import UserBlock from '../user-block/user-block.jsx';
 
 class ReviewPage extends PureComponent {
@@ -19,10 +18,10 @@ class ReviewPage extends PureComponent {
 
   componentDidUpdate(prevProps) {
     const {status: prevStatus} = prevProps;
-    const {match, status} = this.props;
+    const {match, status, isPublished} = this.props;
     const id = Number(match.params.id);
 
-    if (status !== prevStatus && status === Status.OK) {
+    if (status !== prevStatus && isPublished) {
       history.push(`${AppRoute.MOVIE}/${id}`);
     }
   }
@@ -92,35 +91,15 @@ class ReviewPage extends PureComponent {
         <form action="#" className="add-review__form" onSubmit={this._handleSubmit}>
           <div className="rating">
             <div className="rating__stars">
-              <input className="rating__input" id="star-1" type="radio" name="rating" value="1" onChange={(evt) => {
-                onRatingChange(evt);
-                onValidityCheck();
-              }}/>
-              <label className="rating__label" htmlFor="star-1">Rating 1</label>
-
-              <input className="rating__input" id="star-2" type="radio" name="rating" value="2" onChange={(evt) => {
-                onRatingChange(evt);
-                onValidityCheck();
-              }}/>
-              <label className="rating__label" htmlFor="star-2">Rating 2</label>
-
-              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" onChange={(evt) => {
-                onRatingChange(evt);
-                onValidityCheck();
-              }}/>
-              <label className="rating__label" htmlFor="star-3">Rating 3</label>
-
-              <input className="rating__input" id="star-4" type="radio" name="rating" value="4" onChange={(evt) => {
-                onRatingChange(evt);
-                onValidityCheck();
-              }}/>
-              <label className="rating__label" htmlFor="star-4">Rating 4</label>
-
-              <input className="rating__input" id="star-5" type="radio" name="rating" value="5" onChange={(evt) => {
-                onRatingChange(evt);
-                onValidityCheck();
-              }}/>
-              <label className="rating__label" htmlFor="star-5">Rating 5</label>
+              {REVIEW_RATINGS.map((rating) => {
+                return <Fragment key={rating}>
+                  <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating} onChange={(evt) => {
+                    onRatingChange(evt);
+                    onValidityCheck();
+                  }}/>
+                  <label className="rating__label" htmlFor={`star-${rating}`}>{`Rating ${rating}`}</label>
+                </Fragment>;
+              })}
             </div>
           </div>
 
@@ -133,7 +112,6 @@ class ReviewPage extends PureComponent {
             <div className="add-review__submit">
               <button className="add-review__btn" type="submit" disabled={!isValid}>Post</button>
             </div>
-
           </div>
         </form>
       </div>
@@ -158,19 +136,17 @@ ReviewPage.propTypes = {
   text: PropTypes.string,
   isValid: PropTypes.bool,
   status: PropTypes.number,
+  isPublished: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
   onRatingChange: PropTypes.func.isRequired,
   onTextInput: PropTypes.func.isRequired,
   onValidityCheck: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const {match} = ownProps;
-  const id = Number(match.params.id);
-
+const mapStateToProps = (state) => {
   return {
-    movie: getMovieById(state, id),
     status: getPostStatus(state),
+    isPublished: getPublishedStatus(state),
   };
 };
 

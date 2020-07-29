@@ -3,6 +3,7 @@ const MAX_MOVIES_AMOUNT = 8;
 const MAX_SIMILAR_MOVIES_AMOUNT = 4;
 const PLAYBACK_DELAY = 1000;
 const TIMEOUT = 5;
+const REVIEW_RATINGS = [1, 2, 3, 4, 5];
 
 const URL = {
   MOVIES: `/films`,
@@ -68,4 +69,4 @@ const RatingChart = new Map([
   [[Rating.SCORE_MILESTONES.FIFTH, Infinity], Rating.LEVELS.AWESOME],
 ]);
 
-export {BASE_URL, MAX_MOVIES_AMOUNT, MAX_SIMILAR_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, URL, Status, AuthorizationStatus, TabNames, FilterSettings, Review, RatingChart};
+export {BASE_URL, MAX_MOVIES_AMOUNT, MAX_SIMILAR_MOVIES_AMOUNT, PLAYBACK_DELAY, TIMEOUT, REVIEW_RATINGS, URL, Status, AuthorizationStatus, TabNames, FilterSettings, Review, RatingChart};

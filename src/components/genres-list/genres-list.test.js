@@ -1,6 +1,5 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {FilterSettings} from '../../utils/const.js';
 import {moviesList} from '../../__test-mocks__/movies';
 import {GenresList} from './genres-list';
 
@@ -13,7 +12,7 @@ it(`Should render GenresList component correctly`, () => {
         <GenresList
           moviesList={moviesList}
           onGenreClick={onGenreClick}
-          activeGenre={FilterSettings.INITIAL_VALUE}
+          activeGenre={`All genres`}
           onActiveGenreChange={onActiveGenreChange}
         />
     ).toJSON();

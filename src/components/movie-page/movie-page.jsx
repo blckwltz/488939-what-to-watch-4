@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Operation as ReviewsOperation} from '../../store/reviews/reviews.js';
-import {getMoviesList, getMovieById} from '../../store/movies/selectors.js';
+import {getMoviesList} from '../../store/movies/selectors.js';
 import {getReviews} from '../../store/reviews/selectors.js';
 import {MAX_SIMILAR_MOVIES_AMOUNT, TabNames} from '../../utils/const.js';
 import {getRatingLevel, formatDate, formatTime} from '../../utils/utils.js';
@@ -92,12 +92,12 @@ class MoviePage extends PureComponent {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <Link to={`${AppRoute.PLAYER}/${id}`} className="btn btn--play movie-card__button">
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"/>
                   </svg>
                   <span>Play</span>
-                </button>
+                </Link>
                 <FavoriteButtonWrapped id={id} isFavorite={isFavorite}/>
                 <Link to={`${AppRoute.MOVIE}/${id}/review`} className="btn movie-card__button">Add review</Link>
               </div>
@@ -204,7 +204,7 @@ class MoviePage extends PureComponent {
           </div>
 
           <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
+            <p>© 2020 What to watch Ltd.</p>
           </div>
         </footer>
       </div>
@@ -257,12 +257,8 @@ MoviePage.propTypes = {
   onLoad: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const {match} = ownProps;
-  const id = Number(match.params.id);
-
+const mapStateToProps = (state) => {
   return {
-    movie: getMovieById(state, id),
     moviesList: getMoviesList(state),
     reviews: getReviews(state),
   };
