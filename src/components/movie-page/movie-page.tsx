@@ -8,13 +8,13 @@ import {getReviews} from '../../store/reviews/selectors.js';
 import {MAX_SIMILAR_MOVIES_AMOUNT, TabNames} from '../../utils/const.js';
 import {getRatingLevel, formatDate, formatTime} from '../../utils/utils.js';
 import {AppRoute} from '../../routing/route.js';
-import withStatus from '../../hocs/with-status/with-status.jsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import FavoriteButton from '../favorite-button/favorite-button.jsx';
-import MoviesList from '../movies-list/movies-list.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import Tabs from '../tabs/tabs.jsx';
-import Tab from '../tab/tab.jsx';
+import withStatus from '../../hocs/with-status/with-status.js';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
+import FavoriteButton from '../favorite-button/favorite-button.tsx';
+import MoviesList from '../movies-list/movies-list.js';
+import UserBlock from '../user-block/user-block.js';
+import Tabs from '../tabs/tabs.js';
+import Tab from '../tab/tab.js';
 
 const FavoriteButtonWrapped = withStatus(FavoriteButton);
 const TabsWrapped = withActiveItem(Tabs);
@@ -112,7 +112,7 @@ class MoviePage extends PureComponent {
                 height="327"/>
             </div>
 
-            <TabsWrapped>
+            <TabsWrapped activeItem={0}>
               <Tab title={TabNames.OVERVIEW}>
                 <div className="movie-rating">
                   <div className="movie-rating__score">{score}</div>

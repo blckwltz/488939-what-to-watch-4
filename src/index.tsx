@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Operation as MoviesOperation} from './store/movies/movies.js';
 import {Operation as UserOperation} from './store/user/user.js';
 import store from './store/store.js';
-import App from './components/app/app.jsx';
+import App from './components/app/app';
 
 const rootElement = document.querySelector(`#root`);
 

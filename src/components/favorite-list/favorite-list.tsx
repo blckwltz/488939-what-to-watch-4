@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 import {Operation as UserOperation} from '../../store/user/user.js';
 import {getFavoriteList} from '../../store/user/selectors.js';
 import {AppRoute} from '../../routing/route.js';
-import UserBlock from '../user-block/user-block.jsx';
-import MoviesList from '../movies-list/movies-list.jsx';
+import UserBlock from '../user-block/user-block.js';
+import MoviesList from '../movies-list/movies-list.js';
 
 class FavoriteList extends PureComponent {
   constructor(props) {

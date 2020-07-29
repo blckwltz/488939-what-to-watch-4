@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import withVideo from '../../hocs/with-video/with-video.jsx';
-import MovieCardSmall from '../movie-card-small/movie-card-small.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
+import withVideo from '../../hocs/with-video/with-video.js';
+import MovieCardSmall from '../movie-card-small/movie-card-small.tsx';
 
 const MovieCardSmallWrapped = withVideo(withActiveItem(MovieCardSmall));
 
@@ -14,7 +14,7 @@ const MoviesList = (props) => {
     {moviesToShow.map((movie) => {
       const {id} = movie;
 
-      return <MovieCardSmallWrapped key={id} movie={movie} isPreview={true} isMuted={true}/>;
+      return <MovieCardSmallWrapped key={id} movie={movie} isPreview={true} isMuted={true} activeItem={false}/>;
     })}
   </div>;
 };

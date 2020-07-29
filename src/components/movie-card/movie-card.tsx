@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../routing/route.js';
 import {getFeaturedMovie} from '../../store/movies/selectors.js';
-import withStatus from '../../hocs/with-status/with-status.jsx';
-import UserBlock from '../user-block/user-block.jsx';
-import FavoriteButton from '../favorite-button/favorite-button.jsx';
+import withStatus from '../../hocs/with-status/with-status.js';
+import UserBlock from '../user-block/user-block.js';
+import FavoriteButton from '../favorite-button/favorite-button.tsx';
 
 const FavoriteButtonWrapped = withStatus(FavoriteButton);
 

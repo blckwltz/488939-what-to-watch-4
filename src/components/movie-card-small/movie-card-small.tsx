@@ -12,12 +12,12 @@ const MovieCardSmall = (props) => {
   return <article className="small-movie-card catalog__movies-card">
     <div className="small-movie-card__image" onMouseEnter={() => {
       timeout = setTimeout(() => {
-        onActiveItemChange(1);
+        onActiveItemChange(true);
         onPlaybackStatusChange();
       }, PLAYBACK_DELAY);
     }} onMouseLeave={() => {
       clearTimeout(timeout);
-      onActiveItemChange(0);
+      onActiveItemChange(false);
     }}>
       <Link to={`${AppRoute.MOVIE}/${id}`}>{activeItem ? children : <img src={poster} alt={title} width="280" height="175"/>}</Link>
     </div>
@@ -37,7 +37,7 @@ MovieCardSmall.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  activeItem: PropTypes.number,
+  activeItem: PropTypes.bool,
   onActiveItemChange: PropTypes.func,
   onPlaybackStatusChange: PropTypes.func,
 };

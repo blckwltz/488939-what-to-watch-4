@@ -7,7 +7,7 @@ import history from '../../routing/history.js';
 import {AppRoute} from '../../routing/route.js';
 import {Operation as ReviewsOperation} from '../../store/reviews/reviews.js';
 import {getPostStatus, getPublishedStatus} from '../../store/reviews/selectors.js';
-import UserBlock from '../user-block/user-block.jsx';
+import UserBlock from '../user-block/user-block.js';
 
 class ReviewPage extends PureComponent {
   constructor(props) {

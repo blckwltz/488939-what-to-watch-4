@@ -2,11 +2,11 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getActiveGenre, getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
-import withActiveGenre from '../../hocs/with-active-genre/with-active-genre.jsx';
-import MovieCard from '../movie-card/movie-card.jsx';
-import GenresList from '../genres-list/genres-list.jsx';
-import MoviesList from '../movies-list/movies-list.jsx';
-import ShowMoreButton from '../show-more-button/show-more-button.jsx';
+import withActiveGenre from '../../hocs/with-active-genre/with-active-genre.js';
+import MovieCard from '../movie-card/movie-card.js';
+import GenresList from '../genres-list/genres-list.tsx';
+import MoviesList from '../movies-list/movies-list.js';
+import ShowMoreButton from '../show-more-button/show-more-button.js';
 
 const GenresListWrapped = withActiveGenre(GenresList);
 
