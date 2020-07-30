@@ -36,6 +36,7 @@ it(`Should render ReviewPage component correctly`, () => {
               text={``}
               isValid={false}
               status={Status.OK}
+              isPublished={true}
               onSubmit={onSubmit}
               onRatingChange={onRatingChange}
               onTextInput={onTextInput}

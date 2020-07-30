@@ -9,6 +9,8 @@ it(`Should render FavoriteButton component correctly`, () => {
   const tree = renderer
     .create(
         <FavoriteButton
+          id={1}
+          isFavorite={false}
           onClick={onClick}
           onStatusChange={onStatusChange}
         />

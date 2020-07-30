@@ -5,6 +5,7 @@ import {featuredMovie} from '../../__test-mocks__/movies';
 import MovieCardSmall from './movie-card-small';
 
 const children = <div/>;
+const onActiveItemChange = () => {};
 const onPlaybackStatusChange = () => {};
 
 it(`Should render MovieCardSmall component correctly`, () => {
@@ -13,6 +14,8 @@ it(`Should render MovieCardSmall component correctly`, () => {
         <MemoryRouter>
           <MovieCardSmall
             movie={featuredMovie}
+            activeItem={false}
+            onActiveItemChange={onActiveItemChange}
             onPlaybackStatusChange={onPlaybackStatusChange}
           >
             {children}

@@ -4,7 +4,7 @@ import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selector
 import {ActionCreator} from '../../store/movies/movies';
 
 interface Props {
-  list: [],
+  list: any[],
   amount: number,
   onClick: () => void,
 }

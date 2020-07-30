@@ -6,7 +6,7 @@ interface State {
 }
 
 interface Props {
-  genre: string,
+  genre?: string,
 }
 
 const withActiveGenre = (Component) => {

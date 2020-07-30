@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {ReactElement} from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {featuredMovie} from '../../__test-mocks__/movies';
@@ -9,7 +8,12 @@ configure({
   adapter: new Adapter(),
 });
 
-const MockComponent = (props) => {
+interface Props {
+  children: ReactElement,
+  onPlaybackStatusChange: () => void,
+}
+
+const MockComponent = (props: Props) => {
   const {children, onPlaybackStatusChange} = props;
 
   return <div onMouseEnter={onPlaybackStatusChange} onMouseLeave={onPlaybackStatusChange}>
@@ -17,16 +21,8 @@ const MockComponent = (props) => {
   </div>;
 };
 
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-  onPlaybackStatusChange: PropTypes.func.isRequired,
-};
-
 const MockComponentWrapped = withVideo(MockComponent);
-const playEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {});
+const playEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {return new Promise(() => {})});
 const pauseEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
 
 it(`HOC's callback should turn video on`, () => {

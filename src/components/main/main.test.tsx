@@ -27,6 +27,7 @@ it(`Should render Main component correctly`, () => {
         <MemoryRouter>
           <Main
             moviesList={moviesList}
+            activeGenre={`All genres`}
             shownMoviesAmount={8}
           />
         </MemoryRouter>

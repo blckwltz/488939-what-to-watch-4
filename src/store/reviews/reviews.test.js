@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../api/api';
-import {reviews} from '../../__test-mocks__/reviews';
+import {reviews} from '../../__test-mocks__/reviews.ts';
 import {createReviewsList} from '../../api/adapters/reviews';
 import {reducer, ActionType, Operation} from './reviews';
 

@@ -44,6 +44,7 @@ it(`Should pass correct data on form submit`, () => {
             text={`This is a review that is at least 50 characters long`}
             isValid={true}
             status={Status.OK}
+            isPublished={true}
             onSubmit={onSubmit}
             onRatingChange={onRatingChange}
             onTextInput={onTextInput}

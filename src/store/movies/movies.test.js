@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import {FilterSettings, MAX_MOVIES_AMOUNT} from '../../utils/const';
 import {createAPI} from '../../api/api';
-import {featuredMovie, moviesList} from '../../__test-mocks__/movies';
+import {featuredMovie, moviesList} from '../../__test-mocks__/movies.ts';
 import {createMovie, createMoviesList} from '../../api/adapters/movies';
 import {reducer, ActionType, Operation} from './movies';
 

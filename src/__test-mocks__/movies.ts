@@ -1,4 +1,6 @@
-const featuredMovie = {
+import {Movie} from '../types/movie';
+
+const featuredMovie: Movie = {
   id: 1,
   isFavorite: false,
   title: `Pulp Fiction`,
@@ -21,7 +23,7 @@ const featuredMovie = {
   cast: [`John Travolta`, `Uma Thurman`, `Samuel L. Jackson`],
 };
 
-const moviesList = [
+const moviesList: Movie[] = [
   {
     id: 1,
     isFavorite: false,

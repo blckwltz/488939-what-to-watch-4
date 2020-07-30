@@ -27,7 +27,7 @@ configure({
 it(`Should change content on tab click`, () => {
   const {children} = mocks;
   const tabs = mount(
-      <TabsWrapped>{children}</TabsWrapped>
+      <TabsWrapped activeItem={0}>{children}</TabsWrapped>
   );
 
   const secondTab = tabs.find(`li.movie-nav__item`).at(1);

@@ -32,6 +32,7 @@ it(`Should render correct amount of cards`, () => {
         <MemoryRouter>
           <Main
             moviesList={moviesList}
+            activeGenre={`All genres`}
             shownMoviesAmount={4}
           />
         </MemoryRouter>
@@ -62,6 +63,7 @@ it(`Should not render show more button if all cards are shown`, () => {
         <MemoryRouter>
           <Main
             moviesList={moviesList}
+            activeGenre={`All genres`}
             shownMoviesAmount={20}
           />
         </MemoryRouter>
