@@ -1,6 +1,7 @@
 import React, {ReactElement} from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {noop} from '../../__test-mocks__/noop';
 import {featuredMovie} from '../../__test-mocks__/movies';
 import withVideo from './with-video';
 
@@ -9,8 +10,8 @@ configure({
 });
 
 interface Props {
-  children: ReactElement,
-  onPlaybackStatusChange: () => void,
+  children: ReactElement;
+  onPlaybackStatusChange: () => void;
 }
 
 const MockComponent = (props: Props) => {
@@ -22,8 +23,10 @@ const MockComponent = (props: Props) => {
 };
 
 const MockComponentWrapped = withVideo(MockComponent);
-const playEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {return new Promise(() => {})});
-const pauseEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(() => {});
+const playEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `play`).mockImplementation(() => {
+  return new Promise(noop);
+});
+const pauseEventMock = jest.spyOn(window.HTMLMediaElement.prototype, `pause`).mockImplementation(noop);
 
 it(`HOC's callback should turn video on`, () => {
   const wrapper = mount(

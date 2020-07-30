@@ -5,12 +5,12 @@ import {getAuthorizationCheck, getAuthorization} from '../store/user/selectors';
 import {AppRoute} from './route';
 
 interface Props {
-  isAuthorizationChecked: boolean,
-  isAuthorized: boolean,
-  path: string,
-  exact: boolean,
-  render: () => ReactElement,
-  component: ReactElement,
+  isAuthorizationChecked: boolean;
+  isAuthorized: boolean;
+  path: string;
+  exact: boolean;
+  render: () => ReactElement;
+  component: ReactElement;
 }
 
 const PrivateRoute = (props: Props) => {

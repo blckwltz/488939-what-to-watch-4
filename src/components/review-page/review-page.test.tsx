@@ -6,6 +6,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {Status} from '../../utils/const';
 import NameSpace from '../../store/name-space';
 import {featuredMovie} from '../../__test-mocks__/movies';
+import {noop} from '../../__test-mocks__/noop';
 import {ReviewPage} from './review-page';
 
 const mockStore = configureStore([]);
@@ -14,10 +15,6 @@ const match = {
     id: `1`,
   },
 };
-const onSubmit = () => {};
-const onRatingChange = () => {};
-const onTextInput = () => {};
-const onValidityCheck = () => {};
 
 it(`Should render ReviewPage component correctly`, () => {
   const store = mockStore({
@@ -37,10 +34,10 @@ it(`Should render ReviewPage component correctly`, () => {
               isValid={false}
               status={Status.OK}
               isPublished={true}
-              onSubmit={onSubmit}
-              onRatingChange={onRatingChange}
-              onTextInput={onTextInput}
-              onValidityCheck={onValidityCheck}
+              onSubmit={noop}
+              onRatingChange={noop}
+              onTextInput={noop}
+              onValidityCheck={noop}
             />
           </MemoryRouter>
         </Provider>

@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
 interface State {
-  rating: string,
+  rating: string;
 }
 
 const withRating = (Component) => {

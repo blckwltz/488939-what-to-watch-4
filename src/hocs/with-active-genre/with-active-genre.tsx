@@ -2,11 +2,11 @@ import React, {PureComponent} from 'react';
 import {FilterSettings} from '../../utils/const';
 
 interface State {
-  activeGenre: string,
+  activeGenre: string;
 }
 
 interface Props {
-  genre?: string,
+  genre?: string;
 }
 
 const withActiveGenre = (Component) => {

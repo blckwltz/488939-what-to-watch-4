@@ -1,12 +1,12 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
-import {Operation as MoviesOperation} from '../../store/movies/movies';
+import {ActionCreator as MoviesAction, Operation as MoviesOperation} from '../../store/movies/movies';
 
 interface Props {
-  id: number,
-  isFavorite: boolean,
-  onClick: (id: number, status: number) => void,
-  onStatusChange: () => void,
+  id: number;
+  isFavorite: boolean;
+  onClick: (id: number, status: number) => void;
+  onStatusChange: () => void;
 }
 
 class FavoriteButton extends PureComponent<Props> {
@@ -36,9 +36,31 @@ class FavoriteButton extends PureComponent<Props> {
   }
 }
 
+const updateMovieStatus = (id, status) => {
+  return (dispatch, getState) => {
+    dispatch(MoviesOperation.updateMovieStatus(id, status));
+
+    const state = getState().MOVIES;
+    const isFavorite = Boolean(status);
+    const featuredMovie = state.featuredMovie;
+    const moviesList = state.moviesList;
+    const targetMovie = moviesList.find((item) => {
+      return item.id === id;
+    });
+
+    if (featuredMovie.id === targetMovie.id) {
+      featuredMovie.isFavorite = isFavorite;
+    }
+
+    targetMovie.isFavorite = isFavorite;
+
+    dispatch(MoviesAction.updateMovieStatus({featuredMovie, moviesList}));
+  };
+};
+
 const mapDispatchToProps = (dispatch) => ({
   onClick(id, status) {
-    dispatch(MoviesOperation.updateMovieStatus(id, status));
+    dispatch(updateMovieStatus(id, status));
   },
 });
 

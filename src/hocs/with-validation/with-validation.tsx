@@ -2,12 +2,12 @@ import React, {PureComponent} from 'react';
 import {validateReview} from '../../utils/utils';
 
 interface Props {
-  rating: string,
-  text: string,
+  rating: string;
+  text: string;
 }
 
 interface State {
-  isValid: boolean,
+  isValid: boolean;
 }
 
 const withValidation = (Component) => {

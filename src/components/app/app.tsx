@@ -20,11 +20,9 @@ import FavoriteList from '../favorite-list/favorite-list';
 import ErrorPage from '../error-page/error-page';
 import Main from '../main/main';
 
-// TODO remove proptypes package
-
 interface Props {
-  moviesList: Movie[],
-  status: number,
+  moviesList: Movie[];
+  status: number;
 }
 
 const VideoPlayerWrapped = withVideo(VideoPlayer);
@@ -62,7 +60,7 @@ class App extends PureComponent<Props> {
               const id = routeProps.match.params.id;
               const movie = findItemById(id, moviesList);
 
-              return <VideoPlayerWrapped movie={movie} isMuted={false} isPreview={false}/>;
+              return <VideoPlayerWrapped movie={movie} isPlaying={true} isMuted={false} isPreview={false} {...routeProps}/>;
             }}/>
             <PrivateRoute exact path={AppRoute.FAVORITE} render={() => {
               return <FavoriteList/>;

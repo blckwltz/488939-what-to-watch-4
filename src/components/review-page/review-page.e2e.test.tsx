@@ -7,6 +7,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {Status} from '../../utils/const';
 import {featuredMovie} from '../../__test-mocks__/movies';
 import {authorizationStatus} from '../../__test-mocks__/user';
+import {noop} from '../../__test-mocks__/noop';
 import NameSpace from '../../store/name-space';
 import {ReviewPage} from './review-page';
 
@@ -21,9 +22,6 @@ const match = {
   },
 };
 const onSubmit = jest.fn();
-const onRatingChange = () => {};
-const onTextInput = () => {};
-const onValidityCheck = () => {};
 
 it(`Should pass correct data on form submit`, () => {
   const store = mockStore({
@@ -46,9 +44,9 @@ it(`Should pass correct data on form submit`, () => {
             status={Status.OK}
             isPublished={true}
             onSubmit={onSubmit}
-            onRatingChange={onRatingChange}
-            onTextInput={onTextInput}
-            onValidityCheck={onValidityCheck}
+            onRatingChange={noop}
+            onTextInput={noop}
+            onValidityCheck={noop}
           />
         </MemoryRouter>
       </Provider>

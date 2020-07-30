@@ -9,9 +9,9 @@ import MoviesList from '../movies-list/movies-list';
 import ShowMoreButton from '../show-more-button/show-more-button';
 
 interface Props {
-  moviesList: Movie[],
-  activeGenre: string,
-  shownMoviesAmount: number,
+  moviesList: Movie[];
+  activeGenre: string;
+  shownMoviesAmount: number;
 }
 
 const GenresListWrapped = withActiveGenre(GenresList);

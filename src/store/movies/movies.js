@@ -46,9 +46,9 @@ const ActionCreator = {
     type: ActionType.SET_SHOWN_AMOUNT,
     payload: MAX_MOVIES_AMOUNT,
   }),
-  updateMovieStatus: (movie) => ({
+  updateMovieStatus: (movieData) => ({
     type: ActionType.UPDATE_MOVIE_STATUS,
-    payload: movie,
+    payload: movieData,
   }),
 };
 
@@ -72,10 +72,7 @@ const Operation = {
       });
   },
   updateMovieStatus: (id, status) => (dispatch, getState, api) => {
-    return api.post(`${URL.FAVORITE}/${id}/${status}`)
-      .then((response) => {
-        dispatch(ActionCreator.updateMovieStatus(createMovie(response.data)));
-      });
+    return api.post(`${URL.FAVORITE}/${id}/${status}`);
   }
 };
 
@@ -103,27 +100,10 @@ const reducer = (state = initialState, action) => {
         shownMoviesAmount: state.shownMoviesAmount + action.payload,
       });
     case ActionType.UPDATE_MOVIE_STATUS:
-      const updateMovieStatus = () => {
-        const {isFavorite} = action.payload;
-        const featuredMovie = state.featuredMovie;
-        const moviesList = state.moviesList;
-        const targetMovie = moviesList.find((item) => {
-          return item.id === action.payload.id;
-        });
-
-        if (featuredMovie.id === targetMovie.id) {
-          featuredMovie.isFavorite = isFavorite;
-        }
-
-        targetMovie.isFavorite = isFavorite;
-
-        return {
-          featuredMovie,
-          moviesList,
-        };
-      };
-
-      return extend(state, updateMovieStatus());
+      return extend(state, {
+        featuredMovie: action.payload.featuredMovie,
+        moviesList: action.payload.moviesList,
+      });
   }
 
   return state;

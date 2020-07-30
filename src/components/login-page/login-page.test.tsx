@@ -1,10 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {MemoryRouter} from 'react-router-dom';
+import {noop} from '../../__test-mocks__/noop';
 import {LoginPage} from './login-page';
-
-const onSubmit = () => {};
-const onFocus = () => {};
 
 it(`Should render LoginPage component correctly`, () => {
   const tree = renderer
@@ -13,8 +11,8 @@ it(`Should render LoginPage component correctly`, () => {
           <LoginPage
             isAuthorized={false}
             loginStatus={200}
-            onSubmit={onSubmit}
-            onFocus={onFocus}
+            onSubmit={noop}
+            onFocus={noop}
           />
         </MemoryRouter>
     )

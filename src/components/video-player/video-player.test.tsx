@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {ReactElement} from 'react';
 import renderer from 'react-test-renderer';
 import history from '../../routing/history';
+import {noop} from '../../__test-mocks__/noop';
 import {featuredMovie} from '../../__test-mocks__/movies';
 import VideoPlayer from './video-player';
 
-const children = <div/>;
-const onPlaybackStatusChange = () => {};
-const onFullScreenRequest = () => {};
+const children: ReactElement = <div/>;
 
 it(`Should render VideoPlayer component correctly`, () => {
   const tree = renderer
@@ -17,8 +16,8 @@ it(`Should render VideoPlayer component correctly`, () => {
           isPlaying={false}
           progress={0}
           duration={500}
-          onPlaybackStatusChange={onPlaybackStatusChange}
-          onFullScreenRequest={onFullScreenRequest}
+          onPlaybackStatusChange={noop}
+          onFullScreenRequest={noop}
         >
           {children}
         </VideoPlayer>

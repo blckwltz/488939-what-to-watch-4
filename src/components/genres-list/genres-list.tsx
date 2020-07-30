@@ -6,10 +6,10 @@ import {getMoviesList} from '../../store/movies/selectors';
 import {getGenresList} from '../../utils/utils';
 
 interface Props {
-  moviesList: Movie[],
-  activeGenre: string,
-  onActiveGenreChange: (genre: string) => void,
-  onGenreClick: (genre: string) => void,
+  moviesList: Movie[];
+  activeGenre: string;
+  onActiveGenreChange: (genre: string) => void;
+  onGenreClick: (genre: string) => void;
 }
 
 const GenresList = (props: Props) => {

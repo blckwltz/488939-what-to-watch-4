@@ -5,11 +5,11 @@ import {PLAYBACK_DELAY} from '../../utils/const';
 import {AppRoute} from '../../routing/route';
 
 interface Props {
-  movie: Movie,
-  children: ReactNode | ReactNode[],
-  activeItem: boolean,
-  onActiveItemChange: (boolean) => void,
-  onPlaybackStatusChange: () => void,
+  movie: Movie;
+  children: ReactNode | ReactNode[];
+  activeItem: boolean;
+  onActiveItemChange: (boolean) => void;
+  onPlaybackStatusChange: () => void;
 }
 
 const MovieCardSmall = (props: Props) => {

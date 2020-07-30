@@ -1,9 +1,9 @@
 import React, {ReactElement} from 'react';
 
 interface Props {
-  children: ReactElement[],
-  activeItem: number,
-  onActiveItemChange: (number) => void,
+  children: ReactElement[];
+  activeItem: number;
+  onActiveItemChange: (number) => void;
 }
 
 const Tabs = (props: Props) => {

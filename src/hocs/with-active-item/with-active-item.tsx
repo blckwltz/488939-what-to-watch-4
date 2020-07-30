@@ -3,11 +3,11 @@ import React, {PureComponent} from 'react';
 type ActiveItem = boolean | number | string;
 
 interface Props {
-  activeItem: ActiveItem,
+  activeItem: ActiveItem;
 }
 
 interface State {
-  activeItem: ActiveItem,
+  activeItem: ActiveItem;
 }
 
 const withActiveItem = (Component) => {

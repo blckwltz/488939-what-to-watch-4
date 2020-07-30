@@ -1,12 +1,12 @@
 interface Review {
-  id: number,
+  id: number;
   author: {
-    id: number,
-    name: string,
-  },
-  text: string,
-  date: string,
-  rating: number,
+    id: number;
+    name: string;
+  };
+  text: string;
+  date: string;
+  rating: number;
 }
 
 export {Review};

@@ -9,8 +9,8 @@ import UserBlock from '../user-block/user-block';
 import MoviesList from '../movies-list/movies-list';
 
 interface Props {
-  favoriteList: Movie[],
-  onLoad: () => void,
+  favoriteList: Movie[];
+  onLoad: () => void;
 }
 
 class FavoriteList extends PureComponent<Props> {

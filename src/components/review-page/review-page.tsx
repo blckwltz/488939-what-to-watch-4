@@ -11,17 +11,17 @@ import {getPostStatus, getPublishedStatus} from '../../store/reviews/selectors';
 import UserBlock from '../user-block/user-block';
 
 interface Props {
-  match: Match,
-  movie: Movie,
-  rating: string,
-  text: string,
-  isValid: boolean,
-  status: number,
-  isPublished: boolean,
-  onSubmit: ({id, rating, text}: {id: number, rating: string, text: string}) => void,
-  onRatingChange: (evt: ChangeEvent) => void,
-  onTextInput: (evt: ChangeEvent) => void,
-  onValidityCheck: () => void,
+  match: Match;
+  movie: Movie;
+  rating: string;
+  text: string;
+  isValid: boolean;
+  status: number;
+  isPublished: boolean;
+  onSubmit: ({id, rating, text}: {id: number; rating: string; text: string}) => void;
+  onRatingChange: (evt: ChangeEvent) => void;
+  onTextInput: (evt: ChangeEvent) => void;
+  onValidityCheck: () => void;
 }
 
 class ReviewPage extends PureComponent<Props> {

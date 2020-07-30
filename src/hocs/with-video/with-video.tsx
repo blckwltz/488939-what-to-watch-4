@@ -3,22 +3,22 @@ import {Subtract} from 'utility-types';
 import {Movie} from '../../types/movie';
 
 interface InjectingProps {
-  isPlaying?: boolean,
-  isMuted: boolean,
-  isPreview: boolean,
-  movie: Movie,
+  isPlaying?: boolean;
+  isMuted: boolean;
+  isPreview: boolean;
+  movie: Movie;
 }
 
 interface State {
-  duration: number,
-  progress: number,
-  isLoading: boolean,
-  isPlaying: boolean,
-  isFullScreen: boolean,
+  duration: number;
+  progress: number;
+  isLoading: boolean;
+  isPlaying: boolean;
+  isFullScreen: boolean;
 }
 
 interface VideoElement extends HTMLVideoElement {
-  exitFullscreen: () => Promise<void>,
+  exitFullscreen: () => Promise<void>;
 }
 
 const withVideo = (Component) => {

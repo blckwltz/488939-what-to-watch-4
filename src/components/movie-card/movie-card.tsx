@@ -9,7 +9,7 @@ import UserBlock from '../user-block/user-block';
 import FavoriteButton from '../favorite-button/favorite-button';
 
 interface Props {
-  movie: Movie,
+  movie: Movie;
 }
 
 const FavoriteButtonWrapped = withStatus(FavoriteButton);

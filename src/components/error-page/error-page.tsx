@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Props {
-  status: number,
+  status: number;
 }
 
 const ErrorPage = (props: Props) => {

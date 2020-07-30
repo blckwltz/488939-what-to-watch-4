@@ -5,8 +5,8 @@ import withVideo from '../../hocs/with-video/with-video';
 import MovieCardSmall from '../movie-card-small/movie-card-small';
 
 interface Props {
-  movies: Movie[],
-  amount?: number,
+  movies: Movie[];
+  amount?: number;
 }
 
 const MovieCardSmallWrapped = withVideo(withActiveItem(MovieCardSmall));

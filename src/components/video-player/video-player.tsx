@@ -4,15 +4,15 @@ import {getTimeString} from '../../utils/utils';
 
 interface Props {
   history: {
-    goBack: () => void,
-  },
-  children: ReactNode | ReactNode[],
-  movie: Movie,
-  duration: number,
-  progress: number,
-  isPlaying: boolean,
-  onPlaybackStatusChange: () => void,
-  onFullScreenRequest: () => void,
+    goBack: () => void;
+  };
+  children: ReactNode | ReactNode[];
+  movie: Movie;
+  duration: number;
+  progress: number;
+  isPlaying: boolean;
+  onPlaybackStatusChange: () => void;
+  onFullScreenRequest: () => void;
 }
 
 class VideoPlayer extends PureComponent<Props> {

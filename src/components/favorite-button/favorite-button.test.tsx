@@ -1,9 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {noop} from '../../__test-mocks__/noop';
 import {FavoriteButton} from './favorite-button';
-
-const onClick = () => {};
-const onStatusChange = () => {};
 
 it(`Should render FavoriteButton component correctly`, () => {
   const tree = renderer
@@ -11,8 +9,8 @@ it(`Should render FavoriteButton component correctly`, () => {
         <FavoriteButton
           id={1}
           isFavorite={false}
-          onClick={onClick}
-          onStatusChange={onStatusChange}
+          onClick={noop}
+          onStatusChange={noop}
         />
     )
     .toJSON();

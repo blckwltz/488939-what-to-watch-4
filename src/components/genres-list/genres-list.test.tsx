@@ -1,19 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {moviesList} from '../../__test-mocks__/movies';
+import {noop} from '../../__test-mocks__/noop';
 import {GenresList} from './genres-list';
-
-const onGenreClick = () => {};
-const onActiveGenreChange = () => {};
 
 it(`Should render GenresList component correctly`, () => {
   const tree = renderer
     .create(
         <GenresList
           moviesList={moviesList}
-          onGenreClick={onGenreClick}
+          onGenreClick={noop}
           activeGenre={`All genres`}
-          onActiveGenreChange={onActiveGenreChange}
+          onActiveGenreChange={noop}
         />
     ).toJSON();
 

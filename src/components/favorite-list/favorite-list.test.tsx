@@ -4,11 +4,11 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
 import {moviesList} from '../../__test-mocks__/movies';
+import {noop} from '../../__test-mocks__/noop';
 import NameSpace from '../../store/name-space';
 import {FavoriteList} from './favorite-list';
 
 const mockStore = configureStore([]);
-const onLoad = () => {};
 
 it(`Should render FavoriteList component correctly`, () => {
   const store = mockStore({
@@ -25,7 +25,7 @@ it(`Should render FavoriteList component correctly`, () => {
         <MemoryRouter>
           <FavoriteList
             favoriteList={moviesList}
-            onLoad={onLoad}
+            onLoad={noop}
           />
         </MemoryRouter>
       </Provider>

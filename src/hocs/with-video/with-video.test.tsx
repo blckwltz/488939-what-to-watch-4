@@ -4,7 +4,7 @@ import {featuredMovie} from '../../__test-mocks__/movies';
 import withVideo from './with-video';
 
 interface Props {
-  children: ReactElement,
+  children: ReactElement;
 }
 
 const MockComponent = (props: Props) => {

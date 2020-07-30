@@ -2,6 +2,7 @@ import React from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {MemoryRouter} from 'react-router-dom';
+import {noop} from '../../__test-mocks__/noop';
 import {LoginPage} from './login-page';
 
 configure({
@@ -9,7 +10,6 @@ configure({
 });
 
 const onSubmit = jest.fn();
-const onFocus = () => {};
 
 it(`Should render error message if login fails`, () => {
   const loginPage = mount(
@@ -18,7 +18,7 @@ it(`Should render error message if login fails`, () => {
           isAuthorized={true}
           loginStatus={400}
           onSubmit={onSubmit}
-          onFocus={onFocus}
+          onFocus={noop}
         />
       </MemoryRouter>
   );
@@ -34,7 +34,7 @@ it(`Should pass correct data on form submit`, () => {
           isAuthorized={true}
           loginStatus={400}
           onSubmit={onSubmit}
-          onFocus={onFocus}
+          onFocus={noop}
         />
       </MemoryRouter>
   );

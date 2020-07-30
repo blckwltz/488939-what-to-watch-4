@@ -5,7 +5,7 @@ import {getAuthorization} from '../../store/user/selectors';
 import {AppRoute} from '../../routing/route';
 
 interface Props {
-  isAuthorized: boolean,
+  isAuthorized: boolean;
 }
 
 const UserBlock = (props: Props) => {

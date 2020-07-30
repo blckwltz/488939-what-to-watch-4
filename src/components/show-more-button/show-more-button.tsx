@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Movie} from '../../types/movie';
 import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors';
 import {ActionCreator} from '../../store/movies/movies';
 
 interface Props {
-  list: any[],
-  amount: number,
-  onClick: () => void,
+  list: Movie[];
+  amount: number;
+  onClick: () => void;
 }
 
 const ShowMoreButton = (props: Props) => {

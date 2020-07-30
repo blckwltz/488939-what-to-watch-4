@@ -6,6 +6,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {featuredMovie, moviesList} from '../../__test-mocks__/movies';
 import {reviews} from '../../__test-mocks__/reviews';
 import {authorizationStatus} from '../../__test-mocks__/user';
+import {noop} from '../../__test-mocks__/noop';
 import NameSpace from '../../store/name-space';
 import {MoviePage} from './movie-page';
 
@@ -15,7 +16,6 @@ const match = {
     id: `1`,
   },
 };
-const onLoad = () => {};
 
 it(`Should render MoviePage component correctly`, () => {
   const store = mockStore({
@@ -41,7 +41,7 @@ it(`Should render MoviePage component correctly`, () => {
             movie={featuredMovie}
             moviesList={moviesList}
             reviews={reviews}
-            onLoad={onLoad}
+            onLoad={noop}
           />
         </MemoryRouter>
       </Provider>

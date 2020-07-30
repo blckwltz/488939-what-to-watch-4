@@ -8,10 +8,10 @@ import {ActionCreator as UserAction, Operation as UserOperation} from '../../sto
 import {getAuthorization, getLoginStatus} from '../../store/user/selectors';
 
 interface Props {
-  isAuthorized: boolean,
-  loginStatus: number,
-  onSubmit: ({login, password}: {login: string, password: string}) => void,
-  onFocus: () => void,
+  isAuthorized: boolean;
+  loginStatus: number;
+  onSubmit: ({login, password}: {login: string; password: string}) => void;
+  onFocus: () => void;
 }
 
 class LoginPage extends PureComponent<Props> {

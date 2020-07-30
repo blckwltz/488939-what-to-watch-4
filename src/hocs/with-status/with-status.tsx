@@ -2,11 +2,11 @@ import React, {PureComponent, ComponentProps} from 'react';
 import {Subtract} from 'utility-types';
 
 interface InjectingProps {
-  isFavorite: boolean,
+  isFavorite: boolean;
 }
 
 interface State {
-  isFavorite: boolean,
+  isFavorite: boolean;
 }
 
 const withStatus = (Component) => {

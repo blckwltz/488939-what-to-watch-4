@@ -1,6 +1,6 @@
 interface Match {
   params: {
-    id: string,
+    id: string;
   }
 }
 

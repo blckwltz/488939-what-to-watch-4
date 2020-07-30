@@ -19,11 +19,11 @@ import Tabs from '../tabs/tabs';
 import Tab from '../tab/tab';
 
 interface Props {
-  match: Match,
-  moviesList: Movie[],
-  movie: Movie,
-  reviews: Review[],
-  onLoad: (number) => void,
+  match: Match;
+  moviesList: Movie[];
+  movie: Movie;
+  reviews: Review[];
+  onLoad: (number) => void;
 }
 
 const FavoriteButtonWrapped = withStatus(FavoriteButton);

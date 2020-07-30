@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
 interface State {
-  text: string,
+  text: string;
 }
 
 const withTextInput = (Component) => {
