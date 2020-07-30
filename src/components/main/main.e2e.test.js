@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
 import {featuredMovie, moviesList} from '../../__test-mocks__/movies';
-import NameSpace from '../../store/name-space.js';
+import NameSpace from '../../store/name-space';
 import {Main} from './main';
 
 const mockStore = configureStore([]);

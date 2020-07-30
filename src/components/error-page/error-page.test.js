@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {Status} from '../../utils/const.js';
+import {Status} from '../../utils/const';
 import ErrorPage from './error-page';
 
 it(`Should render ErrorPage component correctly`, () => {

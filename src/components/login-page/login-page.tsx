@@ -1,14 +1,23 @@
-import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
+import React, {PureComponent, createRef, RefObject} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Status} from '../../utils/const.js';
-import history from '../../routing/history.js';
-import {AppRoute} from '../../routing/route.js';
-import {ActionCreator as UserAction, Operation as UserOperation} from '../../store/user/user.js';
-import {getAuthorization, getLoginStatus} from '../../store/user/selectors.js';
+import {Status} from '../../utils/const';
+import history from '../../routing/history';
+import {AppRoute} from '../../routing/route';
+import {ActionCreator as UserAction, Operation as UserOperation} from '../../store/user/user';
+import {getAuthorization, getLoginStatus} from '../../store/user/selectors';
 
-class LoginPage extends PureComponent {
+interface Props {
+  isAuthorized: boolean,
+  loginStatus: number,
+  onSubmit: ({login, password}: {login: string, password: string}) => void,
+  onFocus: () => void,
+}
+
+class LoginPage extends PureComponent<Props> {
+  private readonly _loginRef: RefObject<HTMLInputElement>;
+  private readonly _passwordRef: RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -101,13 +110,6 @@ class LoginPage extends PureComponent {
     </div>;
   }
 }
-
-LoginPage.propTypes = {
-  isAuthorized: PropTypes.bool.isRequired,
-  loginStatus: PropTypes.number.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onFocus: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   isAuthorized: getAuthorization(state),

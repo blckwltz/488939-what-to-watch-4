@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {MemoryRouter} from 'react-router-dom';
-import {featuredMovie} from '../../__test-mocks__/movies.js';
+import {featuredMovie} from '../../__test-mocks__/movies';
 import MovieCardSmall from './movie-card-small';
 
 const children = <div/>;

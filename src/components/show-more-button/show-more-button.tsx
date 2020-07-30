@@ -1,19 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
-import {ActionCreator} from '../../store/movies/movies.js';
+import {getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors';
+import {ActionCreator} from '../../store/movies/movies';
 
-const ShowMoreButton = (props) => {
+interface Props {
+  list: [],
+  amount: number,
+  onClick: () => void,
+}
+
+const ShowMoreButton = (props: Props) => {
   const {list, amount, onClick} = props;
 
   return (amount < list.length) ? <button className="catalog__button" type="button" onClick={onClick}>Show more</button> : null;
-};
-
-ShowMoreButton.propTypes = {
-  list: PropTypes.array.isRequired,
-  amount: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

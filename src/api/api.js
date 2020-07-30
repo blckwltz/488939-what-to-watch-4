@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {BASE_URL, URL, TIMEOUT, Status} from '../utils/const.js';
-import history from '../routing/history.js';
-import {AppRoute} from '../routing/route.js';
+import {BASE_URL, URL, TIMEOUT, Status} from '../utils/const';
+import history from '../routing/history';
+import {AppRoute} from '../routing/route';
 
 export const createAPI = (onUnauthorized, onError, onLoginError, onReviewError, onServerError) => {
   const api = axios.create({

@@ -1,9 +1,17 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {validateReview} from '../../utils/utils.js';
+import {validateReview} from '../../utils/utils';
+
+interface Props {
+  rating: string,
+  text: string,
+}
+
+interface State {
+  isValid: boolean,
+}
 
 const withValidation = (Component) => {
-  class WithValidation extends PureComponent {
+  class WithValidation extends PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -11,10 +19,10 @@ const withValidation = (Component) => {
         isValid: false,
       };
 
-      this._handleValidation = this._handleValidation.bind(this);
+      this.handleValidation = this.handleValidation.bind(this);
     }
 
-    _handleValidation() {
+    handleValidation() {
       const {rating, text} = this.props;
 
       if (validateReview(rating, text)) {
@@ -36,15 +44,10 @@ const withValidation = (Component) => {
       return <Component
         {...this.props}
         isValid={isValid}
-        onValidityCheck={this._handleValidation}
+        onValidityCheck={this.handleValidation}
       />;
     }
   }
-
-  WithValidation.propTypes = {
-    rating: PropTypes.string,
-    text: PropTypes.string,
-  };
 
   return WithValidation;
 };

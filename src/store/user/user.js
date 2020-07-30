@@ -1,6 +1,6 @@
-import {URL, Status, AuthorizationStatus} from '../../utils/const.js';
-import {extend} from '../../utils/utils.js';
-import {createMoviesList} from '../../api/adapters/movies.js';
+import {URL, Status, AuthorizationStatus} from '../../utils/const';
+import {extend} from '../../utils/utils';
+import {createMoviesList} from '../../api/adapters/movies';
 
 const initialState = {
   isAuthorizationChecked: false,

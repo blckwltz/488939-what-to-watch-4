@@ -1,9 +1,15 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Operation as MoviesOperation} from '../../store/movies/movies.js';
+import {Operation as MoviesOperation} from '../../store/movies/movies';
 
-class FavoriteButton extends PureComponent {
+interface Props {
+  id: number,
+  isFavorite: boolean,
+  onClick: (id: number, status: number) => void,
+  onStatusChange: () => void,
+}
+
+class FavoriteButton extends PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -12,8 +18,9 @@ class FavoriteButton extends PureComponent {
 
   _handleClick() {
     const {id, onClick, isFavorite, onStatusChange} = this.props;
+    const status = isFavorite ? 0 : 1;
 
-    onClick(id, isFavorite ? 0 : 1);
+    onClick(id, status);
     onStatusChange();
   }
 
@@ -28,13 +35,6 @@ class FavoriteButton extends PureComponent {
     </button>;
   }
 }
-
-FavoriteButton.propTypes = {
-  id: PropTypes.number,
-  isFavorite: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
-  onStatusChange: PropTypes.func.isRequired,
-};
 
 const mapDispatchToProps = (dispatch) => ({
   onClick(id, status) {

@@ -1,7 +1,11 @@
 import React, {PureComponent} from 'react';
 
+interface State {
+  text: string,
+}
+
 const withTextInput = (Component) => {
-  class WithTextInput extends PureComponent {
+  class WithTextInput extends PureComponent<{}, State> {
     constructor(props) {
       super(props);
 
@@ -9,10 +13,10 @@ const withTextInput = (Component) => {
         text: ``,
       };
 
-      this._handleInput = this._handleInput.bind(this);
+      this.handleInput = this.handleInput.bind(this);
     }
 
-    _handleInput(evt) {
+    handleInput(evt) {
       this.setState({
         text: evt.target.value,
       });
@@ -24,12 +28,10 @@ const withTextInput = (Component) => {
       return <Component
         {...this.props}
         text={text}
-        onTextInput={this._handleInput}
+        onTextInput={this.handleInput}
       />;
     }
   }
-
-  WithTextInput.propTypes = {};
 
   return WithTextInput;
 };

@@ -1,17 +1,14 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import React, {Fragment, ReactNode} from 'react';
 
-const Tab = (props) => {
+interface Props {
+  children: ReactNode | ReactNode[],
+  title?: string,
+}
+
+const Tab = (props: Props) => {
   const {children} = props;
 
   return <Fragment>{children}</Fragment>;
-};
-
-Tab.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired
 };
 
 export default Tab;

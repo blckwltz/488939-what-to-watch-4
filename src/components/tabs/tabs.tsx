@@ -1,7 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {ReactElement} from 'react';
 
-const Tabs = (props) => {
+interface Props {
+  children: ReactElement[],
+  activeItem: number,
+  onActiveItemChange: (number) => void,
+}
+
+const Tabs = (props: Props) => {
   const {children, activeItem, onActiveItemChange} = props;
 
   return <div className="movie-card__desc">
@@ -21,18 +26,9 @@ const Tabs = (props) => {
     {children.map((child, index) => {
       const {children: content} = child.props;
 
-      return index === activeItem ? content : null;
+      return activeItem === index ? content : null;
     })}
   </div>;
-};
-
-Tabs.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  activeItem: PropTypes.number.isRequired,
-  onActiveItemChange: PropTypes.func.isRequired,
 };
 
 export default Tabs;

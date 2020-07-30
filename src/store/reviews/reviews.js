@@ -1,6 +1,6 @@
-import {URL, Status} from '../../utils/const.js';
-import {extend} from '../../utils/utils.js';
-import {createReviewsList} from '../../api/adapters/reviews.js';
+import {URL, Status} from '../../utils/const';
+import {extend} from '../../utils/utils';
+import {createReviewsList} from '../../api/adapters/reviews';
 
 const initialState = {
   reviews: [],

@@ -1,6 +1,6 @@
-import {URL, Status, FilterSettings, MAX_MOVIES_AMOUNT} from '../../utils/const.js';
-import {extend} from '../../utils/utils.js';
-import {createMovie, createMoviesList} from '../../api/adapters/movies.js';
+import {URL, Status, FilterSettings, MAX_MOVIES_AMOUNT} from '../../utils/const';
+import {extend} from '../../utils/utils';
+import {createMovie, createMoviesList} from '../../api/adapters/movies';
 
 const initialState = {
   featuredMovie: {},

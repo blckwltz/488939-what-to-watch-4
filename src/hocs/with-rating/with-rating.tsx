@@ -1,7 +1,11 @@
 import React, {PureComponent} from 'react';
 
+interface State {
+  rating: string,
+}
+
 const withRating = (Component) => {
-  class WithRating extends PureComponent {
+  class WithRating extends PureComponent<{}, State> {
     constructor(props) {
       super(props);
 
@@ -9,10 +13,10 @@ const withRating = (Component) => {
         rating: `0`,
       };
 
-      this._handleRatingChange = this._handleRatingChange.bind(this);
+      this.handleRatingChange = this.handleRatingChange.bind(this);
     }
 
-    _handleRatingChange(evt) {
+    handleRatingChange(evt) {
       this.setState({
         rating: evt.target.value,
       });
@@ -24,12 +28,10 @@ const withRating = (Component) => {
       return <Component
         {...this.props}
         rating={rating}
-        onRatingChange={this._handleRatingChange}
+        onRatingChange={this.handleRatingChange}
       />;
     }
   }
-
-  WithRating.propTypes = {};
 
   return WithRating;
 };

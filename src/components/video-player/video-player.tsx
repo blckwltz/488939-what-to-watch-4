@@ -1,8 +1,21 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {getTimeString} from '../../utils/utils.js';
+import React, {PureComponent, ReactNode} from 'react';
+import {Movie} from '../../types/movie';
+import {getTimeString} from '../../utils/utils';
 
-class VideoPlayer extends PureComponent {
+interface Props {
+  history: {
+    goBack: () => void,
+  },
+  children: ReactNode | ReactNode[],
+  movie: Movie,
+  duration: number,
+  progress: number,
+  isPlaying: boolean,
+  onPlaybackStatusChange: () => void,
+  onFullScreenRequest: () => void,
+}
+
+class VideoPlayer extends PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -58,23 +71,5 @@ class VideoPlayer extends PureComponent {
     </div>;
   }
 }
-
-VideoPlayer.propTypes = {
-  history: PropTypes.shape({
-    goBack: PropTypes.func.isRequired,
-  }),
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-  movie: PropTypes.shape({
-    title: PropTypes.string,
-  }),
-  duration: PropTypes.number,
-  progress: PropTypes.number,
-  isPlaying: PropTypes.bool,
-  onPlaybackStatusChange: PropTypes.func,
-  onFullScreenRequest: PropTypes.func,
-};
 
 export default VideoPlayer;

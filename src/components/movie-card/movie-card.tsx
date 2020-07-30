@@ -1,16 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../routing/route.js';
-import {getFeaturedMovie} from '../../store/movies/selectors.js';
-import withStatus from '../../hocs/with-status/with-status.js';
-import UserBlock from '../user-block/user-block.js';
-import FavoriteButton from '../favorite-button/favorite-button.tsx';
+import {Movie} from '../../types/movie';
+import {AppRoute} from '../../routing/route';
+import {getFeaturedMovie} from '../../store/movies/selectors';
+import withStatus from '../../hocs/with-status/with-status';
+import UserBlock from '../user-block/user-block';
+import FavoriteButton from '../favorite-button/favorite-button';
+
+interface Props {
+  movie: Movie,
+}
 
 const FavoriteButtonWrapped = withStatus(FavoriteButton);
 
-const MovieCard = (props) => {
+const MovieCard = (props: Props) => {
   const {movie} = props;
   const {id, isFavorite, title, genre, releaseDate, cover, backgroundImage, backgroundColor} = movie;
 
@@ -60,19 +64,6 @@ const MovieCard = (props) => {
       </div>
     </div>
   </section>;
-};
-
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    title: PropTypes.string,
-    genre: PropTypes.string,
-    releaseDate: PropTypes.number,
-    cover: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

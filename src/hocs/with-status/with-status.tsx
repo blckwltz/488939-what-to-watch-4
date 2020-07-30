@@ -1,8 +1,19 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import React, {PureComponent, ComponentProps} from 'react';
+import {Subtract} from 'utility-types';
+
+interface InjectingProps {
+  isFavorite: boolean,
+}
+
+interface State {
+  isFavorite: boolean,
+}
 
 const withStatus = (Component) => {
-  class WithStatus extends PureComponent {
+  type P = ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithStatus extends PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -10,7 +21,7 @@ const withStatus = (Component) => {
         isFavorite: this.props.isFavorite,
       };
 
-      this._handleStatusChange = this._handleStatusChange.bind(this);
+      this.handleStatusChange = this.handleStatusChange.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -24,7 +35,7 @@ const withStatus = (Component) => {
       }
     }
 
-    _handleStatusChange() {
+    handleStatusChange() {
       const {isFavorite} = this.state;
 
       this.setState({isFavorite: !isFavorite});
@@ -36,14 +47,10 @@ const withStatus = (Component) => {
       return <Component
         {...this.props}
         isFavorite={isFavorite}
-        onStatusChange={this._handleStatusChange}
+        onStatusChange={this.handleStatusChange}
       />;
     }
   }
-
-  WithStatus.propTypes = {
-    isFavorite: PropTypes.bool,
-  };
 
   return WithStatus;
 };

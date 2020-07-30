@@ -1,16 +1,22 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getActiveGenre, getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors.js';
-import withActiveGenre from '../../hocs/with-active-genre/with-active-genre.js';
-import MovieCard from '../movie-card/movie-card.js';
-import GenresList from '../genres-list/genres-list.tsx';
-import MoviesList from '../movies-list/movies-list.js';
-import ShowMoreButton from '../show-more-button/show-more-button.js';
+import {Movie} from '../../types/movie';
+import {getActiveGenre, getShownMoviesAmount, getFilteredList} from '../../store/movies/selectors';
+import withActiveGenre from '../../hocs/with-active-genre/with-active-genre';
+import MovieCard from '../movie-card/movie-card';
+import GenresList from '../genres-list/genres-list';
+import MoviesList from '../movies-list/movies-list';
+import ShowMoreButton from '../show-more-button/show-more-button';
+
+interface Props {
+  moviesList: Movie[],
+  activeGenre: string,
+  shownMoviesAmount: number,
+}
 
 const GenresListWrapped = withActiveGenre(GenresList);
 
-const Main = (props) => {
+const Main = (props: Props) => {
   const {moviesList, activeGenre, shownMoviesAmount} = props;
 
   return <Fragment>
@@ -44,17 +50,6 @@ const Main = (props) => {
       </footer>
     </div>
   </Fragment>;
-};
-
-Main.propTypes = {
-  moviesList: PropTypes.arrayOf(
-      PropTypes.shape({
-        poster: PropTypes.string.isRequired,
-        previewSrc: PropTypes.string.isRequired,
-      })
-  ),
-  activeGenre: PropTypes.string,
-  shownMoviesAmount: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({

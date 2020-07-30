@@ -1,10 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {ReactNode} from 'react';
 import {Link} from 'react-router-dom';
-import {PLAYBACK_DELAY} from '../../utils/const.js';
-import {AppRoute} from '../../routing/route.js';
+import {Movie} from '../../types/movie';
+import {PLAYBACK_DELAY} from '../../utils/const';
+import {AppRoute} from '../../routing/route';
 
-const MovieCardSmall = (props) => {
+interface Props {
+  movie: Movie,
+  children: ReactNode | ReactNode[],
+  activeItem: boolean,
+  onActiveItemChange: (boolean) => void,
+  onPlaybackStatusChange: () => void,
+}
+
+const MovieCardSmall = (props: Props) => {
   const {movie, children, activeItem, onActiveItemChange, onPlaybackStatusChange} = props;
   const {id, title, poster} = movie;
   let timeout;
@@ -25,21 +33,6 @@ const MovieCardSmall = (props) => {
       <Link to={`${AppRoute.MOVIE}/${id}`} className="small-movie-card__link">{title}</Link>
     </h3>
   </article>;
-};
-
-MovieCardSmall.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-  }).isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-  activeItem: PropTypes.bool,
-  onActiveItemChange: PropTypes.func,
-  onPlaybackStatusChange: PropTypes.func,
 };
 
 export default MovieCardSmall;

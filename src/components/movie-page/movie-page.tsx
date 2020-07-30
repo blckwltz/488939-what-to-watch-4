@@ -1,25 +1,35 @@
 import React, {PureComponent, Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Operation as ReviewsOperation} from '../../store/reviews/reviews.js';
-import {getMoviesList} from '../../store/movies/selectors.js';
-import {getReviews} from '../../store/reviews/selectors.js';
-import {MAX_SIMILAR_MOVIES_AMOUNT, TabNames} from '../../utils/const.js';
-import {getRatingLevel, formatDate, formatTime} from '../../utils/utils.js';
-import {AppRoute} from '../../routing/route.js';
-import withStatus from '../../hocs/with-status/with-status.js';
-import withActiveItem from '../../hocs/with-active-item/with-active-item.js';
-import FavoriteButton from '../favorite-button/favorite-button.tsx';
-import MoviesList from '../movies-list/movies-list.js';
-import UserBlock from '../user-block/user-block.js';
-import Tabs from '../tabs/tabs.js';
-import Tab from '../tab/tab.js';
+import {Movie} from '../../types/movie';
+import {Review} from '../../types/review';
+import {Match} from '../../types/match';
+import {Operation as ReviewsOperation} from '../../store/reviews/reviews';
+import {getMoviesList} from '../../store/movies/selectors';
+import {getReviews} from '../../store/reviews/selectors';
+import {MAX_SIMILAR_MOVIES_AMOUNT, TabNames} from '../../utils/const';
+import {getRatingLevel, formatDate, formatTime} from '../../utils/utils';
+import {AppRoute} from '../../routing/route';
+import withStatus from '../../hocs/with-status/with-status';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import FavoriteButton from '../favorite-button/favorite-button';
+import MoviesList from '../movies-list/movies-list';
+import UserBlock from '../user-block/user-block';
+import Tabs from '../tabs/tabs';
+import Tab from '../tab/tab';
+
+interface Props {
+  match: Match,
+  moviesList: Movie[],
+  movie: Movie,
+  reviews: Review[],
+  onLoad: (number) => void,
+}
 
 const FavoriteButtonWrapped = withStatus(FavoriteButton);
 const TabsWrapped = withActiveItem(Tabs);
 
-class MoviePage extends PureComponent {
+class MoviePage extends PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -211,51 +221,6 @@ class MoviePage extends PureComponent {
     </Fragment>;
   }
 }
-
-MoviePage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
-  moviesList: PropTypes.arrayOf(
-      PropTypes.shape({
-        poster: PropTypes.string.isRequired,
-        previewSrc: PropTypes.string.isRequired,
-      })
-  ),
-  movie: PropTypes.shape({
-    isFavorite: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    rating: PropTypes.shape({
-      score: PropTypes.number.isRequired,
-      count: PropTypes.number.isRequired,
-    }).isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    cast: PropTypes.arrayOf(
-        PropTypes.string
-    ),
-  }),
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        author: PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          name: PropTypes.string.isRequired,
-        }),
-        text: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-      })
-  ),
-  onLoad: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => {
   return {

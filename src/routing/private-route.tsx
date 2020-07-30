@@ -1,11 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {ReactElement} from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
-import {getAuthorizationCheck, getAuthorization} from '../store/user/selectors.js';
-import {AppRoute} from './route.js';
+import {getAuthorizationCheck, getAuthorization} from '../store/user/selectors';
+import {AppRoute} from './route';
 
-const PrivateRoute = (props) => {
+interface Props {
+  isAuthorizationChecked: boolean,
+  isAuthorized: boolean,
+  path: string,
+  exact: boolean,
+  render: () => ReactElement,
+  component: ReactElement,
+}
+
+const PrivateRoute = (props: Props) => {
   const {isAuthorizationChecked, isAuthorized, path, exact, render, component} = props;
 
   if (!isAuthorizationChecked) {
@@ -17,15 +25,6 @@ const PrivateRoute = (props) => {
   }
 
   return <Redirect to={AppRoute.LOGIN}/>;
-};
-
-PrivateRoute.propTypes = {
-  isAuthorizationChecked: PropTypes.bool,
-  isAuthorized: PropTypes.bool,
-  path: PropTypes.string.isRequired,
-  exact: PropTypes.bool,
-  render: PropTypes.func,
-  component: PropTypes.elementType,
 };
 
 const mapStateToProps = (state) => ({

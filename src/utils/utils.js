@@ -1,4 +1,4 @@
-import {FilterSettings, Review, RatingChart} from './const.js';
+import {FilterSettings, Review, RatingChart} from './const';
 
 const isValueInRange = (value, min, max) => {
   return min <= value && value < max;

@@ -3,10 +3,10 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
-import {featuredMovie, moviesList} from '../../__test-mocks__/movies.js';
-import {reviews} from '../../__test-mocks__/reviews.js';
-import {authorizationStatus} from '../../__test-mocks__/user.js';
-import NameSpace from '../../store/name-space.js';
+import {featuredMovie, moviesList} from '../../__test-mocks__/movies';
+import {reviews} from '../../__test-mocks__/reviews';
+import {authorizationStatus} from '../../__test-mocks__/user';
+import NameSpace from '../../store/name-space';
 import {MoviePage} from './movie-page';
 
 const mockStore = configureStore([]);

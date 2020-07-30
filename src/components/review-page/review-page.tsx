@@ -1,15 +1,30 @@
-import React, {Fragment, PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import React, {Fragment, PureComponent, ChangeEvent} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {REVIEW_RATINGS, Status} from '../../utils/const.js';
-import history from '../../routing/history.js';
-import {AppRoute} from '../../routing/route.js';
-import {Operation as ReviewsOperation} from '../../store/reviews/reviews.js';
-import {getPostStatus, getPublishedStatus} from '../../store/reviews/selectors.js';
-import UserBlock from '../user-block/user-block.js';
+import {Movie} from '../../types/movie';
+import {Match} from '../../types/match';
+import {REVIEW_RATINGS, Status} from '../../utils/const';
+import history from '../../routing/history';
+import {AppRoute} from '../../routing/route';
+import {Operation as ReviewsOperation} from '../../store/reviews/reviews';
+import {getPostStatus, getPublishedStatus} from '../../store/reviews/selectors';
+import UserBlock from '../user-block/user-block';
 
-class ReviewPage extends PureComponent {
+interface Props {
+  match: Match,
+  movie: Movie,
+  rating: string,
+  text: string,
+  isValid: boolean,
+  status: number,
+  isPublished: boolean,
+  onSubmit: ({id, rating, text}: {id: number, rating: string, text: string}) => void,
+  onRatingChange: (evt: ChangeEvent) => void,
+  onTextInput: (evt: ChangeEvent) => void,
+  onValidityCheck: () => void,
+}
+
+class ReviewPage extends PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -119,29 +134,6 @@ class ReviewPage extends PureComponent {
     </section>;
   }
 }
-
-ReviewPage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-  }),
-  rating: PropTypes.string,
-  text: PropTypes.string,
-  isValid: PropTypes.bool,
-  status: PropTypes.number,
-  isPublished: PropTypes.bool,
-  onSubmit: PropTypes.func.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onTextInput: PropTypes.func.isRequired,
-  onValidityCheck: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => {
   return {

@@ -1,11 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {getAuthorization} from '../../store/user/selectors.js';
-import {AppRoute} from '../../routing/route.js';
+import {getAuthorization} from '../../store/user/selectors';
+import {AppRoute} from '../../routing/route';
 
-const UserBlock = (props) => {
+interface Props {
+  isAuthorized: boolean,
+}
+
+const UserBlock = (props: Props) => {
   const {isAuthorized} = props;
 
   return <div className="user-block">
@@ -13,10 +16,6 @@ const UserBlock = (props) => {
       <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63"/>
     </div></Link> : <Link to={AppRoute.LOGIN} className="user-block__link">Sign in</Link>}
   </div>;
-};
-
-UserBlock.propTypes = {
-  isAuthorized: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({

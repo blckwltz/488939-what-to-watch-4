@@ -1,7 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const ErrorPage = (props) => {
+interface Props {
+  status: number,
+}
+
+const ErrorPage = (props: Props) => {
   const {status} = props;
 
   return <div className="user-page">
@@ -35,10 +38,6 @@ const ErrorPage = (props) => {
       </div>
     </footer>
   </div>;
-};
-
-ErrorPage.propTypes = {
-  status: PropTypes.number,
 };
 
 export default ErrorPage;

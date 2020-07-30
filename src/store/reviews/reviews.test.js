@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
-import {createAPI} from '../../api/api.js';
-import {reviews} from '../../__test-mocks__/reviews.js';
-import {createReviewsList} from '../../api/adapters/reviews.js';
+import {createAPI} from '../../api/api';
+import {reviews} from '../../__test-mocks__/reviews';
+import {createReviewsList} from '../../api/adapters/reviews';
 import {reducer, ActionType, Operation} from './reviews';
 
 const api = createAPI(() => {});

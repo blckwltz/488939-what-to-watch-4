@@ -3,9 +3,9 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
-import {Status} from '../../utils/const.js';
-import NameSpace from '../../store/name-space.js';
-import {featuredMovie} from '../../__test-mocks__/movies.js';
+import {Status} from '../../utils/const';
+import NameSpace from '../../store/name-space';
+import {featuredMovie} from '../../__test-mocks__/movies';
 import {ReviewPage} from './review-page';
 
 const mockStore = configureStore([]);

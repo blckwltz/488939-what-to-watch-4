@@ -1,11 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/movies/movies.js';
-import {getMoviesList} from '../../store/movies/selectors.js';
-import {getGenresList} from '../../utils/utils.js';
+import {Movie} from '../../types/movie';
+import {ActionCreator} from '../../store/movies/movies';
+import {getMoviesList} from '../../store/movies/selectors';
+import {getGenresList} from '../../utils/utils';
 
-const GenresList = (props) => {
+interface Props {
+  moviesList: Movie[],
+  activeGenre: string,
+  onActiveGenreChange: (genre: string) => void,
+  onGenreClick: (genre: string) => void,
+}
+
+const GenresList = (props: Props) => {
   const {moviesList, activeGenre, onActiveGenreChange, onGenreClick} = props;
   const genresList = getGenresList(moviesList);
 
@@ -19,17 +26,6 @@ const GenresList = (props) => {
       </li>;
     })}
   </ul>;
-};
-
-GenresList.propTypes = {
-  moviesList: PropTypes.arrayOf(
-      PropTypes.shape({
-        genre: PropTypes.string.isRequired,
-      })
-  ).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onActiveGenreChange: PropTypes.func.isRequired,
-  onGenreClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,8 +1,33 @@
-import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
+import React, {PureComponent, createRef, ComponentProps, RefObject} from 'react';
+import {Subtract} from 'utility-types';
+import {Movie} from '../../types/movie';
+
+interface InjectingProps {
+  isPlaying?: boolean,
+  isMuted: boolean,
+  isPreview: boolean,
+  movie: Movie,
+}
+
+interface State {
+  duration: number,
+  progress: number,
+  isLoading: boolean,
+  isPlaying: boolean,
+  isFullScreen: boolean,
+}
+
+interface VideoElement extends HTMLVideoElement {
+  exitFullscreen: () => Promise<void>,
+}
 
 const withVideo = (Component) => {
-  class WithVideo extends PureComponent {
+  type P = ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithVideo extends PureComponent<T, State> {
+    private readonly _videoRef: RefObject<VideoElement>;
+
     constructor(props) {
       super(props);
 
@@ -16,8 +41,8 @@ const withVideo = (Component) => {
       };
 
       this._handleVideoMount = this._handleVideoMount.bind(this);
-      this._handlePlaybackStatusChange = this._handlePlaybackStatusChange.bind(this);
-      this._handleFullScreenRequest = this._handleFullScreenRequest.bind(this);
+      this.handlePlaybackStatusChange = this.handlePlaybackStatusChange.bind(this);
+      this.handleFullScreenRequest = this.handleFullScreenRequest.bind(this);
     }
 
     componentDidMount() {
@@ -103,7 +128,7 @@ const withVideo = (Component) => {
       };
     }
 
-    _handlePlaybackStatusChange() {
+    handlePlaybackStatusChange() {
       const {isPlaying} = this.state;
 
       this.setState({
@@ -111,7 +136,7 @@ const withVideo = (Component) => {
       });
     }
 
-    _handleFullScreenRequest() {
+    handleFullScreenRequest() {
       const {isFullScreen} = this.state;
       const video = this._videoRef.current;
 
@@ -135,24 +160,13 @@ const withVideo = (Component) => {
         isPlaying={isPlaying}
         duration={duration}
         progress={progress}
-        onPlaybackStatusChange={this._handlePlaybackStatusChange}
-        onFullScreenRequest={this._handleFullScreenRequest}
+        onPlaybackStatusChange={this.handlePlaybackStatusChange}
+        onFullScreenRequest={this.handleFullScreenRequest}
       >
         <video className="player__video" width="280" height="175" ref={this._videoRef}/>
       </Component>;
     }
   }
-
-  WithVideo.propTypes = {
-    isPlaying: PropTypes.bool,
-    isMuted: PropTypes.bool,
-    isPreview: PropTypes.bool,
-    movie: PropTypes.shape({
-      poster: PropTypes.string.isRequired,
-      videoSrc: PropTypes.string.isRequired,
-      previewSrc: PropTypes.string.isRequired,
-    }),
-  };
 
   return WithVideo;
 };

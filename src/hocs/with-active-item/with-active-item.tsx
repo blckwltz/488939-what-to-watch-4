@@ -1,8 +1,17 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+
+type ActiveItem = boolean | number | string;
+
+interface Props {
+  activeItem: ActiveItem,
+}
+
+interface State {
+  activeItem: ActiveItem,
+}
 
 const withActiveItem = (Component) => {
-  class WithActiveItem extends PureComponent {
+  class WithActiveItem extends PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -29,14 +38,6 @@ const withActiveItem = (Component) => {
       />;
     }
   }
-
-  WithActiveItem.propTypes = {
-    activeItem: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-      PropTypes.bool,
-    ]),
-  };
 
   return WithActiveItem;
 };

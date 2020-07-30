@@ -1,14 +1,19 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Operation as UserOperation} from '../../store/user/user.js';
-import {getFavoriteList} from '../../store/user/selectors.js';
-import {AppRoute} from '../../routing/route.js';
-import UserBlock from '../user-block/user-block.js';
-import MoviesList from '../movies-list/movies-list.js';
+import {Movie} from '../../types/movie';
+import {Operation as UserOperation} from '../../store/user/user';
+import {getFavoriteList} from '../../store/user/selectors';
+import {AppRoute} from '../../routing/route';
+import UserBlock from '../user-block/user-block';
+import MoviesList from '../movies-list/movies-list';
 
-class FavoriteList extends PureComponent {
+interface Props {
+  favoriteList: Movie[],
+  onLoad: () => void,
+}
+
+class FavoriteList extends PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -69,11 +74,6 @@ class FavoriteList extends PureComponent {
     </div>;
   }
 }
-
-FavoriteList.propTypes = {
-  favoriteList: PropTypes.array,
-  onLoad: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   favoriteList: getFavoriteList(state),

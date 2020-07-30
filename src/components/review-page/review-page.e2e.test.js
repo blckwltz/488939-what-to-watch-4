@@ -4,10 +4,10 @@ import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
-import {Status} from '../../utils/const.js';
-import {featuredMovie} from '../../__test-mocks__/movies.js';
-import {authorizationStatus} from '../../__test-mocks__/user.js';
-import NameSpace from '../../store/name-space.js';
+import {Status} from '../../utils/const';
+import {featuredMovie} from '../../__test-mocks__/movies';
+import {authorizationStatus} from '../../__test-mocks__/user';
+import NameSpace from '../../store/name-space';
 import {ReviewPage} from './review-page';
 
 configure({

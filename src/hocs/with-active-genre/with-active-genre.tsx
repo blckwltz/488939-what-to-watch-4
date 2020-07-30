@@ -1,9 +1,16 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {FilterSettings} from '../../utils/const.js';
+import {FilterSettings} from '../../utils/const';
+
+interface State {
+  activeGenre: string,
+}
+
+interface Props {
+  genre: string,
+}
 
 const withActiveGenre = (Component) => {
-  class WithActiveGenre extends PureComponent {
+  class WithActiveGenre extends PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -11,10 +18,10 @@ const withActiveGenre = (Component) => {
         activeGenre: this.props.genre || FilterSettings.INITIAL_VALUE,
       };
 
-      this._handleActiveGenreChange = this._handleActiveGenreChange.bind(this);
+      this.handleActiveGenreChange = this.handleActiveGenreChange.bind(this);
     }
 
-    _handleActiveGenreChange(genre) {
+    handleActiveGenreChange(genre) {
       this.setState({
         activeGenre: genre,
       });
@@ -26,14 +33,10 @@ const withActiveGenre = (Component) => {
       return <Component
         {...this.props}
         activeGenre={activeGenre}
-        onActiveGenreChange={this._handleActiveGenreChange}
+        onActiveGenreChange={this.handleActiveGenreChange}
       />;
     }
   }
-
-  WithActiveGenre.propTypes = {
-    genre: PropTypes.string,
-  };
 
   return WithActiveGenre;
 };
