@@ -5,7 +5,6 @@ import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
 import {featuredMovie, moviesList} from '../../__test-mocks__/movies';
 import {reviews} from '../../__test-mocks__/reviews';
-import {authorizationStatus} from '../../__test-mocks__/user';
 import {noop} from '../../__test-mocks__/noop';
 import NameSpace from '../../store/name-space';
 import {MoviePage} from './movie-page';
@@ -29,7 +28,7 @@ it(`Should render MoviePage component correctly`, () => {
       reviews
     },
     [NameSpace.USER]: {
-      authorizationStatus,
+      authorizationStatus: 200,
     }
   });
   const tree = renderer

@@ -6,7 +6,6 @@ import configureStore from 'redux-mock-store';
 import {MemoryRouter} from 'react-router-dom';
 import {Status} from '../../utils/const';
 import {featuredMovie} from '../../__test-mocks__/movies';
-import {authorizationStatus} from '../../__test-mocks__/user';
 import {noop} from '../../__test-mocks__/noop';
 import NameSpace from '../../store/name-space';
 import {ReviewPage} from './review-page';
@@ -26,7 +25,7 @@ const onSubmit = jest.fn();
 it(`Should pass correct data on form submit`, () => {
   const store = mockStore({
     [NameSpace.USER]: {
-      authorizationStatus,
+      authorizationStatus: 200,
     },
     [NameSpace.REVIEWS]: {
       postStatus: 0,

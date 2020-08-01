@@ -1,4 +1,4 @@
-interface Review {
+export interface Review {
   id: number;
   author: {
     id: number;
@@ -8,5 +8,3 @@ interface Review {
   date: string;
   rating: number;
 }
-
-export {Review};

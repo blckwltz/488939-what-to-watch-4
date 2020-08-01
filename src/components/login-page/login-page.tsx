@@ -27,7 +27,15 @@ class LoginPage extends PureComponent<Props> {
     this._handleFocus = this._handleFocus.bind(this);
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
+    const {isAuthorized} = this.props;
+
+    if (isAuthorized) {
+      history.push(AppRoute.ROOT);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
     const {isAuthorized} = this.props;
 
     if (isAuthorized) {

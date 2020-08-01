@@ -1,4 +1,4 @@
-interface Movie {
+export interface Movie {
   id: number;
   isFavorite: boolean;
   title: string;
@@ -19,5 +19,3 @@ interface Movie {
   director: string;
   cast: string[];
 }
-
-export {Movie};
