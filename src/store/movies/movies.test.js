@@ -1,11 +1,12 @@
 import MockAdapter from 'axios-mock-adapter';
-import {FilterSettings, MAX_MOVIES_AMOUNT} from '../../utils/const.js';
-import {createAPI} from '../../api/api.js';
-import {featuredMovie, moviesList} from '../../__test-mocks__/movies.js';
-import {createMovie, createMoviesList} from '../../api/adapters/movies.js';
+import {FilterSettings, MAX_MOVIES_AMOUNT} from '../../utils/const';
+import {createAPI} from '../../api/api';
+import {featuredMovie, moviesList} from '../../__test-mocks__/movies.ts';
+import {noop} from '../../__test-mocks__/noop';
+import {createMovie, createMoviesList} from '../../api/adapters/movies';
 import {reducer, ActionType, Operation} from './movies';
 
-const api = createAPI(() => {});
+const api = createAPI(noop, noop, noop, noop, noop);
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {})).toEqual({
@@ -63,8 +64,35 @@ it(`Reducer should update shown movies amount to a given value`, () => {
   });
 });
 
+it(`Reducer should update load status to a given value`, () => {
+  expect(reducer({
+    status: 200,
+  }, {
+    type: ActionType.UPDATE_STATUS,
+    payload: 500,
+  })).toEqual({
+    status: 500,
+  });
+});
+
+it(`Reducer should update movie status`, () => {
+  expect(reducer({
+    featuredMovie: {id: 1, isFavorite: false},
+    moviesList: [{id: 1, isFavorite: false}],
+  }, {
+    type: ActionType.UPDATE_MOVIE_STATUS,
+    payload: {
+      featuredMovie: {id: 1, isFavorite: true},
+      moviesList: [{id: 1, isFavorite: true}],
+    },
+  })).toEqual({
+    featuredMovie: {id: 1, isFavorite: true},
+    moviesList: [{id: 1, isFavorite: true}],
+  });
+});
+
 describe(`Operation works correctly`, () => {
-  it(`Should make a correct API call to /films/promo`, function () {
+  it(`Should make a correct API call to /films/promo`, () => {
     const apiMock = new MockAdapter(api);
     const responseMock = {fake: true};
     const dispatch = jest.fn();
@@ -84,7 +112,7 @@ describe(`Operation works correctly`, () => {
       });
   });
 
-  it(`Should make a correct API call to /films`, function () {
+  it(`Should make a correct API call to /films`, () => {
     const apiMock = new MockAdapter(api);
     const responseMock = [{fake: true}];
     const dispatch = jest.fn();

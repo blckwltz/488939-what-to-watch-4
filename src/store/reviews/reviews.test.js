@@ -1,10 +1,11 @@
 import MockAdapter from 'axios-mock-adapter';
-import {createAPI} from '../../api/api.js';
-import {reviews} from '../../__test-mocks__/reviews.js';
-import {createReviewsList} from '../../api/adapters/reviews.js';
+import {createAPI} from '../../api/api';
+import {reviews} from '../../__test-mocks__/reviews.ts';
+import {noop} from '../../__test-mocks__/noop';
+import {createReviewsList} from '../../api/adapters/reviews';
 import {reducer, ActionType, Operation} from './reviews';
 
-const api = createAPI(() => {});
+const api = createAPI(noop, noop, noop, noop, noop);
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {})).toEqual({
@@ -25,8 +26,21 @@ it(`Reducer should update reviews`, () => {
   });
 });
 
+it(`Reducer should update status to a given value and change published flag`, () => {
+  expect(reducer({
+    postStatus: 0,
+    isPublished: false,
+  }, {
+    type: ActionType.UPDATE_POST_STATUS,
+    payload: 200,
+  })).toEqual({
+    postStatus: 200,
+    isPublished: true,
+  });
+});
+
 describe(`Operation works correctly`, () => {
-  it(`Should make a correct API call to /comments/:filmId`, function () {
+  it(`Should make a correct API call to /comments/:filmId`, () => {
     const apiMock = new MockAdapter(api);
     const responseMock = [{fake: true}];
     const dispatch = jest.fn();
