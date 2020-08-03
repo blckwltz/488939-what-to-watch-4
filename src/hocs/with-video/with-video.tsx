@@ -111,7 +111,6 @@ const withVideo = (Component) => {
       };
 
       video.onpause = () => {
-        video.load();
         this.setState({
           isPlaying: false,
         });
