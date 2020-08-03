@@ -35,7 +35,7 @@ class LoginPage extends PureComponent<Props> {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     const {isAuthorized} = this.props;
 
     if (isAuthorized) {

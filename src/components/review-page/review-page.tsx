@@ -6,7 +6,7 @@ import {Match} from '../../types/match';
 import {REVIEW_RATINGS, Status} from '../../utils/const';
 import history from '../../routing/history';
 import {AppRoute} from '../../routing/route';
-import {Operation as ReviewsOperation} from '../../store/reviews/reviews';
+import {ActionCreator as ReviewsAction, Operation as ReviewsOperation} from '../../store/reviews/reviews';
 import {getPostStatus, getPublishedStatus} from '../../store/reviews/selectors';
 import UserBlock from '../user-block/user-block';
 
@@ -15,13 +15,14 @@ interface Props {
   movie: Movie;
   rating: string;
   text: string;
-  isValid: boolean;
+  isTextValid: boolean;
+  isRatingValid: boolean;
   status: number;
   isPublished: boolean;
+  onPageLoad: () => void;
   onSubmit: ({id, rating, text}: {id: number; rating: string; text: string}) => void;
   onRatingChange: (evt: ChangeEvent) => void;
   onTextInput: (evt: ChangeEvent) => void;
-  onValidityCheck: () => void;
 }
 
 class ReviewPage extends PureComponent<Props> {
@@ -29,6 +30,12 @@ class ReviewPage extends PureComponent<Props> {
     super(props);
 
     this._handleSubmit = this._handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const {onPageLoad} = this.props;
+
+    onPageLoad();
   }
 
   componentDidUpdate(prevProps) {
@@ -55,7 +62,7 @@ class ReviewPage extends PureComponent<Props> {
   }
 
   render() {
-    const {match, movie, status, isValid, onRatingChange, onTextInput, onValidityCheck} = this.props;
+    const {match, movie, status, isTextValid, isRatingValid, onRatingChange, onTextInput} = this.props;
     const id = Number(match.params.id);
 
     if (!movie) {
@@ -110,7 +117,6 @@ class ReviewPage extends PureComponent<Props> {
                 return <Fragment key={rating}>
                   <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating} onChange={(evt) => {
                     onRatingChange(evt);
-                    onValidityCheck();
                   }}/>
                   <label className="rating__label" htmlFor={`star-${rating}`}>{`Rating ${rating}`}</label>
                 </Fragment>;
@@ -122,10 +128,9 @@ class ReviewPage extends PureComponent<Props> {
             <textarea className="add-review__textarea" name="review-text" id="review-text"
               placeholder="Review text" onChange={(evt) => {
                 onTextInput(evt);
-                onValidityCheck();
               }}/>
             <div className="add-review__submit">
-              <button className="add-review__btn" type="submit" disabled={!isValid}>Post</button>
+              <button className="add-review__btn" type="submit" disabled={!(isTextValid && isRatingValid)}>Post</button>
             </div>
           </div>
         </form>
@@ -143,9 +148,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  onPageLoad() {
+    dispatch(ReviewsAction.resetPublishedStatus());
+  },
   onSubmit(reviewData) {
     dispatch(ReviewsOperation.postReview(reviewData));
-  }
+  },
 });
 
 export {ReviewPage};

@@ -17,7 +17,6 @@ it(`Should render VideoPlayer component correctly`, () => {
           progress={0}
           duration={500}
           onPlaybackStatusChange={noop}
-          onFullScreenRequest={noop}
         >
           {children}
         </VideoPlayer>

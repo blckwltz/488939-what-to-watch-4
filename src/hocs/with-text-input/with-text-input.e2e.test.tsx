@@ -10,12 +10,14 @@ configure({
 const MockComponent = () => <div/>;
 const MockComponentWrapped = withTextInput(MockComponent);
 
-it(`Should change text`, () => {
+it(`Should change and validate text`, () => {
   const wrapper = shallow(
       <MockComponentWrapped/>
   );
 
   expect(wrapper.props().text).toEqual(``);
-  wrapper.props().onTextInput({target: {value: `Some text`}});
-  expect(wrapper.props().text).toEqual(`Some text`);
+  expect(wrapper.props().isTextValid).toEqual(false);
+  wrapper.props().onTextInput({target: {value: `This is a review that is at least 50 characters long`}});
+  expect(wrapper.props().text).toEqual(`This is a review that is at least 50 characters long`);
+  expect(wrapper.props().isTextValid).toEqual(true);
 });

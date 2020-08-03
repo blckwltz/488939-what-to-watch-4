@@ -1,7 +1,9 @@
 import React, {PureComponent} from 'react';
+import {validateReviewText} from '../../utils/utils';
 
 interface State {
   text: string;
+  isTextValid: boolean;
 }
 
 const withTextInput = (Component) => {
@@ -11,23 +13,28 @@ const withTextInput = (Component) => {
 
       this.state = {
         text: ``,
+        isTextValid: false,
       };
 
       this.handleInput = this.handleInput.bind(this);
     }
 
     handleInput(evt) {
+      const text = evt.target.value;
+
       this.setState({
-        text: evt.target.value,
+        text,
+        isTextValid: validateReviewText(text),
       });
     }
 
     render() {
-      const {text} = this.state;
+      const {text, isTextValid} = this.state;
 
       return <Component
         {...this.props}
         text={text}
+        isTextValid={isTextValid}
         onTextInput={this.handleInput}
       />;
     }

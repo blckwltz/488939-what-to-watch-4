@@ -22,15 +22,19 @@ const getRatingLevel = (score) => {
   return level;
 };
 
-const validateReview = (rating, text) => {
-  return (Number(rating) >= Review.MIN_RATING) && (text.length >= Review.TEXT.MIN_LENGTH && text.length <= Review.TEXT.MAX_LENGTH);
+const validateReviewRating = (rating) => {
+  return Number(rating) >= Review.MIN_RATING;
+};
+
+const validateReviewText = (text) => {
+  return text.length >= Review.TEXT.MIN_LENGTH && text.length <= Review.TEXT.MAX_LENGTH;
 };
 
 const getGenresList = (list) => {
   const genresList = list.map((item) => {
     return item.genre;
   });
-  const uniqueGenresList = Array.from(new Set(genresList.sort())).slice(0, FilterSettings.MAX_AMOUNT);
+  const uniqueGenresList = [...new Set(genresList.sort())].slice(0, FilterSettings.MAX_AMOUNT);
 
   return [FilterSettings.INITIAL_VALUE, ...uniqueGenresList];
 };
@@ -63,4 +67,4 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export {findItemById, getRatingLevel, validateReview, getGenresList, formatDate, formatTime, getTimeString, extend};
+export {findItemById, getRatingLevel, validateReviewRating, validateReviewText, getGenresList, formatDate, formatTime, getTimeString, extend};

@@ -31,13 +31,14 @@ it(`Should render ReviewPage component correctly`, () => {
               movie={featuredMovie}
               rating={`5`}
               text={``}
-              isValid={false}
+              isTextValid={false}
+              isRatingValid={false}
               status={Status.OK}
               isPublished={true}
+              onPageLoad={noop}
               onSubmit={noop}
               onRatingChange={noop}
               onTextInput={noop}
-              onValidityCheck={noop}
             />
           </MemoryRouter>
         </Provider>

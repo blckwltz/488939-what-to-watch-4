@@ -467,6 +467,7 @@ main {
 
 .add-review__btn:disabled {
   opacity: 0.2;
+  cursor: initial;
 }
 
 .add-review__btn:hover {
@@ -1133,6 +1134,11 @@ main {
     right: 0;
     background: rgba(0,0,0,0.40);
   } */
+}
+
+.player:fullscreen .player__controls,
+.player:fullscreen .player__exit {
+  display: none;
 }
 
 .player__video {

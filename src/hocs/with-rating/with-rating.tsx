@@ -1,7 +1,9 @@
 import React, {PureComponent} from 'react';
+import {validateReviewRating} from '../../utils/utils';
 
 interface State {
   rating: string;
+  isRatingValid: boolean;
 }
 
 const withRating = (Component) => {
@@ -11,23 +13,28 @@ const withRating = (Component) => {
 
       this.state = {
         rating: `0`,
+        isRatingValid: false,
       };
 
       this.handleRatingChange = this.handleRatingChange.bind(this);
     }
 
     handleRatingChange(evt) {
+      const rating = evt.target.value;
+
       this.setState({
-        rating: evt.target.value,
+        rating,
+        isRatingValid: validateReviewRating(rating),
       });
     }
 
     render() {
-      const {rating} = this.state;
+      const {rating, isRatingValid} = this.state;
 
       return <Component
         {...this.props}
         rating={rating}
+        isRatingValid={isRatingValid}
         onRatingChange={this.handleRatingChange}
       />;
     }

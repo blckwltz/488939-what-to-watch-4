@@ -11,6 +11,7 @@ const initialState = {
 const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   UPDATE_POST_STATUS: `UPDATE_POST_STATUS`,
+  RESET_PUBLISHED_STATUS: `RESET_PUBLISHED_STATUS`,
 };
 
 const ActionCreator = {
@@ -24,6 +25,11 @@ const ActionCreator = {
     return {
       type: ActionType.UPDATE_POST_STATUS,
       payload: status,
+    };
+  },
+  resetPublishedStatus: () => {
+    return {
+      type: ActionType.RESET_PUBLISHED_STATUS,
     };
   },
 };
@@ -56,6 +62,11 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         postStatus: action.payload,
         isPublished: true,
+      });
+    case ActionType.RESET_PUBLISHED_STATUS:
+      return extend(state, {
+        postStatus: 0,
+        isPublished: false,
       });
   }
 

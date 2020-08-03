@@ -39,6 +39,18 @@ it(`Reducer should update status to a given value and change published flag`, ()
   });
 });
 
+it(`Reducer should reset published flag`, () => {
+  expect(reducer({
+    postStatus: 200,
+    isPublished: true,
+  }, {
+    type: ActionType.RESET_PUBLISHED_STATUS,
+  })).toEqual({
+    postStatus: 0,
+    isPublished: false,
+  });
+});
+
 describe(`Operation works correctly`, () => {
   it(`Should make a correct API call to /comments/:filmId`, () => {
     const apiMock = new MockAdapter(api);

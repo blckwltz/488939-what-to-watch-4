@@ -1,4 +1,4 @@
-import React, {PureComponent, ReactNode} from 'react';
+import React, {PureComponent, createRef, ReactNode, RefObject} from 'react';
 import {Movie} from '../../types/movie';
 import {getTimeString} from '../../utils/utils';
 
@@ -12,14 +12,23 @@ interface Props {
   progress: number;
   isPlaying: boolean;
   onPlaybackStatusChange: () => void;
-  onFullScreenRequest: () => void;
 }
 
 class VideoPlayer extends PureComponent<Props> {
+  private readonly _playerRef: RefObject<HTMLDivElement>;
+
   constructor(props) {
     super(props);
 
+    this._playerRef = createRef();
+    this._handleFullScreenRequest = this._handleFullScreenRequest.bind(this);
     this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
+  }
+
+  _handleFullScreenRequest() {
+    const player = this._playerRef.current;
+
+    player.requestFullscreen();
   }
 
   _handleExitButtonClick() {
@@ -29,7 +38,7 @@ class VideoPlayer extends PureComponent<Props> {
   }
 
   render() {
-    const {children, movie, isPlaying, duration, progress, onPlaybackStatusChange, onFullScreenRequest} = this.props;
+    const {children, movie, isPlaying, duration, progress, onPlaybackStatusChange} = this.props;
 
     if (!movie) {
       return null;
@@ -37,7 +46,7 @@ class VideoPlayer extends PureComponent<Props> {
 
     const {title} = movie;
 
-    return <div className="player">
+    return <div className="player" ref={this._playerRef}>
       {children}
 
       <button type="button" className="player__exit" onClick={this._handleExitButtonClick}>Exit</button>
@@ -48,7 +57,7 @@ class VideoPlayer extends PureComponent<Props> {
             <progress className="player__progress" value={progress} max={duration}/>
             <div className="player__toggler" style={{left: `${(progress / duration) * 100}%`}}>Toggler</div>
           </div>
-          <div className="player__time-value">{getTimeString(duration)}</div>
+          <div className="player__time-value">{getTimeString(duration - progress)}</div>
         </div>
 
         <div className="player__controls-row">
@@ -60,7 +69,7 @@ class VideoPlayer extends PureComponent<Props> {
           </button>
           <div className="player__name">{title}</div>
 
-          <button type="button" className="player__full-screen" onClick={onFullScreenRequest}>
+          <button type="button" className="player__full-screen" onClick={this._handleFullScreenRequest}>
             <svg viewBox="0 0 27 27" width="27" height="27">
               <use xlinkHref="#full-screen"/>
             </svg>

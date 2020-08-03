@@ -14,11 +14,6 @@ interface State {
   progress: number;
   isLoading: boolean;
   isPlaying: boolean;
-  isFullScreen: boolean;
-}
-
-interface VideoElement extends HTMLVideoElement {
-  exitFullscreen: () => Promise<void>;
 }
 
 const withVideo = (Component) => {
@@ -26,7 +21,7 @@ const withVideo = (Component) => {
   type T = Subtract<P, InjectingProps>;
 
   class WithVideo extends PureComponent<T, State> {
-    private readonly _videoRef: RefObject<VideoElement>;
+    private readonly _videoRef: RefObject<HTMLVideoElement>;
 
     constructor(props) {
       super(props);
@@ -37,12 +32,10 @@ const withVideo = (Component) => {
         progress: 0,
         isLoading: true,
         isPlaying: props.isPlaying || false,
-        isFullScreen: false,
       };
 
       this._handleVideoMount = this._handleVideoMount.bind(this);
       this.handlePlaybackStatusChange = this.handlePlaybackStatusChange.bind(this);
-      this.handleFullScreenRequest = this.handleFullScreenRequest.bind(this);
     }
 
     componentDidMount() {
@@ -67,7 +60,10 @@ const withVideo = (Component) => {
       }
 
       if (isPlaying) {
-        video.play();
+        video.play()
+          .catch(() => {
+            video.pause();
+          });
         return;
       }
 
@@ -81,11 +77,11 @@ const withVideo = (Component) => {
         return;
       }
 
+      video.src = ``;
       video.oncanplaythrough = null;
       video.onplay = null;
       video.onpause = null;
       video.ontimeupdate = null;
-      video.src = ``;
     }
 
     _handleVideoMount() {
@@ -136,21 +132,6 @@ const withVideo = (Component) => {
       });
     }
 
-    handleFullScreenRequest() {
-      const {isFullScreen} = this.state;
-      const video = this._videoRef.current;
-
-      if (isFullScreen) {
-        video.exitFullscreen();
-      } else {
-        video.requestFullscreen();
-      }
-
-      this.setState({
-        isFullScreen: !isFullScreen,
-      });
-    }
-
     render() {
       const {duration, progress, isLoading, isPlaying} = this.state;
 
@@ -161,7 +142,6 @@ const withVideo = (Component) => {
         duration={duration}
         progress={progress}
         onPlaybackStatusChange={this.handlePlaybackStatusChange}
-        onFullScreenRequest={this.handleFullScreenRequest}
       >
         <video className="player__video" width="280" height="175" ref={this._videoRef}/>
       </Component>;

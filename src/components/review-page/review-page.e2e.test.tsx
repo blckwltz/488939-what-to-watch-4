@@ -39,13 +39,14 @@ it(`Should pass correct data on form submit`, () => {
             movie={featuredMovie}
             rating={`5`}
             text={`This is a review that is at least 50 characters long`}
-            isValid={true}
+            isTextValid={true}
+            isRatingValid={true}
             status={Status.OK}
             isPublished={true}
+            onPageLoad={noop}
             onSubmit={onSubmit}
             onRatingChange={noop}
             onTextInput={noop}
-            onValidityCheck={noop}
           />
         </MemoryRouter>
       </Provider>
