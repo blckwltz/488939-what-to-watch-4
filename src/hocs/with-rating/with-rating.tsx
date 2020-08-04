@@ -1,19 +1,25 @@
-import React, {PureComponent} from 'react';
-import {validateReviewRating} from '../../utils/utils';
+import React, {PureComponent, ComponentProps} from 'react';
+import {Subtract} from 'utility-types';
+import {Review} from '../../utils/const';
+
+interface InjectingProps {
+  rating: string;
+}
 
 interface State {
   rating: string;
-  isRatingValid: boolean;
 }
 
 const withRating = (Component) => {
-  class WithRating extends PureComponent<{}, State> {
+  type P = ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithRating extends PureComponent<T, State> {
     constructor(props) {
       super(props);
 
       this.state = {
-        rating: `0`,
-        isRatingValid: false,
+        rating: props.rating || Review.DEFAULT_RATING,
       };
 
       this.handleRatingChange = this.handleRatingChange.bind(this);
@@ -24,17 +30,15 @@ const withRating = (Component) => {
 
       this.setState({
         rating,
-        isRatingValid: validateReviewRating(rating),
       });
     }
 
     render() {
-      const {rating, isRatingValid} = this.state;
+      const {rating} = this.state;
 
       return <Component
         {...this.props}
         rating={rating}
-        isRatingValid={isRatingValid}
         onRatingChange={this.handleRatingChange}
       />;
     }

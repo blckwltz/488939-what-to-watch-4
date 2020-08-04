@@ -10,14 +10,12 @@ configure({
 const MockComponent = () => <div/>;
 const MockComponentWrapped = withRating(MockComponent);
 
-it(`Should change and validate rating`, () => {
+it(`Should change rating`, () => {
   const wrapper = shallow(
       <MockComponentWrapped/>
   );
 
-  expect(wrapper.props().rating).toEqual(`0`);
-  expect(wrapper.props().isRatingValid).toEqual(false);
+  expect(wrapper.props().rating).toEqual(`3`);
   wrapper.props().onRatingChange({target: {value: `5`}});
   expect(wrapper.props().rating).toEqual(`5`);
-  expect(wrapper.props().isRatingValid).toEqual(true);
 });

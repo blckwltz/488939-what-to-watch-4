@@ -3,7 +3,7 @@ const MAX_MOVIES_AMOUNT = 8;
 const MAX_SIMILAR_MOVIES_AMOUNT = 4;
 const PLAYBACK_DELAY = 1000;
 const TIMEOUT = 5;
-const REVIEW_RATINGS = [1, 2, 3, 4, 5];
+const REVIEW_RATINGS = [`1`, `2`, `3`, `4`, `5`];
 
 const URL = {
   MOVIES: `/films`,
@@ -37,7 +37,7 @@ const FilterSettings = {
 };
 
 const Review = {
-  MIN_RATING: 1,
+  DEFAULT_RATING: `3`,
   TEXT: {
     MIN_LENGTH: 50,
     MAX_LENGTH: 400,

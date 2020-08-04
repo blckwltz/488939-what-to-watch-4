@@ -40,7 +40,6 @@ it(`Should pass correct data on form submit`, () => {
             rating={`5`}
             text={`This is a review that is at least 50 characters long`}
             isTextValid={true}
-            isRatingValid={true}
             status={Status.OK}
             isPublished={true}
             onPageLoad={noop}

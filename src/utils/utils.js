@@ -22,10 +22,6 @@ const getRatingLevel = (score) => {
   return level;
 };
 
-const validateReviewRating = (rating) => {
-  return Number(rating) >= Review.MIN_RATING;
-};
-
 const validateReviewText = (text) => {
   return text.length >= Review.TEXT.MIN_LENGTH && text.length <= Review.TEXT.MAX_LENGTH;
 };
@@ -67,4 +63,4 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export {findItemById, getRatingLevel, validateReviewRating, validateReviewText, getGenresList, formatDate, formatTime, getTimeString, extend};
+export {findItemById, getRatingLevel, validateReviewText, getGenresList, formatDate, formatTime, getTimeString, extend};

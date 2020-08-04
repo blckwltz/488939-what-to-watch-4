@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Movie} from '../../types/movie';
 import {Match} from '../../types/match';
-import {REVIEW_RATINGS, Status} from '../../utils/const';
+import {REVIEW_RATINGS, Review, Status} from '../../utils/const';
 import history from '../../routing/history';
 import {AppRoute} from '../../routing/route';
 import {ActionCreator as ReviewsAction, Operation as ReviewsOperation} from '../../store/reviews/reviews';
@@ -16,7 +16,6 @@ interface Props {
   rating: string;
   text: string;
   isTextValid: boolean;
-  isRatingValid: boolean;
   status: number;
   isPublished: boolean;
   onPageLoad: () => void;
@@ -62,7 +61,7 @@ class ReviewPage extends PureComponent<Props> {
   }
 
   render() {
-    const {match, movie, status, isTextValid, isRatingValid, onRatingChange, onTextInput} = this.props;
+    const {match, movie, status, isTextValid, onRatingChange, onTextInput} = this.props;
     const id = Number(match.params.id);
 
     if (!movie) {
@@ -115,7 +114,7 @@ class ReviewPage extends PureComponent<Props> {
             <div className="rating__stars">
               {REVIEW_RATINGS.map((rating) => {
                 return <Fragment key={rating}>
-                  <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating} onChange={(evt) => {
+                  <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating} defaultChecked={rating === Review.DEFAULT_RATING} onChange={(evt) => {
                     onRatingChange(evt);
                   }}/>
                   <label className="rating__label" htmlFor={`star-${rating}`}>{`Rating ${rating}`}</label>
@@ -130,7 +129,7 @@ class ReviewPage extends PureComponent<Props> {
                 onTextInput(evt);
               }}/>
             <div className="add-review__submit">
-              <button className="add-review__btn" type="submit" disabled={!(isTextValid && isRatingValid)}>Post</button>
+              <button className="add-review__btn" type="submit" disabled={!isTextValid}>Post</button>
             </div>
           </div>
         </form>

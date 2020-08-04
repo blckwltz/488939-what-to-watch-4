@@ -32,7 +32,6 @@ it(`Should render ReviewPage component correctly`, () => {
               rating={`5`}
               text={``}
               isTextValid={false}
-              isRatingValid={false}
               status={Status.OK}
               isPublished={true}
               onPageLoad={noop}
